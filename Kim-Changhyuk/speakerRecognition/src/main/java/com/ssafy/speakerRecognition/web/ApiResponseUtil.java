@@ -1,4 +1,4 @@
-package com.ssafy.triptube.support.web;
+package com.ssafy.speakerRecognition.web;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

@@ -2,6 +2,9 @@ package com.ssafy.speakerRecognition.content.controller;
 
 import com.ssafy.speakerRecognition.content.dto.ContentDto;
 import com.ssafy.speakerRecognition.content.service.ContentService;
+import io.swagger.annotations.ApiImplicitParam;
+import io.swagger.annotations.ApiModelProperty;
+import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -18,6 +21,8 @@ public class ContentController {
     ContentService contentService;
 
     @GetMapping()
+    @ApiOperation(value = "모창 성대모사 선택")
+    @ApiImplicitParam(name = "type", value ="모창 - 'A1' , 성대모사 - 'A2'", dataType = "String")
     public ResponseEntity<?> getList(String type) {
         List<ContentDto> list= contentService.getList(type);
         return createResponse(true,"리스트 받기 성공", list);
