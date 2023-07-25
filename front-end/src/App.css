@@ -36,3 +36,37 @@
     transform: rotate(360deg);
   }
 }
+
+@font-face {
+  font-family: "HS산토끼체";
+  src: url("/public/HSSantokki-Regular.ttf");
+  font-weight: 400;
+}
+@font-face {
+  font-family: "LINE Seed Sans KR";
+  src: url("/public/LINESeedKR-Rg.ttf");
+  font-weight: 400;
+}
+
+body {
+  margin: 0;
+  line-height: normal;
+}
+:root {
+  /* fonts */
+  --font-line-seed-sans-kr: "LINE Seed Sans KR";
+  --font-hs: HS산토끼체;
+
+  /* font sizes */
+  --font-size-mini: 0.94rem;
+
+  /* Colors */
+  --color-white: #fff;
+
+  /* Paddings */
+  --padding-5xs: 0.5rem;
+  --padding-9xs: 0.25rem;
+
+  /* border radiuses */
+  --br-81xl: 100px;
+}
