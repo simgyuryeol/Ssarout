@@ -1,6 +1,6 @@
 import './App.css';
 import MainPage from "./pages/MainPage"
-import MyPage from "./pages/MainPage"
+import MyPage from "./pages/MyPage"
 import SearchResult from "./pages/SearchResult"
 import {Routes, Route} from "react-router-dom"
 
