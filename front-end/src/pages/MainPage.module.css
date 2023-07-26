@@ -178,10 +178,6 @@
 .div {
   /* position: relative; */
   /* background-color: #242e54; */
-  width: 1200px;
-  height: 1000px;
-  /* width: 360px;
-  height: 740px; */
   overflow: hidden;
   text-align: center;
   font-size: var(--font-size-mini);
