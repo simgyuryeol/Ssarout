@@ -1,0 +1,190 @@
+.div1 {
+  /* position: relative; */
+  font-size: 23px;
+  letter-spacing: -0.05em;
+  font-family: var(--font-hs);
+  display: inline-block;
+  justify-content: center;
+  text-decoration: none;
+  color: rgb(0, 0, 0);
+}
+.child {
+  height: 0.16%;
+  width: 84.17%;
+  top: 96.91%;
+  right: 8.06%;
+  bottom: 2.93%;
+  left: 7.78%;
+  background-color: black;
+  transform: rotate(-0.02deg);
+  transform-origin: 0 0;
+  opacity: 0.2;
+}
+.image24Icon {
+  /* position: absolute; */
+  top: 99px;
+  left: 40px;
+  border-radius: 20px;
+  width: 280px;
+  height: 200px;
+  object-fit: cover;
+}
+.ai {
+  margin: 0;
+}
+.aiContainer {
+  /* position: absolute; */
+  top: 334px;
+  left: 50px;
+  letter-spacing: -0.05em;
+  display: inline-block;
+  width: 260px;
+  height: 46px;
+}
+.child1,
+.ellipseDiv {
+  /* position: absolute; */
+  top: 306px;
+  border-radius: 50%;
+  width: 10px;
+  height: 10px;
+  align-items: center;
+}
+.ellipseDiv {
+  /* left: 165px; */
+  align-items: center;
+  background-color: #000000;
+}
+.child1 {
+  /* left: 186px; */
+  align-items: center;
+  text-align: center;
+  background-color: rgba(0, 0, 0, 0.7);
+}
+.icon {
+  position: relative;
+  width: 24px;
+  height: 24px;
+}
+.stateLayer1 {
+  display: flex;
+  flex-direction: row;
+  padding: var(--padding-5xs);
+}
+.container,
+.leadingIcon,
+.stateLayer1 {
+  align-items: center;
+  justify-content: center;
+}
+.container {
+  border-radius: var(--br-81xl);
+  overflow: hidden;
+  display: flex;
+  flex-direction: row;
+}
+.leadingIcon {
+  width: 48px;
+  height: 48px;
+  display: none;
+  flex-direction: column;
+}
+.supportingText {
+  /* position: relative; */
+  letter-spacing: -0.5px;
+  line-height: 24px;
+}
+.content,
+.stTrailingIcon {
+  display: flex;
+  align-items: center;
+}
+.content {
+  align-self: stretch;
+  flex: 1;
+  flex-direction: row;
+  justify-content: flex-start;
+}
+.stTrailingIcon {
+  width: 48px;
+  height: 48px;
+  flex-direction: column;
+  justify-content: center;
+}
+.stateLayer,
+.trailingElements {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-end;
+}
+.stateLayer {
+  flex: 1;
+  height: 38px;
+  padding: var(--padding-9xs) 0 var(--padding-9xs) var(--padding-9xs);
+  box-sizing: border-box;
+  justify-content: flex-start;
+  gap: 20px;
+}
+.ai1,
+.div2,
+.searchBar {
+  /* position: absolute; */
+  display: flex;
+  align-items: center;
+}
+.searchBar {
+  top: 625.5px;
+  left: 27.5px;
+  border-radius: 28px;
+  border: 1px solid black;
+  box-sizing: border-box;
+  width: 306px;
+  height: 39px;
+  overflow: hidden;
+  flex-direction: row;
+  justify-content: flex-start;
+  cursor: pointer;
+  text-align: left;
+}
+.ai1,
+.div2 {
+  letter-spacing: -0.5px;
+  line-height: 24px;
+  justify-content: center;
+}
+.div2 {
+  top: 520px;
+  left: 248px;
+  font-size: 12px;
+  width: 37px;
+  height: 24px;
+}
+.ai1 {
+  top: 462px;
+  left: 138px;
+  width: 79px;
+  height: 21px;
+}
+.rectangleDiv {
+  /* position: absolute; */
+  top: 500px;
+  left: 75px;
+  border-radius: 30px;
+  background: linear-gradient(90deg, #4f86b1 64.99%, rgba(217, 217, 217, 0));
+  width: 204px;
+  height: 20px;
+}
+.div {
+  /* position: relative; */
+  /* background-color: #242e54; */
+  width: 1200px;
+  height: 1000px;
+  /* width: 360px;
+  height: 740px; */
+  overflow: hidden;
+  text-align: center;
+  font-size: var(--font-size-mini);
+  color: black;
+  font-family: var(--font-line-seed-sans-kr);
+}
