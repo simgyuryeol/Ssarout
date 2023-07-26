@@ -12,7 +12,10 @@ const UpdatePage = () => {
       <Profile />
       {/* 프로필 이미지, 닉네임 수정할 수 있도록 하기 */}
 
+<<<<<<< HEAD
+=======
 
+>>>>>>> frontend
       <p><Link to="/delete">회원탈퇴</Link></p>
     </div>
   );
