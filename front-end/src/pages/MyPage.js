@@ -11,7 +11,7 @@ const MyPage = () => {
       <h1>My Page</h1>
       
       <h2>{ nickname }</h2>
-      <Link to="/update" className={styles['update-button']}>회원 정보 수정</Link>
+      <Link to="/update" className={ styles.updateBtn }>회원 정보 수정</Link>
     </div>
   );
 };
