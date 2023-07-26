@@ -22,7 +22,6 @@ function App() {
         <Route exact path="/singingAI" element={<SingingAI/>}/>
         <Route exact path="/singingAIResult" element={<SingingAIResult/>}/>
 
-        
 
       </Routes>
     </div>

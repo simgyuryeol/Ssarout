@@ -1,5 +1,5 @@
 import React from "react";
-import { useLocation } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import Header from "../components/commonUse/Header"
 
 const AISearchResult = () =>{
@@ -8,6 +8,7 @@ const AISearchResult = () =>{
     return(
       <>
         <Header/>
+        <button><Link to="/mypage">뒤로가기</Link></button>
         <div>
           {data}
         </div>
