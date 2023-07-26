@@ -6,6 +6,8 @@ import Hamburger from '../commonUse/Hamburger'
 const Header = ({ onLine2Click }) => {
   return (
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
     <div>
       <Link to="/"><div className={styles.div1}>싸:라웃</div></Link>
       {/* <div className="hamburger">
@@ -24,6 +26,7 @@ const Header = ({ onLine2Click }) => {
         </div>
       </div> */}
 =======
+>>>>>>> frontend
     <div className={styles.headerContainer}>
       <div className={styles.logoContainer}>
         <Link to="/"><div className={styles.div1}>싸:라웃</div></Link>
@@ -31,7 +34,10 @@ const Header = ({ onLine2Click }) => {
       <div className={styles.hamburgerContainer}>
         <Hamburger />
       </div>
+<<<<<<< HEAD
+=======
 >>>>>>> 5bbac3e5e522e5af55d5499751f9eead5ecdd180
+>>>>>>> frontend
     </div>
   );
 };
