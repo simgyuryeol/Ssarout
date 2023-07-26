@@ -5,8 +5,8 @@ import UserUpdate from './pages/UserUpdate';
 import SearchResult from "./pages/SearchResult"
 import SingingAI from "./pages/SingingAI"
 import SingingAIResult from "./pages/SingingAIResult"
-
-
+import Login from './pages/Login';
+import Redirecion from './pages/Redirection';
 import {Routes, Route} from "react-router-dom"
 
 function App() {
@@ -21,7 +21,10 @@ function App() {
         <Route exact path="/update" element={<UserUpdate/>}/>
         <Route exact path="/singingAI" element={<SingingAI/>}/>
         <Route exact path="/singingAIResult" element={<SingingAIResult/>}/>
-
+        <Route exact path="/Login" element={<Login/>}/>
+        <Route exact path="/oauth/redirect" element={<Redirecion/>}/>
+        
+        
 
       </Routes>
     </div>
