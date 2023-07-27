@@ -37,7 +37,16 @@ dependencies {
 	runtimeOnly 'com.mysql:mysql-connector-j'
 	annotationProcessor 'org.projectlombok:lombok'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+
+	implementation 'org.springframework.boot:spring-boot-starter-log4j2'
+
+	annotationProcessor "org.springframework.boot:spring-boot-configuration-processor"
 }
+configurations {
+	all*.exclude group: 'org.springframework.boot', module: 'spring-boot-starter-logging'
+	all*.exclude group: 'org.springframework.boot', module: 'logback-classic'
+}
+
 
 tasks.named('test') {
 	useJUnitPlatform()
