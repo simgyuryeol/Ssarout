@@ -188,19 +188,52 @@
 .headerContainer {
   display: flex;
   justify-content: space-between;
+  /* justify-content: center; */
   align-items: center;
   text-align: center;
   padding: 10px;
+  /* flex-direction: column; */
 }
 
 .logoContainer {
-  flex: 1; /* 로고를 중앙에 정렬 */
+  flex: 1;
   text-align: center;
-  margin-left: auto;
+  align-self: center;
+  margin: auto;
+  margin-left: 25px;
+  /* margin-left: auto; */
+  /* display: inline-block; */
+  /* flex-grow: 1; */
 }
 
+.hamburgerContainer {
+  align-self: flex-end;
+}
 
-/* 사이드바가 열렸을 때 뒤의 배경색을 지정 */
-.bm-menu-wrap.bm-menu-open {
-  background-color: rgba(0, 0, 0, 0.5); /* 배경색을 투명도가 있는 검은색으로 변경 */
+/* footer 하단 고정 */
+#wrapper {
+  min-height: calc(100vh - 71.52px);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding-bottom: 23.52px;
+  margin: auto;
+}
+
+.footer {
+  position: absolute;
+  bottom: 5px;
+  left: 0;
+  right: 0;
+  align-self: center;
+  align-items: center;
+}
+
+.footerMent {
+  font-size: 10px;
+}
+
+.footerLine {
+  width: 90%;
+  opacity: 0.7;
 }

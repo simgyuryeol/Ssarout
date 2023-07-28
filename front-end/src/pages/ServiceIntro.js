@@ -18,7 +18,6 @@ const IntroPage = ({ setShowIntro }) => {
 const MainPage = () => {
   return (
     <div>
-      {/* 메인 페이지 컨텐츠 */}
       <p>메인 페이지 내용입니다.</p>
     </div>
   );

@@ -6,10 +6,9 @@ import { Link } from 'react-router-dom'
 
 const SideBarWrap = styled.div`
   z-index: 5;
-  padding: 12px;
   background-color: #fff;
   height: 100%;
-  width: 55%;
+  width: 60%;
   right: -55%;
   top: 0;
   position: fixed;
@@ -38,7 +37,7 @@ const Sidebar = ({ isOpen, setIsOpen }) => {
         onClick={toggleSide}
         onKeyDown={toggleSide}
       />
-      <ul>
+      <ul className={styles.ul}>
         <p className={styles.menuitem}>
           로그인
         </p>

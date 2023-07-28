@@ -9,7 +9,9 @@ const MainPage = () => {
   return (
     <div className={styles.div}>
       <Header />
-      <SearchBar/>
+      <div id='wrapper'>
+        <SearchBar/>
+      </div>
       <Footer />
     </div>
   );
