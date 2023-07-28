@@ -1,6 +1,11 @@
-package com.ssafy.ssaout.common.oauth.exception;
+package com.ssafy.ssaout.common.error.exception;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.ssafy.ssaout.common.error.ErrorCode;
+import java.util.HashMap;
+import java.util.Map;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.http.MediaType;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.web.AuthenticationEntryPoint;
 

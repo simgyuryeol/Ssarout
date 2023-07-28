@@ -1,5 +1,10 @@
 package com.ssafy.ssaout.user.controller.auth;
 
+import static org.springframework.http.HttpStatus.OK;
+
+import com.ssafy.ssaout.common.error.ErrorCode;
+import com.ssafy.ssaout.common.error.exception.TokenValidFailedException;
+import com.ssafy.ssaout.common.response.ErrorResponse;
 import com.ssafy.ssaout.user.domain.entity.UserRefreshToken;
 import com.ssafy.ssaout.user.repository.UserRefreshTokenRepository;
 import com.ssafy.ssaout.common.response.ApiResponse;
@@ -11,6 +16,7 @@ import com.ssafy.ssaout.common.utils.CookieUtil;
 import com.ssafy.ssaout.common.utils.HeaderUtil;
 import io.jsonwebtoken.Claims;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -35,18 +41,21 @@ public class AuthController {
     private final static String REFRESH_TOKEN = "refresh_token";
 
     @GetMapping("/refresh")
-    public ApiResponse refreshToken (HttpServletRequest request, HttpServletResponse response) {
+//    public ApiResponse refreshToken (HttpServletRequest request, HttpServletResponse response) {
+    public ResponseEntity<ApiResponse> refreshToken (HttpServletRequest request, HttpServletResponse response) {
         // access token 확인
         String accessToken = HeaderUtil.getAccessToken(request);
         AuthToken authToken = tokenProvider.convertAuthToken(accessToken);
-        if (!authToken.validate()) {
-            return ApiResponse.invalidAccessToken();
+        if (authToken.validate()) {
+//            return ApiResponse.invalidAccessToken();
+            throw new TokenValidFailedException(ErrorCode.INVALID_ACCESS_TOKEN);
         }
 
         // expired access token 인지 확인
         Claims claims = authToken.getExpiredTokenClaims();
         if (claims == null) {
-            return ApiResponse.notExpiredTokenYet();
+//            return ApiResponse.notExpiredTokenYet();
+            throw new TokenValidFailedException(ErrorCode.NOT_EXPIRED_TOKEN_YET);
         }
 
         String userId = claims.getSubject();
@@ -59,13 +68,16 @@ public class AuthController {
         AuthToken authRefreshToken = tokenProvider.convertAuthToken(refreshToken);
 
         if (authRefreshToken.validate()) {
-            return ApiResponse.invalidRefreshToken();
+//            return ApiResponse.invalidRefreshToken();
+            throw new TokenValidFailedException(ErrorCode.INVALID_REFRESH_TOKEN);
         }
 
         // userId refresh token 으로 DB 확인
         UserRefreshToken userRefreshToken = userRefreshTokenRepository.findByUserIdAndRefreshToken(userId, refreshToken);
         if (userRefreshToken == null) {
-            return ApiResponse.invalidRefreshToken();
+//            return ApiResponse.invalidRefreshToken();
+            throw new TokenValidFailedException(ErrorCode.INVALID_REFRESH_TOKEN);
+
         }
 
         Date now = new Date();
@@ -95,6 +107,13 @@ public class AuthController {
             CookieUtil.addCookie(response, REFRESH_TOKEN, authRefreshToken.getToken(), cookieMaxAge);
         }
 
-        return ApiResponse.success("token", newAccessToken.getToken());
+//        return ApiResponse.success("token", newAccessToken.getToken());
+        System.out.println("토큰이 재발행되었습니다");
+        ApiResponse apiResponse = ApiResponse.builder()
+            .message("토큰이 재발행되었습니다.")
+            .status(OK.value())
+            .data(newAccessToken.getToken())
+            .build();
+        return ResponseEntity.ok(apiResponse);
     }
 }

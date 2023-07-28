@@ -1,6 +1,7 @@
 package com.ssafy.ssaout.common.oauth.token;
 
-import com.ssafy.ssaout.common.oauth.exception.TokenValidFailedException;
+import com.ssafy.ssaout.common.error.ErrorCode;
+import com.ssafy.ssaout.common.error.exception.TokenValidFailedException;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.security.Keys;
 import lombok.extern.slf4j.Slf4j;
@@ -53,7 +54,7 @@ public class AuthTokenProvider {
 
             return new UsernamePasswordAuthenticationToken(principal, authToken, authorities);
         } else {
-            throw new TokenValidFailedException();
+            throw new TokenValidFailedException(ErrorCode.FAIL_TOKEN_GENERATION);
         }
     }
 
