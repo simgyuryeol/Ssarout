@@ -16,6 +16,7 @@ const SideBarWrap = styled.div`
 
   display: flex;
   flex-direction: column;
+  align-items: center; 
 
   &.open {
     right: 0;
@@ -37,17 +38,17 @@ const Sidebar = ({ isOpen, setIsOpen }) => {
         onClick={toggleSide}
         onKeyDown={toggleSide}
       />
-      <ul className={styles.ul}>
+      <div className={styles.ul}>
         <p className={styles.menuitem}>
           로그인
         </p>
         <p className={styles.menuitem}>
           회원가입
         </p>
-        <p className={styles.mypagemenu}><Link to="/mypage">
+        <p className={styles.mypagemenu}><Link className={styles.mypagemenu} to="/mypage">
           마이페이지</Link>
         </p>
-      </ul>
+      </div>
     </SideBarWrap>
   );
 };

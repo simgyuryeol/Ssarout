@@ -6,6 +6,7 @@
   padding: 12px;
 }
 
-.ul {
-  margin-left: 0px !important;
+.mypagemenu {
+  text-decoration: none !important;
+  color: black;
 }
