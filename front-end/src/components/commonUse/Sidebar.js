@@ -1,22 +1,21 @@
 import React from 'react';
 import styled from 'styled-components';
-import styles from './Sidebar.module.css'
-import { Link } from 'react-router-dom'
-
+import styles from './Sidebar.module.css';
+import { Link } from 'react-router-dom';
 
 const SideBarWrap = styled.div`
   z-index: 5;
   background-color: #fff;
   height: 100%;
-  width: 60%;
-  right: -55%;
+  width: 72%;
+  right: -72%;
   top: 0;
   position: fixed;
   transition: 0.5s ease;
 
   display: flex;
   flex-direction: column;
-  align-items: center; 
+  align-items: center;
 
   &.open {
     right: 0;
@@ -45,7 +44,7 @@ const Sidebar = ({ isOpen, setIsOpen }) => {
         <p className={styles.menuitem}>
           회원가입
         </p>
-        <p className={styles.mypagemenu}><Link className={styles.mypagemenu} to="/mypage">
+        <p className={styles.menuitem}><Link className={styles.menuitem} to="/mypage">
           마이페이지</Link>
         </p>
       </div>

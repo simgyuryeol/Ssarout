@@ -1,0 +1,44 @@
+.searchBox {
+  justify-content: center;
+  border: solid 1px white;
+  border-radius: 20px;
+  width: 19rem;
+  align-items: center;
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.searchbar {
+  width: 15rem;
+  height: 1.8rem;
+  border-radius: 20px;
+  border-color: white;
+  background-color: transparent;
+  border-width: 1px;
+}
+
+input::placeholder {
+  color: white;
+  font-family: 'lineRg';
+}
+
+input:focus {
+  border-color: none;
+  outline: none;
+}
+
+input {
+  color: white;
+  text-align: center;
+  font-family: 'lineRg';
+  border-style: none;
+}
+
+.searchIcon {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 20px;
+  right: 10px;
+}

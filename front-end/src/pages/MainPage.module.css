@@ -6,7 +6,7 @@
   display: inline-block;
   justify-content: center;
   text-decoration: none;
-  color: rgb(0, 0, 0);
+  color: rgb(255, 255, 255);
 }
 .child {
   height: 0.16%;
@@ -218,6 +218,13 @@
   justify-content: space-between;
   padding-bottom: 23.52px;
   margin: auto;
+  color: white;
+}
+
+.searchMent {
+  color: white;
+  font-size: 17px;
+  letter-spacing: -0.5px;
 }
 
 .footer {
@@ -231,6 +238,7 @@
 
 .footerMent {
   font-size: 10px;
+  color: white;
 }
 
 .footerLine {
