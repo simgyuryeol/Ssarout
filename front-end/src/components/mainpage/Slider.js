@@ -11,7 +11,6 @@ export default class SimpleSlider extends Component {
       infinite: true,
       slidesToShow: 1,
       slidesToScroll: 1,
-      // adaptiveHeight: true,
       arrows: true
     };
     return (

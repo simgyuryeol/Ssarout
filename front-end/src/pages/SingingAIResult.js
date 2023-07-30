@@ -5,6 +5,7 @@ import Header from "../components/commonUse/Header"
 const AISearchResult = () =>{
     const location = useLocation()
     const data = location.state.data
+    
     return(
       <>
         <Header/>

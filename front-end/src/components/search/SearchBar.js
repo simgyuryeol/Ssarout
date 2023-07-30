@@ -1,15 +1,17 @@
 import {React,useState} from 'react';
-import { Link } from 'react-router-dom';
+import { useLocation,  Link } from "react-router-dom";
 import styles from "./SearchBar.module.css";
 
-
-
 const SearchBar = () => {
-  // SearchBar 컴포넌트의 내용
-  const [keyword, setKeyword] = useState("")
-  const onChange =(event) => {
+  const location = useLocation()
+  const data = location.state?.data //Optional Chaining에게 무한감사.
+
+  const [keyword, setKeyword] = useState(data || "")
+
+  const onChange = (event) => {
     setKeyword(event.target.value)
   }
+
   return (
     <div className={styles.searchBox}>
       <input 

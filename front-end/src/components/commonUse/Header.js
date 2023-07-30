@@ -3,7 +3,7 @@ import styles from "../../pages/MainPage.module.css";
 import { Link } from 'react-router-dom'
 import Hamburger from '../commonUse/Hamburger'
 
-const Header = ({ onLine2Click }) => {
+const Header = () => {
   return (
     <div className={styles.headerContainer}>
       <div className={styles.logoContainer}>

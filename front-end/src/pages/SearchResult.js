@@ -1,18 +1,16 @@
 import React from "react";
-import { useLocation } from "react-router-dom";
 import Header from "../components/commonUse/Header"
+import Footer from "../components/commonUse/Footer"
+import SearchResult from "../components/search/SearchResult"
 
-const SearchResult = () =>{
-    const location = useLocation()
-    const data = location.state.data
+const Result = () => {
     return(
       <>
         <Header/>
-        <div>
-          {data}
-        </div>
-        <p>검색 결과입니다.</p>
+        <br/>
+        <SearchResult/>
+        <Footer/>
       </>
   )
 }
-export default SearchResult
+export default Result

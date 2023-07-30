@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 import Header from '../components/commonUse/Header'
-import Footer from '../components/commonUse/Footer';
+// import Footer from '../components/commonUse/Footer';
 import styles from './MyPage.module.css'
 
 const MyPage = () => {
