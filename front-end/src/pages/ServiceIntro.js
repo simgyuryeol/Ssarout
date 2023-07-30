@@ -8,8 +8,8 @@ const IntroPage = ({ setShowIntro }) => {
 
   return (
     <div>
-      {/* 서비스 소개 페이지 컨텐츠 */}
-      <p>서비스를 소개하는 내용입니다.</p>
+      {/* 서비스 컨텐츠 */}
+      <p>서비스를 소개하는 내용</p>
       <button onClick={handleHideIntro}>다시 보지 않기</button>
     </div>
   );
