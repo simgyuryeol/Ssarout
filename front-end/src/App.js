@@ -7,6 +7,7 @@ import SingingAI from "./pages/SingingAI"
 import SingingAIResult from "./pages/SingingAIResult"
 import Login from './pages/Login';
 import Redirecion from './pages/Redirection';
+import ServiceIntro from './pages/ServiceIntro';
 import {Routes, Route} from "react-router-dom"
 
 function App() {
@@ -23,6 +24,8 @@ function App() {
         <Route exact path="/singingAIResult" element={<SingingAIResult/>}/>
         <Route exact path="/Login" element={<Login/>}/>
         <Route exact path="/oauth/redirect" element={<Redirecion/>}/>
+        <Route exact path="/intro" element={<ServiceIntro/>}/>
+
         
         
 

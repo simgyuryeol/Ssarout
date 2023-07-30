@@ -1,41 +1,23 @@
-import React, { useState } from 'react';
-import { BrowserRouter as Router, Route, Switch, Redirect } from 'react-router-dom';
+import React from 'react';
+import { Link } from 'react-router-dom';
+import IntroBar from '../components/IntroPage/IntroBar'
+import styles from './ServiceIntro.module.css'
 
-const IntroPage = ({ setShowIntro }) => {
-  const handleHideIntro = () => {
-    setShowIntro(false);
-  };
+
+const ServiceIntro = () => {
 
   return (
-    <div>
-      {/* 서비스 컨텐츠 */}
-      <p>서비스를 소개하는 내용</p>
-      <button onClick={handleHideIntro}>다시 보지 않기</button>
+    <div className={ styles.container }>
+      <div className={ styles.introBarContainer }>
+        <IntroBar />
+      </div>
+      <br></br>
+      <br></br>
+      <br></br>
+      <br></br>
+      <Link to="/" className={ styles.skipBtn }>건너뛰기</Link>
     </div>
   );
 };
 
-const MainPage = () => {
-  return (
-    <div>
-      <p>메인 페이지 내용입니다.</p>
-    </div>
-  );
-};
-
-const App = () => {
-  const [showIntro, setShowIntro] = useState(true);
-
-  return (
-    <Router>
-      <Switch>
-        <Route path="/intro">
-          {showIntro ? <IntroPage setShowIntro={setShowIntro} /> : <Redirect to="/" />}
-        </Route>
-        <Route path="/" component={MainPage} />
-      </Switch>
-    </Router>
-  );
-};
-
-export default App;
+export default ServiceIntro;
