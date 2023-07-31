@@ -18,7 +18,7 @@ public enum ErrorCode {
     NOT_EXPIRED_TOKEN_YET(500, "Not expired token yet."),
     OAUTH_PROVIDER_MISMATCH(500, "기존에 가입된 SNS 계정이 있습니다. 해당 계정을 이용해주세요."),
     FAIL_TOKEN_GENERATION(500, "Failed to generate Token."),
-    CONFLICT_RESOURCE(409,"중복된 값이 있습니다. 다시 입력해주세요");
+    CONFLICT_RESOURCE(409,"중복된 값이 있습니다. 다시 입력해주세요"),
 
 
     SONG_NOT_FOUND(404, "해당 노래를 찾을 수 없습니다.");

@@ -6,7 +6,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.Lob;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
@@ -35,20 +34,14 @@ public class Song {
 
     private Long view;
 
-    @Column(name = "VOICE_FILE", columnDefinition = "BLOB")
-    @Lob
+    @Column(name = "VOICE_FILE")
     private String voiceFile;
-//    private byte[] voiceFile;
 
-    @Column(name = "MR_FILE", columnDefinition = "BLOB")
-    @Lob
+    @Column(name = "MR_FILE")
     private String mrFile;
-//    private byte[] mrFile;
 
-    @Column(name = "ALBUM_COVER_IMAGE", columnDefinition = "BLOB")
-    @Lob
+    @Column(name = "ALBUM_COVER_IMAGE")
     private String albumCoverImage;
-//    private byte[] albumCoverImage;
 
     @Column(name = "RUNNING_TIME")
     @NotNull
