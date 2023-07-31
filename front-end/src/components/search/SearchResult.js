@@ -5,7 +5,7 @@ import { useLocation } from "react-router-dom";
 
 const SearchResult = () => {
   const location = useLocation() //검색어 데이터는 {data}에 담겨있다.
-  const data = location.state.data
+  const data = location.state?.data
   
   return (
     <div>
