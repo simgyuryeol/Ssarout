@@ -1,5 +1,6 @@
 package com.ssafy.ssaout.common.error;
 
+import com.ssafy.ssaout.common.error.exception.NotFoundException;
 import com.ssafy.ssaout.common.error.exception.OAuthProviderMissMatchException;
 import com.ssafy.ssaout.common.error.exception.TokenValidFailedException;
 import com.ssafy.ssaout.common.response.ErrorResponse;
@@ -27,6 +28,10 @@ public class GlobalExceptionHandler {
         return handleException(e, e.getErrorCode());
     }
 
+    @ExceptionHandler(NotFoundException.class)
+    public ResponseEntity<ErrorResponse> handleNotFoundException(NotFoundException e) {
+        return handleException(e, e.getErrorCode());
+    }
 
     private ResponseEntity<ErrorResponse> handleException(Exception e, ErrorCode errorCode) {
         ErrorResponse errorResponse = ErrorResponse.of(errorCode);

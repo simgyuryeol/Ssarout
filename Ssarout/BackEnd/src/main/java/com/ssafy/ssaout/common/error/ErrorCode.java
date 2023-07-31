@@ -21,6 +21,7 @@ public enum ErrorCode {
     CONFLICT_RESOURCE(409,"중복된 값이 있습니다. 다시 입력해주세요");
 
 
+    SONG_NOT_FOUND(404, "해당 노래를 찾을 수 없습니다.");
 
     private int status;
     private String message;
