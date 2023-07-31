@@ -3,6 +3,7 @@ package com.ssafy.ssaout.user.domain.entity;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.ssafy.ssaout.common.oauth.entity.ProviderType;
 import com.ssafy.ssaout.common.oauth.entity.RoleType;
+import com.ssafy.ssaout.fav.domain.entity.Favorite;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -12,6 +13,8 @@ import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
 @Getter
 @Setter
@@ -81,6 +84,7 @@ public class User {
     @Column(name = "MODIFIED_AT")
     @NotNull
     private LocalDateTime modifiedAt;
+
 
     public User(
             @NotNull @Size(max = 64) String userId,

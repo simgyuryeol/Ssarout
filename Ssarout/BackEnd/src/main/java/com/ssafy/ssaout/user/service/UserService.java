@@ -1,6 +1,5 @@
 package com.ssafy.ssaout.user.service;
 
-import com.ssafy.ssaout.common.oauth.entity.UserPrincipal;
 import com.ssafy.ssaout.user.domain.entity.User;
 import com.ssafy.ssaout.user.dto.UserInfoDto;
 import com.ssafy.ssaout.user.repository.UserRepository;
