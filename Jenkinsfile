@@ -26,7 +26,7 @@ pipeline {
             steps {
                 dir('/Ssarout/BackEnd') {
                     sh "docker run -it -d --rm -p 8080:8080 --name=backend backend -h bserver -e TZ=Asia/Seoul"
-                    sh "docker rmi -f $(docker images -f "dangling=true" -q) || true"
+                    sh "sh 'docker images -qf dangling=true | xargs -I{} docker rmi {}'"
                 }
             }
         }
