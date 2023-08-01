@@ -38,8 +38,8 @@ const Sidebar = ({ isOpen, setIsOpen }) => {
         onKeyDown={toggleSide}
       />
       <div className={styles.ul}>
-        <p className={styles.menuitem}>
-          로그인
+        <p className={styles.menuitem}><Link className={styles.menuitem} to="/login">
+          로그인</Link>
         </p>
         <p className={styles.menuitem}>
           회원가입

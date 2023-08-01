@@ -1,20 +1,58 @@
 .updateBtn {
-    display: inline-block;
-    padding: 10px 20px;
-    background-color: blue;
+    display: block;
+    padding: 7px;
+    background-color: #4F86B1;
     color: white;
+    font-size: 13px;
     text-decoration: none;
-    border-radius: 5px;
-    margin-top: 10px;
-    margin-right: 10px;
+    border-radius: 35px;
+    width: 80px;
+    height: 15px;
+  
   }
 
 .singingAI {
-  display: inline-block;
+  display: block;
   padding: 10px 20px;
-  background-color: blue;
+  height: 18px;
+  background-color: transparent;
+  border-color: white;
+  border: solid 1px;
   color: white;
   text-decoration: none;
-  border-radius: 5px;
+  border-radius: 33px;
   margin-top: 10px;
+  text-align: center;
+
+  width: fit-content;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.profileImg {
+  border-radius: 70%;
+  overflow: hidden;
+  width: 4.3rem;
+  height: 4.3rem;
+}
+
+.profile {
+  display: flex;
+  margin-left: 27px;
+  align-items: center;
+}
+
+.nicknameAndUpdate {
+  margin-left: 17px;
+  align-items: start;
+  align-self: auto;
+}
+
+.nickname {
+  font-size: 1.4rem;
+  margin-left: 7px;
+  font-family: lineTh;
+  text-align: start;
+  margin-bottom: 3px;
+  margin-top: 0;
 }

@@ -9,6 +9,8 @@ import Login from './pages/Login';
 import Redirecion from './pages/Redirection';
 import ServiceIntro from './pages/ServiceIntro';
 import {Routes, Route} from "react-router-dom"
+import NickNamePage from "./pages/NickNamePage";
+
 
 function App() {
   return (
@@ -22,9 +24,10 @@ function App() {
         <Route exact path="/update" element={<UserUpdate/>}/>
         <Route exact path="/singingAI" element={<SingingAI/>}/>
         <Route exact path="/singingAIResult" element={<SingingAIResult/>}/>
-        <Route exact path="/Login" element={<Login/>}/>
+        <Route exact path="/login" element={<Login/>}/>
         <Route exact path="/oauth/redirect" element={<Redirecion/>}/>
         <Route exact path="/intro" element={<ServiceIntro/>}/>
+        <Route exact path="/nickNamePage" element={<NickNamePage />} />
 
         
         
