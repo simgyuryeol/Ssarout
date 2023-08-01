@@ -12,7 +12,7 @@ import java.util.List;
 public interface SongRepository extends JpaRepository<Song, Long> {
 
     @Modifying
-    @Query("select s from Song s where s.singer = :keyword or s.title = :keyword")
+    @Query("select s from Song s where s.singer like %:keyword% or s.title like %:keyword%")
     List<Song> findAllBySingerOrTitle(@Param("keyword") String keyword);
 
     @Modifying

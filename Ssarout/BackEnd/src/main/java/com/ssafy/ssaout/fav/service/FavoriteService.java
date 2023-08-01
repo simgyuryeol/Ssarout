@@ -78,44 +78,4 @@ public class FavoriteService {
 
         return favSongDtoList;
     }
-
-    /**
-     * 즐겨찾기 등록
-     */
-//    public Favorite favorite_save(FavDto favDto) throws DataIntegrityViolationException {
-//            Favorite favorite = new Favorite();
-//            User user = userRepository.findByUserId(favDto.getUserId());
-//            Song song = songRepository.findById(favDto.getContentId()).get();
-//            if (user == null || song == null) {
-//                // 사용자나 노래를 찾을 수 없는 경우에 대한 예외 처리
-//                return favorite;
-//            }
-////        Favorite findfavorite =
-//        favoriteRepository.findByUserIdAndContentId(user, song).orElseThrow(() -> new ConflictException(
-//                ErrorCode.CONFLICT_RESOURCE));
-////            if(findfavorite!=null){
-////                    return favorite;
-////            }
-//
-//            favorite.setUserId(user);
-//            favorite.setContentId(song);
-//            favoriteRepository.saveAndFlush(favorite);
-//
-//            return favorite;
-//    }
-
-    /**
-     * 즐겨 찾기 삭제
-     */
-//    public void favorite_delete(FavDto favDto){
-//        User user = userRepository.findByUserId(favDto.getUserId());
-//        Song song = songRepository.findById(favDto.getContentId()).get();
-//
-//        if (user == null || song == null) {
-//            // 사용자나 노래를 찾을 수 없는 경우에 대한 예외 처리
-//            return;
-//        }
-//        favoriteRepository.deleteByUserIdAndContentId(user, song);
-//    }
-
 }
