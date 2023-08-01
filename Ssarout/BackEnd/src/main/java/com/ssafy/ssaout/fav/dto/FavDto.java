@@ -1,7 +1,5 @@
 package com.ssafy.ssaout.fav.dto;
 
-import com.ssafy.ssaout.song.domain.Song;
-import com.ssafy.ssaout.user.domain.entity.User;
 import lombok.Getter;
 import lombok.Setter;
 

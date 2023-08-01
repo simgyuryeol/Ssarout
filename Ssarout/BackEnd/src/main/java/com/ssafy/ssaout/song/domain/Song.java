@@ -1,16 +1,14 @@
 package com.ssafy.ssaout.song.domain;
 
-import java.sql.Time;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
-import javax.validation.constraints.NotNull;
+import com.ssafy.ssaout.fav.domain.entity.Favorite;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+
+import javax.persistence.*;
+import javax.validation.constraints.NotNull;
+import java.sql.Time;
+import java.util.List;
 
 @Getter
 @NoArgsConstructor
@@ -46,4 +44,22 @@ public class Song {
     @Column(name = "RUNNING_TIME")
     @NotNull
     private Time runningTime;
+
+    @OneToMany(mappedBy = "contentId", cascade = CascadeType.ALL)
+    private List<Favorite> favorite;
+
+    @Override
+    public String toString() {
+        return "Song{" +
+                "songId=" + songId +
+                ", title='" + title + '\'' +
+                ", singer='" + singer + '\'' +
+                ", view=" + view +
+                ", voiceFile='" + voiceFile + '\'' +
+                ", mrFile='" + mrFile + '\'' +
+                ", albumCoverImage='" + albumCoverImage + '\'' +
+                ", runningTime=" + runningTime +
+                ", favorite=" + favorite +
+                '}';
+    }
 }

@@ -20,7 +20,7 @@ public enum ErrorCode {
     FAIL_TOKEN_GENERATION(500, "Failed to generate Token."),
     CONFLICT_RESOURCE(409,"중복된 값이 있습니다. 다시 입력해주세요"),
 
-
+    USER_NOT_FOUND(404, "해당 유저를 찾을 수 없습니다."),
     SONG_NOT_FOUND(404, "해당 노래를 찾을 수 없습니다.");
 
     private int status;

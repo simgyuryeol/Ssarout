@@ -13,7 +13,6 @@ import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.time.LocalDateTime;
-import java.util.ArrayList;
 import java.util.List;
 
 @Getter
@@ -84,6 +83,13 @@ public class User {
     @Column(name = "MODIFIED_AT")
     @NotNull
     private LocalDateTime modifiedAt;
+
+    @OneToOne(mappedBy = "user", cascade = CascadeType.ALL,orphanRemoval = true)
+    private UserRefreshToken userRefreshToken;
+
+    @OneToMany(mappedBy = "userId", cascade = CascadeType.ALL)
+    private List<Favorite> favorite;
+
 
 
     public User(

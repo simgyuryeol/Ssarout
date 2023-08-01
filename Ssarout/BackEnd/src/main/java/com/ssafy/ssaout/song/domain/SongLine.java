@@ -1,17 +1,12 @@
 package com.ssafy.ssaout.song.domain;
 
-import java.sql.Time;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+
+import javax.persistence.*;
+import javax.validation.constraints.NotNull;
+import java.sql.Time;
 
 @Getter
 @NoArgsConstructor
@@ -34,4 +29,14 @@ public class SongLine {
     @Column(name = "START_TIME")
     @NotNull
     private Time startTime;
+
+    @Override
+    public String toString() {
+        return "SongLine{" +
+                "SongLineId=" + SongLineId +
+                ", song=" + song +
+                ", lyric='" + lyric + '\'' +
+                ", startTime=" + startTime +
+                '}';
+    }
 }
