@@ -3,9 +3,9 @@ spring:
   # 데이터 소스 설정
   datasource:
     driverClassName: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://localhost/ssaout?characterEncoding=UTF-8&serverTimezone=UTC
+    url: jdbc:mysql://${DB_URL}/ssaout?characterEncoding=UTF-8&serverTimezone=UTC
     username: root
-    password: 1234
+    password: ${DB_PASSWORD}
     hikari:
       pool-name: jpa-hikari-pool
       maximum-pool-size: 5
@@ -42,13 +42,14 @@ cors:
   max-age: 3600
 
 # jwt secret key 설정
-jwt.secret: '8sknjlO3NPTBqo319DHLNqsQAfRJEdKsETOds'
+jwt:
+  secret: ${JWT_SECRET_KEY}
 
 # 토큰 관련 secret Key 및 RedirectUri 설정
 app:
   auth:
-    tokenSecret: 926D96C90030DD58429D2751AC1BDBBC
-    tokenExpiry: 180000000
+    tokenSecret: ${AUTHENTICATION_TOKEN_SECRET}
+    tokenExpiry: 1800000
     refreshTokenExpiry: 604800000
   oauth2:
     authorizedRedirectUris:
