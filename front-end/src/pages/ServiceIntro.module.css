@@ -1,0 +1,15 @@
+.container {
+    background-color: white;
+    color: black;
+}
+
+.skipBtn {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #242E54;
+    color: white;
+    text-decoration: none;
+    border-radius: 20px;
+    margin-top: 10px;
+    margin-right: 10px;
+  }
