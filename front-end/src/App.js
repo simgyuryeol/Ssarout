@@ -1,4 +1,5 @@
 import './App.css';
+import {Routes, Route} from "react-router-dom"
 import MainPage from "./pages/MainPage"
 import MyPage from "./pages/MyPage"
 import UserUpdate from './pages/UserUpdate';
@@ -8,8 +9,8 @@ import SingingAIResult from "./pages/SingingAIResult"
 import Login from './pages/Login';
 import Redirecion from './pages/Redirection';
 import ServiceIntro from './pages/ServiceIntro';
-import {Routes, Route} from "react-router-dom"
 import NickNamePage from "./pages/NickNamePage";
+import History from "./pages/History";
 
 
 function App() {
@@ -28,6 +29,7 @@ function App() {
         <Route exact path="/oauth/redirect" element={<Redirecion/>}/>
         <Route exact path="/intro" element={<ServiceIntro/>}/>
         <Route exact path="/nickNamePage" element={<NickNamePage />} />
+        <Route exact path="/history" element={<History />} />
 
         
         

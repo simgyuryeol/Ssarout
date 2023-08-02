@@ -16,7 +16,7 @@ const MyPage = () => {
   const f1 = async () => {
     try {
       const response = await Api.get("/api/v1/users");
-      console.log(response.data);
+      // console.log(response.data);
       setNickname(response.data.data.nickname);
       setProfileUrl(response.data.data.profileImageUrl);
     } catch (error) {

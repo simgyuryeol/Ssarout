@@ -41,11 +41,11 @@ const Sidebar = ({ isOpen, setIsOpen }) => {
         <p className={styles.menuitem}><Link className={styles.menuitem} to="/login">
           로그인</Link>
         </p>
-        <p className={styles.menuitem}>
-          회원가입
-        </p>
         <p className={styles.menuitem}><Link className={styles.menuitem} to="/mypage">
           마이페이지</Link>
+        </p>
+        <p className={styles.menuitem}><Link className={styles.menuitem} to="/history">
+          히스토리</Link>
         </p>
       </div>
     </SideBarWrap>
