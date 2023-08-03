@@ -5,11 +5,10 @@ import styles from "./Login.module.css"
 
 const Login = () => {
   const GoogleAuthUrl =
-    "http://localhost:8080/oauth2/authorization/google?redirect_uri=http://localhost:3000/oauth/redirect";
-  // "http://192.168.30.124:8080/oauth2/authorization/google?redirect_uri=http://localhost:3000/oauth/redirect";
+    "https://i9e203.p.ssafy.io/oauth2/authorization/google?redirect_uri=https://i9e203.p.ssafy.io/oauth/redirect";
   const KakaoAuthUrl =
-    // "http://localhost:8080/oauth2/authorization/kakao?redirect_uri=http://localhost:3000/oauth/redirect";
-    "http://192.168.30.124:8080/oauth2/authorization/kakao?redirect_uri=http://localhost:3000/oauth/redirect";
+    "https://i9e203.p.ssafy.io/oauth2/authorization/kakao?redirect_uri=https://i9e203.p.ssafy.io/oauth/redirect";
+
 
   const handleGoogleLogin = () => {
     window.location.href = GoogleAuthUrl;

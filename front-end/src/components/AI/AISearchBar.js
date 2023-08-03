@@ -1,6 +1,6 @@
 import {React,useState} from 'react';
 import { Link } from 'react-router-dom';
-import styles from './AISearchBar.module.css'
+// import styles from './AISearchBar.module.css'
 
 
 const SearchBar = () => {

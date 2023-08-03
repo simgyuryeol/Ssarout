@@ -21,7 +21,7 @@ const Redirecion = () => {
         }
       });
     } catch (error) {
-      console.error(error);
+      console.log(error);
     }
   };
 
@@ -46,17 +46,6 @@ const Redirecion = () => {
     }
   };
 
-  const f4 = async () => {
-    try {
-      await Api.post("/logout").then((response) => {
-        localStorage.removeItem("token");
-        console.log(response);
-      });
-    } catch (error) {
-      localStorage.removeItem("token");
-      console.error(error);
-    }
-  };
   return (
     <div>
       <Header/>
@@ -68,9 +57,6 @@ const Redirecion = () => {
         <br/>
         <button className={styles.changeBtn} onClick={f2}>확인</button>
 
-        {/* <button type="button" onClick={f4}>
-          로그아웃
-        </button> */}
       </form>
       <Footer/>
 
