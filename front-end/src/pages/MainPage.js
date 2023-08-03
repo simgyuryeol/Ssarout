@@ -5,8 +5,8 @@ import Footer from '../components/commonUse/Footer';
 import SearchBar from '../components/search/SearchBar';
 import Slider from '../components/mainpage/Slider';
 
-const MainPage = () => {
 
+const MainPage = () => {
   return (
     <div className={styles.div}>
       <Header />

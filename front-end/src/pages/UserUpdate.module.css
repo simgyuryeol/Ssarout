@@ -1,0 +1,87 @@
+/* 인풋박스 */
+.changeNickname {
+  background-color: rgb(212, 212, 212);
+  margin-top: 1px;
+  width: 70%;
+  height: 40px;
+  border-radius: 10px;
+  color: black;
+  font-size: 18px;
+  padding-top: 3px;
+  padding-bottom: 0;
+  font-weight: bold;
+}
+
+.changeNickname::placeholder {
+  color: #484848;
+  font-size: 18px;
+  padding-top: 3px;
+  padding-bottom: 0;
+  font-weight: bold;
+}
+
+/* 변경버튼 */
+.changeBtn {
+  width: 18%;
+  height: 30px;
+  background-color: white;
+  border-radius: 20px;
+  font-family: lineRg;
+  font-size: 15px;
+  padding-top: 3px;
+  color: #4B72C5;
+  font-weight: bold;
+}
+
+/* 회원정보 수정 글자 */
+.updateHeader {
+  font-family: lineTh;
+  margin-bottom: 14px;
+}
+
+/* 뒤로가기 버튼*/
+.updateBackBtn {
+  align-items: start;
+  text-decoration: none;
+  border: solid 1px white;
+  border-radius: 30px;
+  background-color: transparent;
+  display: flex;
+  justify-content: start;
+  margin-left: 30px;
+}
+
+/* 뒤로가기 링크 */
+.updateBackA {
+  text-decoration: none;
+  color: white;
+  font-family: lineRg;
+  display: flex;
+  justify-content: center;
+  padding-top: 3px;
+}
+
+/* 회원탈퇴 */
+.delete {
+  font-family: lineTh;
+  display: flex;
+  justify-content: end;
+  margin-right: 30px;
+  text-decoration: underline;
+  margin-top: 90px;
+}
+
+.profileImg {
+  border-radius: 70%;
+  overflow: hidden;
+  width: 9rem;
+  height: 9rem;
+}
+
+/* 인풋박스 위 닉네임 수정 멘트 */
+.updateMent {
+  margin-bottom: 0;
+  display: flex;
+  justify-content: start;
+  margin-left: 55px;
+}

@@ -10,7 +10,7 @@ const OauthRedirect = () =>{
     window.location.replace("/");
   }, []);
 
-  return <>유저프로필</>;
+  return <>유저프로필</>
 }
 
 export default OauthRedirect

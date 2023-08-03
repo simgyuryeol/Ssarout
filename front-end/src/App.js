@@ -11,7 +11,10 @@ import Redirecion from './pages/Redirection';
 import ServiceIntro from './pages/ServiceIntro';
 import NickNamePage from "./pages/NickNamePage";
 import History from "./pages/History";
+import PublicRoute from './lib/PublicRoute';
+import PrivateRoute from './lib/PrivateRoute';
 
+// Private : 분석결과, 다시부르기 나중에 추가하기
 
 function App() {
   return (
@@ -19,18 +22,67 @@ function App() {
       <Routes>
 
         <Route exact path="/" element={<MainPage/>}/>
-        <Route exact path="/mypage" element={<MyPage/>}/>
+        <Route 
+          exact path="/mypage" 
+          element={
+            <PrivateRoute>
+              <MyPage />  
+            </PrivateRoute>
+          }
+        />
+
         <Route exact path="/search" element={<SearchResult/>}/>
-        {/* UserUpdate 페이지 경로 update로 했음 */}
-        <Route exact path="/update" element={<UserUpdate/>}/>
-        <Route exact path="/singingAI" element={<SingingAI/>}/>
-        <Route exact path="/singingAIResult" element={<SingingAIResult/>}/>
-        <Route exact path="/login" element={<Login/>}/>
+
+        <Route 
+          exact path="/update" 
+          element={
+            <PrivateRoute>
+              <UserUpdate />  
+            </PrivateRoute>
+          }
+        />
+       
+        <Route 
+          exact path="/singingAI" 
+          element={
+            <PrivateRoute>
+              <SingingAI />  
+            </PrivateRoute>
+          }
+        />
+
+        <Route 
+          exact path="/singingAIresult" 
+          element={
+            <PrivateRoute>
+              <SingingAIResult />  
+            </PrivateRoute>
+          }
+        />
+
+        <Route 
+          exact path="/login" 
+          element={
+            <PublicRoute>
+              <Login />  
+            </PublicRoute>
+          }
+        />
+
         <Route exact path="/oauth/redirect" element={<Redirecion/>}/>
         <Route exact path="/intro" element={<ServiceIntro/>}/>
         <Route exact path="/nickNamePage" element={<NickNamePage />} />
         <Route exact path="/history" element={<History />} />
 
+      
+        <Route 
+          exact path="/history" 
+          element={
+            <PrivateRoute>
+              <History />  
+            </PrivateRoute>
+          }
+        />
         
         
 

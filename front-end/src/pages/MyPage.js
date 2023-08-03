@@ -20,7 +20,7 @@ const MyPage = () => {
       setNickname(response.data.data.nickname);
       setProfileUrl(response.data.data.profileImageUrl);
     } catch (error) {
-      alert.error(error);
+      console.error(error);
     }
   };
 

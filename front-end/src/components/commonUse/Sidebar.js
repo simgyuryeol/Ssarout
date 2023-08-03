@@ -1,7 +1,9 @@
 import React from 'react';
 import styled from 'styled-components';
 import styles from './Sidebar.module.css';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import Api from "../../Api/Api";
+
 
 const SideBarWrap = styled.div`
   z-index: 5;
@@ -24,9 +26,32 @@ const SideBarWrap = styled.div`
 `;
 
 const Sidebar = ({ isOpen, setIsOpen }) => {
+  const navigate = useNavigate();
+
   const toggleSide = () => {
     setIsOpen(!isOpen);
   };
+
+  const isLogin = !!localStorage.getItem("token")
+
+  const logout = async () => {
+    try {
+      await Api.post("/logout").then((response) => {
+        localStorage.removeItem("token");
+        console.log(response);
+        // toggleSide(); 
+        // window.location.replace("/");
+        // navigate("/")
+      });
+    } catch (error) {
+      localStorage.removeItem("token");
+      console.error(error);
+    }
+  };
+
+  const gotoMain = () => {
+    navigate('/');
+  }
 
   return (
     <SideBarWrap className={isOpen ? 'open' : ''}>
@@ -37,16 +62,21 @@ const Sidebar = ({ isOpen, setIsOpen }) => {
         onClick={toggleSide}
         onKeyDown={toggleSide}
       />
+      
       <div className={styles.ul}>
-        <p className={styles.menuitem}><Link className={styles.menuitem} to="/login">
-          로그인</Link>
-        </p>
-        <p className={styles.menuitem}><Link className={styles.menuitem} to="/mypage">
-          마이페이지</Link>
-        </p>
-        <p className={styles.menuitem}><Link className={styles.menuitem} to="/history">
-          히스토리</Link>
-        </p>
+        {isLogin ? (
+          <div className={styles.ul}>
+          <p className={styles.menuitem} onClick={() => {
+                  logout();
+                  toggleSide();
+                  gotoMain();
+                  }}>로그아웃</p>     
+          
+          <p className={styles.menuitem}><Link className={styles.menuitem} to="/mypage">마이페이지</Link></p>
+          <p className={styles.menuitem}><Link className={styles.menuitem} to="/history">히스토리</Link></p></div>
+        ) : (
+          <p className={styles.menuitem}><Link className={styles.menuitem} to="/login">로그인</Link></p>
+        )}
       </div>
     </SideBarWrap>
   );

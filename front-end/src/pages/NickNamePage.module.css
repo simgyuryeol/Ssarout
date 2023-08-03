@@ -1,3 +1,49 @@
-input {
-  color: white;
+.setNickname {
+  border-radius: 30px;
+  color: black;
+}
+
+.loginMent {
+  margin-top: 100px;
+  font-family: lineRg;
+  margin-bottom: 0;
+}
+
+.line {
+  width: 80%;
+  margin-top: 0;
+  opacity: 0.5;
+}
+
+.logo {
+  font-family: 'logo';
+  /* font-size: 20px; */
+}
+
+/* 인풋박스 */
+.changeNickname {
+  background-color: rgb(212, 212, 212);
+  margin-top: 20px;
+  width: 70%;
+  height: 40px;
+  border-radius: 10px;
+  color: black;
+  font-size: 18px;
+  padding-top: 3px;
+  padding-bottom: 0;
+  font-weight: bold;
+}
+
+/* 변경버튼 */
+.changeBtn {
+  margin-top: 20px;
+  width: 18%;
+  height: 30px;
+  background-color: white;
+  border-radius: 20px;
+  font-family: lineRg;
+  font-size: 15px;
+  padding-top: 3px;
+  color: #4B72C5;
+  font-weight: bold;
 }

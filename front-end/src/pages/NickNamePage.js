@@ -1,6 +1,8 @@
 import React, { useEffect } from "react";
+import Header from "../components/commonUse/Header";
+import Footer from "../components/commonUse/Footer";
 import Api from "../Api/Api";
-import styles from "./MyPage.module.css";
+import styles from "./NickNamePage.module.css";
 
 
 const Redirecion = () => {
@@ -15,11 +17,11 @@ const Redirecion = () => {
         console.log(response.data);
         profileImg = response.data.data.profileImg;
         if (response.data.data.nickname != null) {
-          window.location.replace("/mypage");
+          window.location.replace("/");
         }
       });
     } catch (error) {
-      alert.error(error);
+      console.error(error);
     }
   };
 
@@ -27,29 +29,23 @@ const Redirecion = () => {
     try {
       const nn = document.querySelector("#nickname").value;
       console.log(nn);
+      if (!nn) {
+        window.alert("닉네임을 입력해주세요");
+        return;
+      }
+      
       await Api.put("/api/v1/users", {
         nickname: nn,
         profileImg: profileImg,
       }).then((response) => {
         console.log(response);
-
-        // window.location.replace("/");
-      });
-    } catch (error) {
-      alert.error(error);
-    }
-  };
-  const f3 = async () => {
-    try {
-      await Api.delete("/api/v1/users").then((response) => {
-        console.log(response);
-
         window.location.replace("/");
       });
     } catch (error) {
-      alert.error(error);
+      console.error(error);
     }
   };
+
   const f4 = async () => {
     try {
       await Api.post("/logout").then((response) => {
@@ -58,23 +54,26 @@ const Redirecion = () => {
       });
     } catch (error) {
       localStorage.removeItem("token");
-      alert.error(error);
+      console.error(error);
     }
   };
   return (
     <div>
+      <Header/>
+      <p className={styles.loginMent}><span className={styles.logo}>싸:라웃</span>에서 이용할 닉네임을 설정해주세요!</p>
+
+      <hr className={styles.line}/>
       <form>
-        <input className={styles.nicknameSet} id="nickname" type="text"></input>
-        <button id="btn1" type="button" onClick={f2}>
-          프로필 등록
-        </button>
-        <button id="btn2" type="button" onClick={f3}>
-          삭제
-        </button>
-        <button type="button" onClick={f4}>
+        <input className={styles.changeNickname} id="nickname" type="text"></input>
+        <br/>
+        <button className={styles.changeBtn} onClick={f2}>확인</button>
+
+        {/* <button type="button" onClick={f4}>
           로그아웃
-        </button>
+        </button> */}
       </form>
+      <Footer/>
+
     </div>
   );
 };

@@ -1,4 +1,8 @@
 import React, { useEffect } from "react";
+import styles from './Redirection.module.css'
+import Header from '../components/commonUse/Header'
+import Footer from '../components/commonUse/Footer';
+
 
 const Redirecion = () => {
   const searchParams = new URLSearchParams(window.location.search);
@@ -8,9 +12,14 @@ const Redirecion = () => {
   const f1 = async () => {
     const token = searchParams.get("token");
     localStorage.setItem("token", token);
-
     window.location.replace("/nickNamePage");
   };
-  return <h1>로그인 중입니다</h1>;
+  return (
+    <div>
+      <Header/>
+      <h2 className={styles.loginIng}>로그인 중입니다</h2>
+      <Footer/>
+    </div>
+  )
 };
 export default Redirecion;
