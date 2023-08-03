@@ -14,7 +14,7 @@ spring:
           clientSecret: "${KAKAO_CLIENT_SECRET_KEY}"
           clientAuthenticationMethod: post
           authorizationGrantType: authorization_code
-          redirectUri: "i9e203.p.ssafy.io/login/oauth2/code/kakao"
+          redirectUri: "http://i9e203.p.ssafy.io/login/oauth2/code/kakao"
           scope:
             - profile_nickname
             - profile_image

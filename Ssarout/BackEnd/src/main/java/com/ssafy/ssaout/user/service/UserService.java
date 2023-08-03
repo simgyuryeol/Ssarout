@@ -29,7 +29,7 @@ public class UserService {
         User user = userRepository.findByUserId(userId);
 
         user.setNickname(userInfoDto.getNickname());
-        user.setProfileImageUrl(userInfoDto.getProfileImageUrl());
+//        user.setProfileImageUrl(userInfoDto.getProfileImageUrl());
         userRepository.save(user);
 
         return user;
