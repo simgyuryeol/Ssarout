@@ -1,5 +1,7 @@
 package com.ssafy.ssaout.song.controller;
 
+import static org.springframework.http.HttpStatus.OK;
+
 import com.ssafy.ssaout.common.response.ApiResponse;
 import com.ssafy.ssaout.song.domain.Song;
 import com.ssafy.ssaout.song.dto.response.SongDto;
@@ -7,16 +9,13 @@ import com.ssafy.ssaout.song.dto.response.SongLineDto;
 import com.ssafy.ssaout.song.dto.response.WholeSongResponse;
 import com.ssafy.ssaout.song.service.SongLineService;
 import com.ssafy.ssaout.song.service.SongService;
+import java.util.List;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
-
-import java.util.List;
-
-import static org.springframework.http.HttpStatus.OK;
 
 @RestController
 @RequestMapping("/api/v1/song")
@@ -51,8 +50,6 @@ public class SongController {
             .song(song)
             .songLines(songLineList)
             .build();
-
-
 
         ApiResponse apiResponse = ApiResponse.builder()
             .message("곡 정보")

@@ -32,13 +32,13 @@ public class Song {
 
     private Long view;
 
-    @Column(name = "VOICE_FILE")
+    @Column(name = "VOICE_FILE", columnDefinition = "TEXT")
     private String voiceFile;
 
-    @Column(name = "MR_FILE")
+    @Column(name = "MR_FILE", columnDefinition = "TEXT")
     private String mrFile;
 
-    @Column(name = "ALBUM_COVER_IMAGE")
+    @Column(name = "ALBUM_COVER_IMAGE", columnDefinition = "TEXT")
     private String albumCoverImage;
 
     @Column(name = "RUNNING_TIME")
