@@ -1,0 +1,11 @@
+{
+    "compilerOptions": {
+        "target": "esnext",
+        "moduleResolution": "node",
+        "lib": [
+            "esnext", "DOM"
+        ],
+        "baseUrl": ".",
+        "experimentalDecorators": true
+    }
+}

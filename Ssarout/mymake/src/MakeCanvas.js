@@ -1,5 +1,5 @@
-import React, { useRef, useEffect, useState } from 'react';
-import MovingRectangle from './CanvasWithStaffLines';
+import React, { useRef, useEffect, useState } from "react";
+import MovingRectangle from "./CanvasWithStaffLines";
 
 const MakeCanvas = (val) => {
   const canvasRef = useRef(null);
@@ -9,7 +9,7 @@ const MakeCanvas = (val) => {
 
   useEffect(() => {
     const canvas = canvasRef.current;
-    const ctx = canvas.getContext('2d');
+    const ctx = canvas.getContext("2d");
 
     // 캔버스 크기 조정
     canvas.width = canvasWidth;
@@ -25,7 +25,7 @@ const MakeCanvas = (val) => {
         ctx.moveTo(0, y);
         ctx.lineTo(canvas.width, y);
 
-        ctx.strokeStyle = (i >= 6 && i <= 10) ? '#000' : '#F5F5F5'; // 위쪽 5개 선은 검은색, 아래쪽 선은 회색
+        ctx.strokeStyle = i >= 6 && i <= 10 ? "#000" : "#F5F5F5"; // 위쪽 5개 선은 검은색, 아래쪽 선은 회색
         ctx.lineWidth = 2; // 오선의 두께
         ctx.stroke();
 
@@ -33,30 +33,56 @@ const MakeCanvas = (val) => {
         ctx.beginPath();
         ctx.moveTo(centerX, 0);
         ctx.lineTo(centerX, canvas.height);
-        ctx.strokeStyle = '#009900'; // 세로선 색상은 검은색
+        ctx.strokeStyle = "#009900"; // 세로선 색상은 검은색
         ctx.lineWidth = 2; // 세로선의 두께
         ctx.stroke();
       }
     };
 
+    const timers = [];
     const myFunction = (value) => {
-      const rectangle = <MovingRectangle value={value}/>;
+      const rectangle = <MovingRectangle value={value} />;
       setRectangles((prevRectangles) => [...prevRectangles, rectangle]);
-      console.log(value)
-
+      console.log(value);
     };
 
-    const Tone = (val) => {
-      val.val.forEach((value, index) => {
-        setTimeout(() => {
+    let ToneStart = 0;
+    let curIdx = 0;
+    const Tone = (val, idx) => {
+      ToneStart = 1;
+      let last = 0;
+      for (let i = 0; i < idx; i++) {
+        last = val.val[i].start;
+      }
 
-          if (value.note != -1){
-          myFunction(value);}
-        }, value.start);
+      for (let i = idx; i < val.val.length; i++) {
+        const value = val.val[i];
+        timers.push(
+          setTimeout(() => {
+            if (value.note != -1) {
+              curIdx = i + 1;
+              myFunction(value);
+            }
+          }, value.start - last)
+        );
+      }
+    };
+
+    const clearAll = () => {
+      ToneStart = 0;
+      timers.forEach((t) => {
+        clearTimeout(t);
       });
+      timers.length = 0;
     };
-    Tone(val);
+    document.querySelector("#startBtn").onclick = function () {
+      console.log(ToneStart);
+      if (ToneStart == 0) Tone(val, curIdx);
+    };
 
+    document.querySelector("#stopBtn").onclick = function () {
+      clearAll();
+    };
     // 초기에 오선 그리기
     drawStaffLines();
   }, []);
@@ -66,7 +92,14 @@ const MakeCanvas = (val) => {
       {rectangles.map((rectangle, index) => (
         <div key={index}>{rectangle}</div>
       ))}
-      <canvas ref={canvasRef} width={canvasWidth} height={canvasHeight} style={{ border: '1px solid black' }} />
+      <canvas
+        ref={canvasRef}
+        width={canvasWidth}
+        height={canvasHeight}
+        style={{ border: "1px solid black" }}
+      />
+      <button id="startBtn"> 시작 </button>
+      <button id="stopBtn"> 정지 </button>
     </div>
   );
 };
