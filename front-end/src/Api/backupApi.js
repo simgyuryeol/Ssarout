@@ -36,12 +36,4 @@ Api.interceptors.response.use(
     return Promise.reject(error);
   }
 );
-
-export const getSongs = (keyword) => {
-  // /api/v1/song 엔드포인트에 GET 요청
-  return Api.get('/api/v1/song', {
-    params: { keyword },
-  });
-};
-
 export default Api;

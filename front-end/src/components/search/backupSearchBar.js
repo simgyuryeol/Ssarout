@@ -2,7 +2,7 @@ import {React,useState} from 'react';
 import { useLocation,  Link } from "react-router-dom";
 import styles from "./SearchBar.module.css";
 
-const SearchBar = ({ onSearch }) => {
+const SearchBar = () => {
   const location = useLocation()
   const data = location.state?.data //Optional Chaining에게 무한감사.
 
@@ -12,9 +12,7 @@ const SearchBar = ({ onSearch }) => {
     setKeyword(event.target.value)
   }
 
-  const handleSearch = () => {
-    onSearch(keyword); 
-  };
+  
 
   return (
     <div className={styles.searchBox}>
