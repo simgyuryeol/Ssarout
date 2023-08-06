@@ -1,7 +1,7 @@
 import React from "react";
 import SearchBar from "./SearchBar";
 import { useLocation } from "react-router-dom";
-import { getSongs } from '../../Api/Api';
+import Api from '../../Api/Api';
 
 
 const SearchResult = () => {
