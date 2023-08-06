@@ -39,6 +39,7 @@ Api.interceptors.response.use(
 
 export const getSongs = (keyword) => {
   // /api/v1/song 엔드포인트에 GET 요청
+  console.log("검색 키워드 전송:", keyword);
   return Api.get('/api/v1/song', {
     params: { keyword },
   });
