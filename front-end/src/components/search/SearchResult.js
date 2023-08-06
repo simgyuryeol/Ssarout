@@ -11,7 +11,7 @@ const SearchResult = () => {
   const handleSearch = async (keyword) => {
     // 검색 버튼을 눌렀을 때 백엔드로 API 요청
     try{
-      await Api.get("/api/v1/song", {
+      await Api.get("/api/v1/song/search", {
       params: {text : keyword}, 
       }).then((response) => {
           console.log(response.data);
