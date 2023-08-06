@@ -10,13 +10,14 @@ const SearchResult = () => {
 
   const handleSearch = (keyword) => {
     // 검색 버튼을 눌렀을 때 백엔드로 API 요청
-    getSongs(keyword)
-      .then((response) => {
-        console.log(response.data);
+    try{
+      Api.get("/api/v1/song", {text : keyword} ).then((response) => {
+          console.log(response.data);
       })
-      .catch((error) => {
+    } 
+    catch(error){
         console.error('Error:', error);
-      });
+    }
   };
   
   return (
