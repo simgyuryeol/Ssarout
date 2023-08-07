@@ -50,7 +50,7 @@ const UpdatePage = () => {
     try {
       await Api.delete("/api/v1/users").then((response) => {
         console.log(response);
-
+        localStorage.removeItem("token");
         window.location.replace("/");
       });
     } catch (error) {
