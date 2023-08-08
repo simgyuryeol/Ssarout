@@ -55,7 +55,6 @@ export class Test {
     this.sharer.on("song-select", this.songSelected.bind(this));
 
     this.songEditor.on("play", async () => {
-      console.log("play this : ", this);
       if (!this.inited) return;
       this.detector.recording(); // 녹음 시작
       // setTimeout(() => { // 노래 시간에 따라 맞춰야함

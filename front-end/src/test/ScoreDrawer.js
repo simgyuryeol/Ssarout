@@ -75,7 +75,6 @@ export class ScoreDrawer {
   }
 
   stop() {
-    console.log("여기가 계속 돌아가는중");
     this.stopRecord = true;
     let perfect = 0;
     let good = 0;

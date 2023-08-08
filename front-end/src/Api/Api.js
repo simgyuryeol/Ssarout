@@ -23,7 +23,6 @@ Api.interceptors.response.use(
     if (error.response.status === 401) {
       try {
         const response = await Api.get("/api/v1/auth/refresh");
-        console.log("나중에 밑에 바꿔야함 : ", response.data);
         Api.defaults.headers.common.Authorization = `Bearer ${response.data.data}`;
         localStorage.setItem("token", response.data.data);
         error.config.headers.Authorization = `Bearer ${response.data.data}`;
