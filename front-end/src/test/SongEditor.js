@@ -1,5 +1,6 @@
 import createElem from "./DOMUtil";
 import EventEmitter from "./EventEmitter";
+import mr from "../mr.mp3";
 
 function cBtn(text) {
   return createElem("button", {}, text);
@@ -10,6 +11,7 @@ class SongEditor extends EventEmitter {
     super();
     this.btnPlay = cBtn("Play");
     this.btnStop = cBtn("Stop");
+    this.audio = null;
     // this.btnSave = cBtn("Save");
     // this.btnUpload = cBtn("Upload");
     // this.btnKeyUp = cBtn("Key Up");
@@ -43,10 +45,20 @@ class SongEditor extends EventEmitter {
       // this.btnUpload,
     ]);
 
+    const musicStop = () => {
+      this.audio.pause();
+      this.audio = null;
+    };
     this.btnPlay.addEventListener("click", (e) => {
+      if (this.audio != null) this.audio.pause();
+      this.audio = new Audio(mr);
+      console.log("audio", this.audio);
+      // this.audio.load();
+      this.audio.play();
       this._clickHandler("play");
     });
     this.btnStop.addEventListener("click", (e) => {
+      musicStop();
       this._clickHandler("stop");
     });
     // this.btnKeyDown.addEventListener("click", (e) => {

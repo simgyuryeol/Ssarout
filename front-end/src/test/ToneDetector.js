@@ -1,3 +1,4 @@
+import Api from "../Api/Api";
 class EventEmitter {
   constructor() {
     this.events = {};
@@ -36,6 +37,9 @@ class ToneDetector extends EventEmitter {
     this.note = 0;
     this.octav = 0;
     this.inited = false;
+    this.audioArray = [];
+    this.isRecording = false;
+    this.sound = null;
   }
 
   async init() {
@@ -53,6 +57,66 @@ class ToneDetector extends EventEmitter {
     }
   }
 
+  recording() {
+    console.log("지식의 한계가 찾아옴");
+    if (!this.isRecording) {
+      this.mediaRecorder = new MediaRecorder(this.stream);
+
+      this.mediaRecorder.ondataavailable = (event) => {
+        this.audioArray.push(event.data); // 오디오 데이터가 취득될 때마다 배열에 담아둔다.
+      };
+
+      // 이벤트핸들러: 녹음 종료 처리 & 재생하기
+      this.mediaRecorder.onstop = async (event) => {
+        // 녹음이 종료되면, 배열에 담긴 오디오 데이터(Blob)들을 합친다: 코덱도 설정해준다.
+        const blob = new Blob(this.audioArray, { type: "audio/wav" });
+        this.audioArray.splice(0); // 기존 오디오 데이터들은 모두 비워 초기화한다.
+
+        // Blob 데이터에 접근할 수 있는 주소를 생성한다.
+        const blobURL = window.URL.createObjectURL(blob);
+        this.sound = new File([blob], "soundBlob", {
+          lastModified: new Date().getTime(),
+          type: "audio",
+        });
+        console.log(blobURL);
+        console.log("sound : ", this.sound);
+        // 여기에 로그인 중인지 아닌지 확인하는 조건문 필요
+
+        try {
+          //결과, 녹음파일 서버에 저장
+          const formData = new FormData();
+
+          formData.append("songId", 1);
+          formData.append("accuracy", 57);
+          formData.append("recordFile", this.sound);
+          console.log("파일전송~");
+          // await Api.post("/api/v1/result", formData, {
+          //   headers: { "Content-Type": "multipart/form-data" },
+          // }).then((response) => {
+          //   console.log(response);
+          // });
+        } catch (error) {
+          alert.error(error);
+        }
+      };
+
+      this.mediaRecorder.start();
+      this.isRecording = true;
+    } else {
+      this.mediaRecorder.stop();
+      this.isRecording = false;
+    }
+  }
+
+  getSound() {
+    return this.sound;
+  }
+  getMediaRecorder() {
+    return this.mediaRecorder;
+  }
+  getAudioArray() {
+    return this.audioArray;
+  }
   start() {
     if (!this.inited) {
       if (!this.analyser) {

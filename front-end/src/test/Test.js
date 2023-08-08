@@ -29,7 +29,8 @@ export class Test {
     this.createElements();
     appContainer.appendChild(this.wrapper);
     requestAnimationFrame(this.loop);
-    this.score = []
+    this.score = [];
+    this.soundFile = null;
   }
 
   createElements() {
@@ -54,8 +55,12 @@ export class Test {
     this.sharer.on("song-select", this.songSelected.bind(this));
 
     this.songEditor.on("play", async () => {
+      console.log("play this : ", this);
       if (!this.inited) return;
+      this.detector.recording(); // 녹음 시작
+      // setTimeout(() => { // 노래 시간에 따라 맞춰야함
       this.playSong(parseScore(this.songEditor.score));
+      // }, 9100);
     });
     this.songEditor.on("stop", this.stopSong.bind(this));
     this.songEditor.on("key-up", this.keyUp.bind(this));
@@ -95,14 +100,17 @@ export class Test {
 
   playSong(notes) {
     this.drawer.start(notes);
-    console.log(notes)
+    console.log(notes);
   }
 
   // @autobind 데코레이터를 제거하고 바인딩된 메소드를 정의합니다.
   stopSong() {
-    this.score = this.drawer.scores()
-    this.drawer.stop()
+    this.score = this.drawer.scores();
+
+    this.drawer.stop();
     this.drawer.start([]);
+    this.detector.recording();
+    this.drawer.setStopRecord(false);
   }
 
   // @autobind 데코레이터를 제거하고 바인딩된 메소드를 정의합니다.
@@ -111,6 +119,13 @@ export class Test {
   }
 
   loop(time) {
+    const stopRecord = this.drawer.getStopRecord();
+
+    if (stopRecord) {
+      //mr 끝났을때 녹음 완료
+      this.stopSong();
+    }
+
     if (this.lastTime === 0) {
       this.lastTime = time;
     }
@@ -125,7 +140,6 @@ export class Test {
 
     this.render();
     requestAnimationFrame(this.loop.bind(this));
-    
   }
 
   update(delta) {
@@ -175,4 +189,4 @@ export class Test {
   }
 }
 
-export default Test
+export default Test;

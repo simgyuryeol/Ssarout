@@ -5,6 +5,14 @@ const articles = [
     author: "sample",
     score: `t100
     <d16'흔'd16'들'd8'리'd8'는'd8'꽃'c8'들'c8'속'd16'에'd4'서'
+    d16''r2''f8'네'f8'샴'g8'푸'g8'향'g8'이'g8'느'f8'껴'd8'진'e16'거'd4'야'`,
+  },
+  {
+    title: "흔들리는 꽃들 속에서 네 샴푸향이 느껴진거야",
+    singer: "장범준",
+    author: "sample",
+    score: `t100
+    <d16'흔'd16'들'd8'리'd8'는'd8'꽃'c8'들'c8'속'd16'에'd4'서'
 d16''r2''f8'네'f8'샴'g8'푸'g8'향'g8'이'g8'느'f8'껴'd8'진'e16'거'd4'야'
 d16''r2''d16'스'd16'쳐'e8'지'e8'나'e16'간'g8'건'f4'가'f16''r8''
 e8'뒤'd8'돌'e8'아'd8'보'c16'지'c16''<b4'만'
@@ -91,4 +99,4 @@ class FileModel {
   }
 }
 
-export {FileModel}
+export { FileModel };
