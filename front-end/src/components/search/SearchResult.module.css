@@ -1,0 +1,82 @@
+.albumcover {
+  width: 70px;
+  height: 70px;
+}
+
+.songdata {
+  display: flex;
+  justify-content: space-between;
+  margin-left: 30px;
+  margin-right: 30px;
+  margin-bottom: 20px;
+}
+
+.titleNsinger {
+  margin-left: 0;
+  margin-bottom: 4px;
+  margin-top: 8px;
+  max-width: 160px;
+  white-space: nowrap; 
+  overflow: hidden; 
+  text-overflow: ellipsis;
+  /* display: flex;
+  flex: 0 0 auto; */
+}
+/* 
+.titleNsinger:hover {
+  animation-play-state: paused;
+  cursor: pointer;
+}
+
+.titleNsinger {
+  animation: textLoop 10s linear infinite;
+  padding-right: 1.4881vw;
+} */
+/* @keyframes textLoop {
+  0% {
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+  }
+  100% {
+    -webkit-transform: translate3d(-100%, 0, 0);
+    transform: translate3d(-100%, 0, 0);
+  }
+} */
+
+.FullBtn {
+  width: 70px;
+  height: 30px;
+  background-color: white;
+  border-radius: 20px;
+  font-family: lineRg;
+  font-size: 15px;
+  color: #4B72C5;
+  font-weight: bold;
+  padding-top: 3px;
+  margin-left: 0;
+}
+
+.LineBtn {
+  width: 70px;
+  height: 30px;
+  background-color: white;
+  border-radius: 20px;
+  font-family: lineRg;
+  font-size: 15px;
+  color: #7A63B6;
+  font-weight: bold;
+  padding-top: 3px;
+  margin-left: 10px;
+}
+
+.dataNBtn {
+  display: block;
+  text-align: start;
+}
+
+.favImage {
+  width: 30px;
+  height: 28px;
+  margin-left: 10px;
+  margin-top: 13px;
+}

@@ -4,17 +4,18 @@ import styles from "./SearchBar.module.css";
 
 const SearchBar = ({ onSearch }) => {
   const location = useLocation()
-  const data = location.state?.data //Optional Chaining에게 무한감사.
+  const data = location.state?.data
 
   const [keyword, setKeyword] = useState(data || "")
+
+  const updatePage = () => {
+    // window.location.reload();
+    window.location.replace("/search");
+  }
 
   const onChange = (event) => {
     setKeyword(event.target.value)
   }
-
-  const handleSearch = () => {
-    onSearch(keyword); 
-  };
 
   return (
     <div className={styles.searchBox}>
@@ -28,6 +29,7 @@ const SearchBar = ({ onSearch }) => {
           className={styles.searchIcon}
           alt="search"
           src="./search.png"
+          onClick={updatePage}
         />
         </Link>
       </div>

@@ -1,42 +1,86 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import SearchBar from "./SearchBar";
-import { useLocation } from "react-router-dom";
+import { Link, redirect, useLocation } from "react-router-dom";
 import Api from '../../Api/Api';
-
+import styles from "./SearchResult.module.css";
 
 const SearchResult = () => {
-  const location = useLocation() //검색어 데이터는 {data}에 담겨있다.
-  const data = location.state?.data
+  const location = useLocation();
+  const data = location.state?.data;
+  const [searchResults, setSearchResults] = useState([]);
 
   const handleSearch = async (keyword) => {
-    // 검색 버튼을 눌렀을 때 백엔드로 API 요청
-    try{
-      await Api.get("/api/v1/song/search", {
-      params: {text : keyword}, 
+    try {
+      const response = await Api.get("/api/v1/song/search", {
+        params: { text: keyword },
+      });    
+      console.log(response.data.data);
+      if (response.data && response.data.data && response.data.data.length > 0) {
+        setSearchResults(response.data.data);
+      }
+    } catch (error) {
+      console.error('Error:', error);
+    }
+  };
+
+  const toggleFav = async (songId) => {
+    // console.log(songId)
+    try {
+      await Api.post("/api/v1/fav", {
+        contentId: songId,
       }).then((response) => {
-          console.log(response.data);
+        console.log(response)
+        // window.location.replace("/search");
+
+        setSearchResults((prevResults) =>
+          prevResults.map((item) =>
+            item.songId === songId
+              ? { ...item, isFav: !item.isFav }
+              : item
+          )
+        );
+
       })
-    } 
-    catch(error){
-        console.error('Error:', error);
+    } catch (error) {
+      console.error('Error:', error);
     }
   };
 
   useEffect(() => {
     handleSearch(data);
-
   }, []);
-  
+
   return (
     <div>
-      <br/>
-      <SearchBar onSearch={handleSearch} />
-      <br/>
-      <p style={{ fontSize: '0.9rem' }}>(음악 넣기전 확인용)검색어: {data}</p>
-      <p style={{ fontSize: '0.8rem' }}>검색 결과입니다.</p>
+      <br />
+      <SearchBar onSearch={handleSearch}/>
+      <br />
+      {/* <p style={{ fontSize: '0.9rem' }}>(음악 넣기전 확인용)검색어: {data}</p> */}
+      {searchResults.length > 0 ? (
+        <p style={{ fontSize: '0.9rem' }}>검색 결과입니다.</p>
+      ) : (
+        <p style={{ fontSize: '0.9rem' }}>검색 결과가 없습니다.</p>
+      )}
+      {searchResults.map((item, index) => (
+        <div key={index} className={styles.songdata}>
+          <img className={styles.albumcover} alt="" src={item.albumCoverImage} />
+          <div className={styles.dataNBtn}>
+            <p className={styles.titleNsinger}>{item.title} - {item.singer}</p>
+            <Link to="/record"><button className={styles.FullBtn}>완곡</button></Link>
+            <Link to="/record"><button className={styles.LineBtn}>소절</button></Link>
+          </div>
+          <img
+            className={styles.favImage}
+            alt={item.isFav ? "즐겨찾기" : "즐겨찾기 안함"}
+            src={item.isFav ? "./fullstar.png" : "./emptystar.png"}
+            onClick={() => toggleFav(item.songId)}
+          />
+
+        </div>
+      ))}
     </div>
   );
-  
 };
 
 export default SearchResult;
+
