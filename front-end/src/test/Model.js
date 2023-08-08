@@ -91,4 +91,4 @@ class FileModel {
   }
 }
 
-export default FileModel
+export {FileModel}
