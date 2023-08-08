@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import Header from "../components/commonUse/Header";
 import Footer from "../components/commonUse/Footer";
+import Favorite from "../components/mypage/Favorite";
 import styles from "./MyPage.module.css";
 import Api from "../Api/Api";
 
@@ -35,6 +36,7 @@ const MyPage = () => {
           <Link to="/update" className={styles.updateBtn}>회원 정보 수정</Link>
         </div>
       </div>
+      <Favorite/>
       <br/><br/>
       <Link to="/singingAI" className={styles.singingAI}>
         AI가 불러주는 노래 들으러 가기

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import SearchBar from "./SearchBar";
-import { Link, redirect, useLocation } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import Api from '../../Api/Api';
 import styles from "./SearchResult.module.css";
 
@@ -31,7 +31,6 @@ const SearchResult = () => {
       }).then((response) => {
         console.log(response)
         // window.location.replace("/search");
-
         setSearchResults((prevResults) =>
           prevResults.map((item) =>
             item.songId === songId
@@ -39,7 +38,6 @@ const SearchResult = () => {
               : item
           )
         );
-
       })
     } catch (error) {
       console.error('Error:', error);
