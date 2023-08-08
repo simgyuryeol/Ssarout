@@ -5,11 +5,17 @@ import styles from "./Login.module.css"
 
 const Login = () => {
   const GoogleAuthUrl =
+    // 이거는 머지할때마다 바꿔줘야함
     "https://i9e203.p.ssafy.io/oauth2/authorization/google?redirect_uri=https://i9e203.p.ssafy.io/oauth/redirect";
+    
+    // 싸피에서 테스트할 때
+    // "http://192.168.30.124:8080/oauth2/authorization/google?redirect_uri=http://localhost:3000/oauth/redirect";
   const KakaoAuthUrl =
+    // 이거는 머지할때마다 바꿔줘야함
     "https://i9e203.p.ssafy.io/oauth2/authorization/kakao?redirect_uri=https://i9e203.p.ssafy.io/oauth/redirect";
 
-
+    // 싸피에서 테스트할 때
+    // "http://192.168.30.124:8080/oauth2/authorization/kakao?redirect_uri=http://localhost:3000/oauth/redirect";
   const handleGoogleLogin = () => {
     window.location.href = GoogleAuthUrl;
   };

@@ -2,8 +2,11 @@ import axios from "axios";
 
 axios.defaults.withCredentials = true;
 const Api = axios.create({
-  // baseURL: "http://localhost:8080",
+  // 이건 머지할때마다 바꿔줘야함
   baseURL: "https://i9e203.p.ssafy.io/",
+
+  // 싸피에서 테스트할 때
+  // baseURL: "http://192.168.30.124:8080",
   headers: {
     "Content-Type": "application/json",
   },

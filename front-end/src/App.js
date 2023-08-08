@@ -13,6 +13,7 @@ import NickNamePage from "./pages/NickNamePage";
 import History from "./pages/History";
 import PublicRoute from './lib/PublicRoute';
 import PrivateRoute from './lib/PrivateRoute';
+import SingTest from '../src/test'
 
 // Private : 분석결과, 다시부르기 나중에 추가하기
 
@@ -73,6 +74,7 @@ function App() {
         <Route exact path="/intro" element={<ServiceIntro/>}/>
         <Route exact path="/nickNamePage" element={<NickNamePage />} />
         <Route exact path="/history" element={<History />} />
+        <Route exact path="/record" element={<SingTest />} />
 
       
         <Route 
