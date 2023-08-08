@@ -3,7 +3,7 @@ import EventEmitter from './EventEmitter';
 
 const autobind = require('autobind-decorator');
 // const { EventEmitter } = require('./EventEmitter');
-const { FileModel, Model } = require('./Model');
+const { FileModel } = require('./Model');
 const { SongList } = require('./SongList');
 
 

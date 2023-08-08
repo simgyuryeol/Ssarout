@@ -91,6 +91,4 @@ class FileModel {
   }
 }
 
-module.exports = {
-  FileModel,
-};
+export default FileModel
