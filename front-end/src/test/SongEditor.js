@@ -1,6 +1,6 @@
 import createElem from "./DOMUtil";
 import EventEmitter from "./EventEmitter";
-import mr from "../mr.mp3";
+// import mr from "../mr.mp3";
 
 function cBtn(text) {
   return createElem("button", {}, text);
@@ -46,15 +46,15 @@ class SongEditor extends EventEmitter {
     ]);
 
     const musicStop = () => {
-      this.audio.pause();
-      this.audio = null;
+      // this.audio.pause();
+      // this.audio = null;
     };
     this.btnPlay.addEventListener("click", (e) => {
-      if (this.audio != null) this.audio.pause();
-      this.audio = new Audio(mr);
-      console.log("audio", this.audio);
+      // if (this.audio != null) this.audio.pause();
+      // this.audio = new Audio(mr);
+      // console.log("audio", this.audio);
       // this.audio.load();
-      this.audio.play();
+      // this.audio.play();
       this._clickHandler("play");
     });
     this.btnStop.addEventListener("click", (e) => {

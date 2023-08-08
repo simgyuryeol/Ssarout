@@ -90,6 +90,7 @@ class ToneDetector extends EventEmitter {
           formData.append("accuracy", 57);
           formData.append("recordFile", this.sound);
           console.log("파일전송~");
+          //서버에 녹음 파일 전송 할려면 주석 지워주세요
           // await Api.post("/api/v1/result", formData, {
           //   headers: { "Content-Type": "multipart/form-data" },
           // }).then((response) => {
