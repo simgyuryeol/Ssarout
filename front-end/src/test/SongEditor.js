@@ -10,33 +10,33 @@ class SongEditor extends EventEmitter {
     super();
     this.btnPlay = cBtn("Play");
     this.btnStop = cBtn("Stop");
-    this.btnSave = cBtn("Save");
-    this.btnUpload = cBtn("Upload");
-    this.btnKeyUp = cBtn("Key Up");
-    this.btnKeyDown = cBtn("Key Down");
+    // this.btnSave = cBtn("Save");
+    // this.btnUpload = cBtn("Upload");
+    // this.btnKeyUp = cBtn("Key Up");
+    // this.btnKeyDown = cBtn("Key Down");
 
-    this.inKey = createElem("input", { type: "number", value: "0" });
+    // this.inKey = createElem("input", { type: "number", value: "0" });
 
-    this.chkMelody = createElem("input", { type: "checkbox", checked: true });
-    const chkLabel = createElem("label", {}, "play melody");
-    chkLabel.appendChild(this.chkMelody);
+    // this.chkMelody = createElem("input", { type: "checkbox", checked: true });
+    // const chkLabel = createElem("label", {}, "play melody");
+    // chkLabel.appendChild(this.chkMelody);
 
-    this.inVolume = createElem("input", {
-      type: "range",
-      min: 0,
-      max: 100,
-      value: 30,
-      step: 1,
-    });
+    // this.inVolume = createElem("input", {
+    //   type: "range",
+    //   min: 0,
+    //   max: 100,
+    //   value: 30,
+    //   step: 1,
+    // });
 
     this.inScore = createElem("textarea", { class: "inScore" });
 
     this.element = createElem("div", { class: "song-editor" }, [
-      chkLabel,
-      this.inVolume,
-      this.btnKeyDown,
-      this.btnKeyUp,
-      this.inScore,
+      // chkLabel,
+      // this.inVolume,
+      // this.btnKeyDown,
+      // this.btnKeyUp,
+      // this.inScore,
       this.btnPlay,
       this.btnStop,
       // this.btnSave,
@@ -49,28 +49,28 @@ class SongEditor extends EventEmitter {
     this.btnStop.addEventListener("click", (e) => {
       this._clickHandler("stop");
     });
-    this.btnKeyDown.addEventListener("click", (e) => {
-      this._clickHandler("key-down");
-    });
-    this.btnKeyUp.addEventListener("click", (e) => {
-      this._clickHandler("key-up");
-    });
+    // this.btnKeyDown.addEventListener("click", (e) => {
+    //   this._clickHandler("key-down");
+    // });
+    // this.btnKeyUp.addEventListener("click", (e) => {
+    //   this._clickHandler("key-up");
+    // });
 
-    this.chkMelody.addEventListener("input", (e) => {
-      this.emit("change", "melody", this.chkMelody.checked);
-    });
-    this.inVolume.addEventListener("input", (e) => {
-      this.emit("change", "volume", parseInt(this.inVolume.value, 10) / 100);
-    });
+    // this.chkMelody.addEventListener("input", (e) => {
+    //   this.emit("change", "melody", this.chkMelody.checked);
+    // });
+    // this.inVolume.addEventListener("input", (e) => {
+    //   this.emit("change", "volume", parseInt(this.inVolume.value, 10) / 100);
+    // });
   }
 
-  get key() {
-    return parseInt(this.inKey.value, 10);
-  }
+  // get key() {
+  //   return parseInt(this.inKey.value, 10);
+  // }
 
-  set key(v) {
-    this.inKey.value = v.toString();
-  }
+  // set key(v) {
+  //   this.inKey.value = v.toString();
+  // }
 
   _clickHandler(type) {
     this.emit(type);
