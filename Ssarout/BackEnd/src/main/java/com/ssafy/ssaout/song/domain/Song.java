@@ -41,6 +41,9 @@ public class Song {
     @Column(name = "ALBUM_COVER_IMAGE", columnDefinition = "TEXT")
     private String albumCoverImage;
 
+    @Column(name = "LYRIC" , columnDefinition = "TEXT")
+    private String lyric;
+
     @Column(name = "RUNNING_TIME")
     @NotNull
     private Time runningTime;

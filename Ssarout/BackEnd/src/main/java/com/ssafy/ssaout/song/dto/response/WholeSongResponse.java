@@ -16,7 +16,7 @@ public class WholeSongResponse {
     private Long view;
     private String voiceFile;
     private String mrFile;
-    private List<SongLineDto> lyrics;
+    private String lyric;
     private String albumCoverImage;
     private Time runningTime;
 
@@ -28,7 +28,7 @@ public class WholeSongResponse {
         this.view = song.getView();
         this.voiceFile = song.getVoiceFile();
         this.mrFile = song.getMrFile();
-        this.lyrics = songLines;
+        this.lyric = song.getLyric();
         this.albumCoverImage = song.getAlbumCoverImage();
         this.runningTime = song.getRunningTime();
     }
@@ -42,7 +42,7 @@ public class WholeSongResponse {
                 ", view=" + view +
                 ", voiceFile='" + voiceFile + '\'' +
                 ", mrFile='" + mrFile + '\'' +
-                ", lyrics=" + lyrics +
+                ", lyrics=" + lyric +
                 ", albumCoverImage='" + albumCoverImage + '\'' +
                 ", runningTime=" + runningTime +
                 '}';

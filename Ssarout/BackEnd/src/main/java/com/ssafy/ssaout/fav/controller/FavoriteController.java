@@ -26,27 +26,29 @@ public class FavoriteController {
      */
     @PostMapping
     public ResponseEntity fav_save(@RequestBody FavDto favDto){
-        org.springframework.security.core.userdetails.User principal = (org.springframework.security.core.userdetails.User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        favDto.setUserId(principal.getUsername());
 
-        boolean check = favoriteService.favorite_save(favDto);
+        org.springframework.security.core.userdetails.User principal = (org.springframework.security.core.userdetails.User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        String userId = principal.getUsername();
+        Long contentId = favDto.getContentId();
+        boolean check = favoriteService.favorite_save(contentId,userId );
 
         ApiResponse apiResponse = ApiResponse.builder()
-                    .message(check ? "즐겨 찾기 등록" : "즐겨 찾기 삭제")
-                    .status(OK.value())
-                    .data(check)
-                    .build();
+                .message(check ? "즐겨 찾기 등록" : "즐겨 찾기 삭제")
+                .status(OK.value())
+                .data(check)
+                .build();
         return ResponseEntity.ok(apiResponse);
     }
+
 
     /**
      * 즐겨 찾기 목록
      */
     @GetMapping
-    public ResponseEntity<ApiResponse> fav_list(@RequestBody FavDto favDto){
+    public ResponseEntity<ApiResponse> fav_list(){
         org.springframework.security.core.userdetails.User principal = (org.springframework.security.core.userdetails.User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        favDto.setUserId(principal.getUsername());
-        List<FavSongDto> favSongDtoList = favoriteService.favorite_list(favDto);
+        String UserId = principal.getUsername();
+        List<FavSongDto> favSongDtoList = favoriteService.favorite_list(UserId);
 //        return ApiResponse.success("fav", favSongDtoList);
         ApiResponse apiResponse = ApiResponse.builder()
                 .message("즐겨 찾기 목록")

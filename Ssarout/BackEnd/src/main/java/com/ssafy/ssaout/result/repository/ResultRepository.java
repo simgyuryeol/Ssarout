@@ -15,7 +15,7 @@ public interface ResultRepository extends JpaRepository<Result, Long> {
 
     @Query(
         value = "SELECT "
-            + "new com.ssafy.ssaout.result.dto.response.ResultPerSongResponseDto(s.songId, s.title, s.albumCoverImage, FLOOR(AVG(r.accuracy))) "
+            + "new com.ssafy.ssaout.result.dto.response.ResultPerSongResponseDto(s.songId, s.singer, s.title, s.albumCoverImage, FLOOR(AVG(r.accuracy))) "
             + "FROM Result r "
             + "INNER JOIN Song s "
             + "ON r.song = s AND r.user = :user "

@@ -31,27 +31,27 @@ public class FavoriteService {
      * 등록 되어 있는 경우 삭제
      * 신규일 경우 등록
      */
-    public boolean favorite_save(FavDto favDto) {
-            User user = userRepository.findByUserId(favDto.getUserId());
-            if(user==null){
-                new NotFoundException(ErrorCode.USER_NOT_FOUND);
-            }
+    public boolean favorite_save(Long contentId, String userId) {
+        User user = userRepository.findByUserId(userId);
+        if(user==null){
+            new NotFoundException(ErrorCode.USER_NOT_FOUND);
+        }
 //                    .orElseThrow(() -> new NotFoundException(ErrorCode.USER_NOT_FOUND));
-            Song song = songRepository.findById(favDto.getContentId()).orElseThrow(() -> new NotFoundException(
+        Song song = songRepository.findById(contentId).orElseThrow(() -> new NotFoundException(
                 ErrorCode.SONG_NOT_FOUND));
-            Optional<Favorite> findfavorite = favoriteRepository.findByUserIdAndContentId(user, song);
+        Optional<Favorite> findfavorite = favoriteRepository.findByUserIdAndContentId(user, song);
 
-            if(findfavorite.isPresent()){ //기존 즐찾 삭제
-                favoriteRepository.delete(findfavorite.get());
-                return false;
-            }
+        if(findfavorite.isPresent()){ //기존 즐찾 삭제
+            favoriteRepository.delete(findfavorite.get());
+            return false;
+        }
 
-            Favorite favorite = new Favorite();
-            favorite.setUserId(user);
-            favorite.setContentId(song);
+        Favorite favorite = new Favorite();
+        favorite.setUserId(user);
+        favorite.setContentId(song);
 
-            favoriteRepository.save(favorite);
-            return true;
+        favoriteRepository.save(favorite);
+        return true;
 
     }
 
@@ -59,8 +59,8 @@ public class FavoriteService {
     /**
      * 즐겨 찾기 목록
      */
-    public List<FavSongDto> favorite_list(FavDto favDto){
-        User user = userRepository.findByUserId(favDto.getUserId());
+    public List<FavSongDto> favorite_list(String UserId){
+        User user = userRepository.findByUserId(UserId);
         List<Favorite> favoriteList = favoriteRepository.findAllByUserId(user);
         List<FavSongDto> favSongDtoList = new ArrayList<>();
 
@@ -71,7 +71,7 @@ public class FavoriteService {
             String singer = favorite.getContentId().getSinger();
             String albumCoverImage = favorite.getContentId().getAlbumCoverImage();
 
-            favSongDto.FavSongDto_create(songId,title,singer,albumCoverImage);
+            favSongDto.FavSongDto_create(songId,title,singer,albumCoverImage,true);
 
             favSongDtoList.add(favSongDto);
         }
