@@ -1,17 +1,27 @@
 import React from 'react';
 import Test from './Test';
 import './style.css';
+import Header from '../components/commonUse/Header'
+import Footer from '../components/commonUse/Footer';
+import { useParams } from "react-router-dom";
+
 
 const SingTest = () => {
-  // This function will be called after the component has been rendered in the DOM.
+  const songId = useParams(); // songId에 담겨있음!
+
   React.useEffect(() => {
     const appContainer = document.querySelector('#Singtest');
     const test = new Test(appContainer);
-  }, []); // The empty dependency array ensures this effect runs once after the initial render.
+    console.log(window.location)
+    console.log(songId)
+  }, [songId]);
 
   return (
     <div id='Singtest'>
+      <Header/>
+      <br/>
       {/* Your component's JSX content here */}
+      <Footer/>
     </div>
   );
 }

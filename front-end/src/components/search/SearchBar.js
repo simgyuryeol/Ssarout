@@ -23,6 +23,7 @@ const SearchBar = () => {
       console.log('눌림')
       event.preventDefault();
       navigate('/search', { state: { data: keyword } });
+      window.location.replace("/search"); // 두번째검색부턴 리렌더링 해줘야
     }
   };
 
@@ -30,7 +31,7 @@ const SearchBar = () => {
     <div className={styles.searchBox}>
       <input 
         className={styles.searchbar} 
-        // placeholder="노래명, 가수명을 입력하세요" 
+        placeholder="노래명, 가수명을 입력하세요" 
         value={keyword}
         onKeyUp={enterPress}
         onChange={onChange}

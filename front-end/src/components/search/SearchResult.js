@@ -64,8 +64,18 @@ const SearchResult = () => {
           <img className={styles.albumcover} alt="" src={item.albumCoverImage} />
           <div className={styles.dataNBtn}>
             <p className={styles.titleNsinger}>{item.title} - {item.singer}</p>
-            <Link to="/record"><button className={styles.FullBtn}>완곡</button></Link>
-            <Link to="/record"><button className={styles.LineBtn}>소절</button></Link>
+            <Link to={{
+              pathname: `/record/${item.songId}`,
+              state: {
+                songId: item.songId,
+              },
+            }}><button className={styles.FullBtn}>완곡</button></Link>
+            <Link to={{
+              pathname: `/record/${item.songId}`,
+              state: {
+                songId: item.songId,
+              },
+            }}><button className={styles.LineBtn}>소절</button></Link>
           </div>
           <img
             className={styles.favImage}
