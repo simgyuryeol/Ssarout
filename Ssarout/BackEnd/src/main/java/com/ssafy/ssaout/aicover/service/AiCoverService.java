@@ -25,9 +25,9 @@ import com.ssafy.ssaout.user.repository.UserRepository;
 import java.util.List;
 import java.util.stream.Collectors;
 import lombok.RequiredArgsConstructor;
-import org.springframework.boot.configurationprocessor.json.JSONArray;
-import org.springframework.boot.configurationprocessor.json.JSONException;
-import org.springframework.boot.configurationprocessor.json.JSONObject;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
@@ -107,7 +107,8 @@ public class AiCoverService {
     }
 
     private void aiCoverRequestToFlaskServer(Long userSeq, Long aiCoverId,
-        List<String> voiceFileUrlList, String singerVoiceFileUrl) throws JSONException {
+        List<String> voiceFileUrlList, String singerVoiceFileUrl)
+        throws JSONException {
 
         ClientHttpRequestFactory httpRequestFactory = new HttpComponentsClientHttpRequestFactory();
         RestTemplate restTemplate = new RestTemplate(httpRequestFactory);
