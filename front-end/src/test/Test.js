@@ -72,7 +72,10 @@ export class Test {
       if (!this.inited) return;
       this.detector.recording(); // 녹음 시작
       // setTimeout(() => { // 노래 시간에 따라 맞춰야함
-      this.playSong(parseScore(this.response.lyrics));
+      // 서버 될때는 이걸로
+      // this.playSong(parseScore(this.response.lyrics));
+      // 로컬서버든 뭐든 서버 안될때는 이걸로 
+      this.playSong(parseScore(this.songEditor.score))
       // }, 9100);
     });
     this.songEditor.on("stop", this.stopSong.bind(this));
