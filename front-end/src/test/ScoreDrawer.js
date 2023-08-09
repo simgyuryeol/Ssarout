@@ -5,7 +5,7 @@ export class ScoreDrawer {
     this._canvas = document.createElement("canvas");
     // this._canvas.width = this._screenWidth;
     this._canvas.width = window.innerWidth; // 초기화 추가
-    this._canvas.height = 250;
+    this._canvas.height = 330;
     this._canvas.style.width = "100%";
     this._oct = 0;
     this._notes = new Array(300).fill(-1);
@@ -125,7 +125,7 @@ export class ScoreDrawer {
 
   _renderNotes(ctx) {
     ctx.save();
-    const fps = 1000 / 60;
+    const fps = 1000 / 60 / 2;
     const screenLength = this._screenWidth;
     const halfLength = screenLength / 2;
     ctx.translate(halfLength, 0);
@@ -156,12 +156,14 @@ export class ScoreDrawer {
       const width = note.length / fps - 1;
       if (x + width < -halfLength) return;
 
+      // const y = noteTop[note.note] * 5 + (note.octav - 3) * 35 + 150 + this._oct * 5 - 2.5;
       const y =
-        noteTop[note.note] * 5 +
-        (note.octav - 3) * 35 +
-        150 +
+        noteTop[note.note] * 5 * 2 +
+        (note.octav - 3) * 35 * 2 +
+        100 +
         this._oct * 5 -
         2.5;
+      //여기
       if (
         note.start <= this._elapsed &&
         note.start + note.length - fps >= this._elapsed
@@ -169,7 +171,7 @@ export class ScoreDrawer {
         current = note;
         ctx.fillStyle = "orange";
       } else if (note.start > this._elapsed) {
-        ctx.fillStyle = "blue";
+        ctx.fillStyle = "#00fffb";
       } else {
         if (this._scores[index] === -1) {
           // console.log(note.start)
@@ -177,7 +179,7 @@ export class ScoreDrawer {
           // console.log(halfLength)
           const len = this._colors.length;
           // console.log(t)
-          let st = len - Math.floor(width);
+          let st = len - Math.floor(width / 2);
 
           // console.log(len)
           // console.log(st)
@@ -235,19 +237,19 @@ export class ScoreDrawer {
           ctx.fillStyle = "#ff2400";
         }
       }
-      ctx.fillRect(x + latency, y, width, 5);
+      ctx.fillRect((x + latency) * 2, y, width * 2, 10);
       if (note.lylic) {
         ctx.save();
-        ctx.fillStyle = "black";
-        ctx.translate(x + latency, y);
+        ctx.fillStyle = "white";
+        ctx.translate((x + latency) * 2, y);
         ctx.scale(1, -1);
         ctx.fillText(note.lylic, 0, 5);
         ctx.restore();
       }
 
       ctx.save();
-      ctx.fillStyle = "black";
-      ctx.translate(x + latency, y);
+      ctx.fillStyle = "white";
+      ctx.translate((x + latency) * 2, y);
       ctx.scale(1, -1);
       if (this._scores[index] === -1) {
         ctx.fillText("", 0, -30);
@@ -304,7 +306,7 @@ export class ScoreDrawer {
     ctx.save();
     ctx.font = "14px monospace";
     ctx.textBaseline = "top";
-    ctx.clearRect(0, 0, this._canvas.width, this._canvas.height);
+    // ctx.clearRect(0, 0, this._canvas.width, this._canvas.height);
 
     const colors = ["#eee", "#ddd"];
     ctx.scale(1, -1);
@@ -312,7 +314,7 @@ export class ScoreDrawer {
 
     this._renderLines(ctx);
 
-    ctx.globalAlpha = 0.5;
+    ctx.globalAlpha = 0.9;
     ctx.fillStyle = "blue";
     this._renderNotes(ctx);
 
@@ -356,45 +358,61 @@ export class ScoreDrawer {
   _renderVoice(ctx) {
     // console.log(this._notes);
 
-    // ctx.fillStyle = "red";
+    ctx.fillStyle = "red";
+    // ctx.save();
+    const fps = 1000 / 60 / 2;
+    const screenLength = this._screenWidth;
+    const halfLength = screenLength / 2;
+    // ctx.translate(halfLength, 0);
+    const screenTime = screenLength * fps;
+    const half = screenTime / 2;
+    const latency = 40 / fps;
     let curNote = this.getCurrentNote();
-    let asd = 0;
+    let curNoteY = 0;
     if (curNote !== null) {
-      asd =
-        noteTop[curNote.note] * 5 +
-        (curNote.octav - 3) * 35 +
-        150 +
+      // curNoteY = noteTop[curNote.note] * 5 + (curNote.octav - 3) * 35 + 150 + this._oct * 5 - 2.5;
+      curNoteY =
+        noteTop[curNote.note] * 5 * 2 +
+        (curNote.octav - 3) * 35 * 2 +
+        100 +
         this._oct * 5 -
         2.5;
     }
-
     this._notes.forEach((note, x) => {
       ctx.fillStyle = "red";
       if (note !== -1) {
         const octav = Math.floor(note / 12) - 4;
         const n = note % 12;
-        let qwe = noteTop[n] * 5 + 150 + octav * 35 - 2.5;
-
+        // let y = noteTop[n] * 5 + 150 + octav * 35 - 2.5;
+        let y = noteTop[n] * 5 * 2 + 100 + octav * 35 * 2 - 2.5;
         if (this._colors[x] !== -1) {
           ctx.fillStyle = this._colors[x];
         } else if (curNote != null) {
           ctx.fillStyle = "red";
           this._colors[x] = "red";
-          //   console.log("asd : ", asd);
+          //   console.log("curNoteY : ", curNoteY);
 
-          if (Math.abs(asd - qwe) <= 3) {
+          if (Math.abs(curNoteY - y) <= 5) {
             ctx.fillStyle = "black";
             this._colors[x] = "black";
-          } else if (asd > qwe) {
+          } else if (curNoteY > y) {
             ctx.fillStyle = "blue";
             this._colors[x] = "blue";
           }
         }
 
-        ctx.fillRect(x, qwe, 1, 5);
-        // ctx.fillRect(x, asd, 1, 5);
+        ctx.save();
+
+        ctx.translate((x - halfLength - latency) * 2, 0);
+        ctx.fillRect((x + latency) * 2 - halfLength, y, 5, 10);
+
+        // ctx.translate((x + latency) * 2, 0);
+        // ctx.fillRect((x + latency) * 2, y, 5, 10);
+        ctx.restore();
+        // ctx.fillRect(x, curNoteY, 1, 5);
       }
     });
+    // ctx.restore();
   }
 
   inited() {
@@ -404,18 +422,22 @@ export class ScoreDrawer {
   _renderLines(ctx) {
     ctx.strokeStyle = "black";
     ctx.beginPath();
+    const heightSetting = 20;
+    const h = 20;
+    const h1 = heightSetting * 5 + h;
+    const h2 = heightSetting * 10 + h;
     for (let i = 0; i < 5; i++) {
-      ctx.moveTo(0, i * 10 + 160);
-      ctx.lineTo(this._screenWidth, i * 10 + 160);
+      ctx.moveTo(0, i * heightSetting + h1);
+      ctx.lineTo(this._screenWidth, i * heightSetting + h1);
     }
     ctx.stroke();
     ctx.strokeStyle = "#ddd";
     ctx.beginPath();
     for (let i = 0; i < 5; i++) {
-      ctx.moveTo(0, i * 10 + 210);
-      ctx.lineTo(this._screenWidth, i * 10 + 210);
-      ctx.moveTo(0, i * 10 + 110);
-      ctx.lineTo(this._screenWidth, i * 10 + 110);
+      ctx.moveTo(0, i * heightSetting + h2);
+      ctx.lineTo(this._screenWidth, i * heightSetting + h2);
+      ctx.moveTo(0, i * heightSetting + h);
+      ctx.lineTo(this._screenWidth, i * heightSetting + h);
     }
     ctx.stroke();
   }
