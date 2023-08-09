@@ -29,10 +29,11 @@ public class AmazonS3Uploader {
 
     private String upload(File file, String dir) {
         Optional<String> extension = getExtensionByStringHandling(
-            file.getName());
+            file.getPath());
         String fileName = dir + "/" + UUID.randomUUID();
         if (extension.isPresent()) {
-            fileName += extension.get();
+            fileName += "." + extension.get();
+            System.out.println("fileName : " + fileName);
         } else {
             fileName += ".mp3";
         }
@@ -48,10 +49,11 @@ public class AmazonS3Uploader {
 
     private Optional<File> convert(MultipartFile multipartFile) throws IOException {
         Optional<String> extension = getExtensionByStringHandling(
-            multipartFile.getName());
+            multipartFile.getOriginalFilename());
         String fileName = String.valueOf(UUID.randomUUID());
         if (extension.isPresent()) {
-            fileName += extension.get();
+            fileName += "." + extension.get();
+            System.out.println("fileName : " + fileName);
         } else {
             fileName += ".mp3";
         }
