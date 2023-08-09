@@ -4,24 +4,36 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.ssafy.ssaout.common.oauth.entity.ProviderType;
 import com.ssafy.ssaout.common.oauth.entity.RoleType;
 import com.ssafy.ssaout.fav.domain.entity.Favorite;
+import java.time.LocalDateTime;
+import java.util.List;
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
+import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-
-import javax.persistence.*;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
-import java.time.LocalDateTime;
-import java.util.List;
+import org.hibernate.annotations.DynamicUpdate;
 
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
+@DynamicUpdate
 @Entity
 @Table(name = "USER")
 public class User {
+
     @JsonIgnore
     @Id
     @Column(name = "USER_SEQ")
@@ -84,24 +96,25 @@ public class User {
     @NotNull
     private LocalDateTime modifiedAt;
 
-    @OneToOne(mappedBy = "user", cascade = CascadeType.ALL,orphanRemoval = true)
+    @OneToOne(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
     private UserRefreshToken userRefreshToken;
 
     @OneToMany(mappedBy = "userId", cascade = CascadeType.ALL)
     private List<Favorite> favorite;
 
-
+    @Column(name = "AI_MODEL_FILE", columnDefinition = "TEXT")
+    private String aiModelFile;
 
     public User(
-            @NotNull @Size(max = 64) String userId,
-            @NotNull @Size(max = 100) String username,
-            @NotNull @Size(max = 512) String email,
-            @NotNull @Size(max = 1) String emailVerifiedYn,
-            @NotNull @Size(max = 512) String profileImageUrl,
-            @NotNull ProviderType providerType,
-            @NotNull RoleType roleType,
-            @NotNull LocalDateTime createdAt,
-            @NotNull LocalDateTime modifiedAt
+        @NotNull @Size(max = 64) String userId,
+        @NotNull @Size(max = 100) String username,
+        @NotNull @Size(max = 512) String email,
+        @NotNull @Size(max = 1) String emailVerifiedYn,
+        @NotNull @Size(max = 512) String profileImageUrl,
+        @NotNull ProviderType providerType,
+        @NotNull RoleType roleType,
+        @NotNull LocalDateTime createdAt,
+        @NotNull LocalDateTime modifiedAt
     ) {
         this.userId = userId;
         this.username = username;
@@ -118,17 +131,17 @@ public class User {
     @Override
     public String toString() {
         return "User{" +
-                "userSeq=" + userSeq +
-                ", userId='" + userId + '\'' +
-                ", username='" + username + '\'' +
-                ", nickname='" + nickname + '\'' +
-                ", email='" + email + '\'' +
-                ", emailVerifiedYn='" + emailVerifiedYn + '\'' +
-                ", profileImageUrl='" + profileImageUrl + '\'' +
-                ", providerType=" + providerType +
-                ", roleType=" + roleType +
-                ", createdAt=" + createdAt +
-                ", modifiedAt=" + modifiedAt +
-                '}';
+            "userSeq=" + userSeq +
+            ", userId='" + userId + '\'' +
+            ", username='" + username + '\'' +
+            ", nickname='" + nickname + '\'' +
+            ", email='" + email + '\'' +
+            ", emailVerifiedYn='" + emailVerifiedYn + '\'' +
+            ", profileImageUrl='" + profileImageUrl + '\'' +
+            ", providerType=" + providerType +
+            ", roleType=" + roleType +
+            ", createdAt=" + createdAt +
+            ", modifiedAt=" + modifiedAt +
+            '}';
     }
 }
