@@ -31,6 +31,7 @@ export class Test {
     requestAnimationFrame(this.loop);
     this.score = [];
     this.soundFile = null;
+    this.BlobUrl = ""
   }
 
   createElements() {
@@ -99,17 +100,33 @@ export class Test {
 
   playSong(notes) {
     this.drawer.start(notes);
-    console.log(notes);
+    // console.log(notes);
   }
-
+  getBlobUrl(data){
+    this.detector.recording(data);
+    setTimeout(() =>{
+      this.BlobUrl = this.detector.Url
+    })
+    
+  }
   // @autobind 데코레이터를 제거하고 바인딩된 메소드를 정의합니다.
   stopSong() {
     this.score = this.drawer.scores();
 
-    this.drawer.stop();
-    this.drawer.start([]);
-    this.detector.recording();
-    this.drawer.setStopRecord(false);
+    let data = this.drawer.stop();
+    // this.drawer.start([]);
+    // this.detector.recording();
+    this.getBlobUrl(data)
+    setTimeout(()=>{
+      this.drawer.setStopRecord(false);
+
+    })
+    setTimeout(() => {
+      console.log(this.BlobUrl)
+      data.BlobUrl = this.BlobUrl
+      window.localStorage.setItem("data", JSON.stringify(data))
+      window.location.href="/analysis"
+    });
   }
 
   // @autobind 데코레이터를 제거하고 바인딩된 메소드를 정의합니다.

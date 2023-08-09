@@ -40,6 +40,8 @@ class ToneDetector extends EventEmitter {
     this.audioArray = [];
     this.isRecording = false;
     this.sound = null;
+    this.Url = ""
+    this.data = Object()
   }
 
   async init() {
@@ -57,14 +59,16 @@ class ToneDetector extends EventEmitter {
     }
   }
 
-  recording() {
+  recording(data) {
+    this.data = data
+    console.log(this.data)
     if (!this.isRecording) {
       this.mediaRecorder = new MediaRecorder(this.stream);
-
+      
       this.mediaRecorder.ondataavailable = (event) => {
         this.audioArray.push(event.data); // 오디오 데이터가 취득될 때마다 배열에 담아둔다.
       };
-
+      
       // 이벤트핸들러: 녹음 종료 처리 & 재생하기
       this.mediaRecorder.onstop = async (event) => {
         // 녹음이 종료되면, 배열에 담긴 오디오 데이터(Blob)들을 합친다: 코덱도 설정해준다.
@@ -77,17 +81,20 @@ class ToneDetector extends EventEmitter {
           lastModified: new Date().getTime(),
           type: "audio",
         });
-        console.log(blobURL);
-        console.log("sound : ", this.sound);
+        // console.log(blobURL);
+        // console.log("sound : ", this.sound);
         // 여기에 로그인 중인지 아닌지 확인하는 조건문 필요
-
+        this.Url = blobURL
+        let finalScore = Math.ceil((this.data.PitchScore+this.data.beatScore)/2)
+        if(localStorage.getItem('token')){
         try {
           //결과, 녹음파일 서버에 저장
           const formData = new FormData();
-
+          console.log(finalScore)
           formData.append("songId", 1);
-          formData.append("accuracy", 57);
+          formData.append("accuracy", finalScore);
           formData.append("recordFile", this.sound);
+          
           //서버에 녹음 파일 전송 할려면 주석 지워주세요
           // await Api.post("/api/v1/result", formData, {
           //   headers: { "Content-Type": "multipart/form-data" },
@@ -97,7 +104,7 @@ class ToneDetector extends EventEmitter {
         } catch (error) {
           alert.error(error);
         }
-      };
+      }};
 
       this.mediaRecorder.start();
       this.isRecording = true;

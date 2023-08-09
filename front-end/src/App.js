@@ -14,7 +14,7 @@ import History from "./pages/History";
 import PublicRoute from './lib/PublicRoute';
 import PrivateRoute from './lib/PrivateRoute';
 import SingTest from '../src/test'
-
+import Analysis from './pages/Analysis';
 // Private : 분석결과, 다시부르기 나중에 추가하기
 
 function App() {
@@ -70,11 +70,13 @@ function App() {
           }
         />
 
+
         <Route exact path="/oauth/redirect" element={<Redirecion/>}/>
         <Route exact path="/intro" element={<ServiceIntro/>}/>
         <Route exact path="/nickNamePage" element={<NickNamePage />} />
         <Route exact path="/history" element={<History />} />
         <Route exact path="/record/:songId" element={<SingTest />} />
+        <Route exact path="/analysis" element={<Analysis />} />
 
       
         <Route 

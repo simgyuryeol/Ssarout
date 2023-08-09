@@ -115,7 +115,8 @@ export class ScoreDrawer {
     // this._colors = []
     // this._scores = []
     // console.log(this._colors)
-    return PitchScore;
+    let data = {'PitchScore':PitchScore,"beatScore":beatScore, "scores":this._scores,"beat":this._beat }
+    return data;
   }
 
   get currentTime() {
