@@ -86,12 +86,13 @@ class ToneDetector extends EventEmitter {
         // 여기에 로그인 중인지 아닌지 확인하는 조건문 필요
         this.Url = blobURL
         let finalScore = Math.ceil((this.data.PitchScore+this.data.beatScore)/2)
+        let songId = this.data.songId
         if(localStorage.getItem('token')){
         try {
           //결과, 녹음파일 서버에 저장
           const formData = new FormData();
           console.log(finalScore)
-          formData.append("songId", 1);
+          formData.append("songId", songId);
           formData.append("accuracy", finalScore);
           formData.append("recordFile", this.sound);
           

@@ -6,11 +6,12 @@ import Sharer from "./Sharer";
 
 import SongEditor from "./SongEditor";
 import createElem from "./DOMUtil";
+import Api from "../Api/Api";
 
 const UPDATE_INTERVAL = 1000 / 60;
 
 export class Test {
-  constructor(appContainer) {
+  constructor(appContainer,songId) {
     this.detector = null;
     this.drawer = null;
     // this.player = null;
@@ -24,6 +25,7 @@ export class Test {
     this.sharer = new Sharer();
     this.songEditor = new SongEditor();
     this.blind = null;
+    this.response = null;
     this.loop = this.loop.bind(this);
     this.drawer = new ScoreDrawer();
     this.createElements();
@@ -32,9 +34,11 @@ export class Test {
     this.score = [];
     this.soundFile = null;
     this.BlobUrl = ""
+    this.songId = songId
+    
   }
 
-  createElements() {
+  async createElements() {
     this.blind = createElem("div", { class: "blind" }, "Click to start app");
     const wrapper = createElem("div", {});
 
@@ -50,6 +54,15 @@ export class Test {
     this.wrapper = wrapper;
     this.bindEvents();
     document.body.appendChild(this.blind);
+    try{
+      this.response = await Api.get("api/v1/song/info", {params:{songId:9}});
+      this.response = this.response.data.data;
+      console.log(this.response)
+
+    }
+    catch(e){
+      console.error(e)
+    }
   }
 
   bindEvents() {
@@ -59,7 +72,7 @@ export class Test {
       if (!this.inited) return;
       this.detector.recording(); // 녹음 시작
       // setTimeout(() => { // 노래 시간에 따라 맞춰야함
-      this.playSong(parseScore(this.songEditor.score));
+      this.playSong(parseScore(this.response.lyrics));
       // }, 9100);
     });
     this.songEditor.on("stop", this.stopSong.bind(this));
@@ -98,6 +111,7 @@ export class Test {
     this.drawer.inited();
   }
 
+  
   playSong(notes) {
     this.drawer.start(notes);
     // console.log(notes);
@@ -111,9 +125,12 @@ export class Test {
   }
   // @autobind 데코레이터를 제거하고 바인딩된 메소드를 정의합니다.
   stopSong() {
+    console.log(this.songId)
     this.score = this.drawer.scores();
 
     let data = this.drawer.stop();
+    data.songId = this.songId.songId
+
     // this.drawer.start([]);
     // this.detector.recording();
     this.getBlobUrl(data)
@@ -122,7 +139,7 @@ export class Test {
 
     })
     setTimeout(() => {
-      console.log(this.BlobUrl)
+      // console.log(this.BlobUrl)
       data.BlobUrl = this.BlobUrl
       window.localStorage.setItem("data", JSON.stringify(data))
       window.location.href="/analysis"
