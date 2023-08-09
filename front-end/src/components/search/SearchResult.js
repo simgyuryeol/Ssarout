@@ -83,7 +83,6 @@ const SearchResult = () => {
             src={item.isFav ? "./fullstar.png" : "./emptystar.png"}
             onClick={() => toggleFav(item.songId)}
           />
-
         </div>
       ))}
     </div>
