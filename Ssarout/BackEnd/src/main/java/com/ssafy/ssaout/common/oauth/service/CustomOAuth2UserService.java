@@ -56,6 +56,12 @@ public class CustomOAuth2UserService extends DefaultOAuth2UserService {
             updateUser(savedUser, userInfo);
         } else {
             savedUser = createUser(userInfo, providerType);
+            if (providerType.equals(ProviderType.KAKAO)) {
+                StringBuffer sb = new StringBuffer(savedUser.getProfileImageUrl());
+                sb.insert(4, "s");
+                savedUser.setProfileImageUrl(sb.toString());
+                userRepository.save(savedUser);
+            }
         }
 
         return UserPrincipal.create(savedUser, user.getAttributes());
