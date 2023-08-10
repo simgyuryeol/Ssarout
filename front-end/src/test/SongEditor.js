@@ -1,17 +1,17 @@
-import createElem from "./DOMUtil";
-import EventEmitter from "./EventEmitter";
-// import mr from "../mr.mp3";
+import createElem from './DOMUtil';
+import EventEmitter from './EventEmitter';
 
 function cBtn(text) {
-  return createElem("button", {}, text);
+  return createElem('button', {}, text);
 }
 
 class SongEditor extends EventEmitter {
   constructor() {
     super();
-    this.btnPlay = cBtn("Play");
-    this.btnStop = cBtn("Stop");
+    this.btnPlay = cBtn('Play');
+    this.btnStop = cBtn('Stop');
     this.audio = null;
+    this.audioUrl = null;
     // this.btnSave = cBtn("Save");
     // this.btnUpload = cBtn("Upload");
     // this.btnKeyUp = cBtn("Key Up");
@@ -31,9 +31,9 @@ class SongEditor extends EventEmitter {
     //   step: 1,
     // });
 
-    this.inScore = createElem("textarea", { class: "inScore" });
+    this.inScore = createElem('textarea', { class: 'inScore' });
 
-    this.element = createElem("div", { class: "song-editor" }, [
+    this.element = createElem('div', { class: 'song-editor' }, [
       // chkLabel,
       // this.inVolume,
       // this.btnKeyDown,
@@ -46,20 +46,19 @@ class SongEditor extends EventEmitter {
     ]);
 
     const musicStop = () => {
-      // this.audio.pause();
-      // this.audio = null;
+      this.audio.pause();
+      this.audio = null;
     };
-    this.btnPlay.addEventListener("click", (e) => {
-      // if (this.audio != null) this.audio.pause();
-      // this.audio = new Audio(mr);
-      // console.log("audio", this.audio);
-      // this.audio.load();
-      // this.audio.play();
-      this._clickHandler("play");
+    this.btnPlay.addEventListener('click', (e) => {
+      if (this.audio != null) this.audio.pause();
+      this.audio = new Audio(this.audioUrl);
+      this.audio.load();
+      this.audio.play();
+      this._clickHandler('play');
     });
-    this.btnStop.addEventListener("click", (e) => {
+    this.btnStop.addEventListener('click', (e) => {
       musicStop();
-      this._clickHandler("stop");
+      this._clickHandler('stop');
     });
     // this.btnKeyDown.addEventListener("click", (e) => {
     //   this._clickHandler("key-down");
@@ -84,6 +83,9 @@ class SongEditor extends EventEmitter {
   //   this.inKey.value = v.toString();
   // }
 
+  setAudioURl(audioUrl) {
+    this.audioUrl = audioUrl;
+  }
   _clickHandler(type) {
     this.emit(type);
   }
