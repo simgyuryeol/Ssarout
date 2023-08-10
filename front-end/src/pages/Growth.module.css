@@ -9,6 +9,7 @@
   background-color: transparent;
   display: flex;
   justify-content: start;
+  padding-top: 3px;
 }
 
 /* 뒤로가기 링크 */
@@ -18,7 +19,6 @@
   font-family: lineRg;
   display: flex;
   justify-content: center;
-  padding-top: 3px;
   font-size: 1rem;
   padding: 3px;
 }
