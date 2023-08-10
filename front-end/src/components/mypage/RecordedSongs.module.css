@@ -51,7 +51,8 @@
 }
 
 .recordTitle {
-  font-size: 1.1rem;
+  font-size: 1rem;
+  font-family: "lineTh"
 }
 
 .avgNBtn {
@@ -61,8 +62,8 @@
 
 .recordAvg {
   color: yellow;
-  font-size: 1.2rem;
-  font-weight: bold;
+  font-size: 1.1rem;
+  /* font-weight: bold; */
 }
 
 .growthBtn {
