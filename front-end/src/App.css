@@ -24,17 +24,17 @@
 
 @font-face {
   font-family: "logo";
-  src: url("/public/HSSantokki-Regular.ttf") format('truetype');
+  src: url("../public/HSSantokki-Regular.ttf") format('truetype');
   font-weight: 400;
 }
 @font-face {
   font-family: "lineRg";
-  src: url("/public/LINESeedKR-Rg.ttf") format('truetype');
+  src: url("../public/LINESeedKR-Rg.ttf") format('truetype');
   font-weight: 400;
 }
 @font-face {
   font-family: "lineTh";
-  src: url("/public/LINESeedKR-Th.ttf") format('truetype');
+  src: url("../public/LINESeedKR-Th.ttf") format('truetype');
 }
 
 body {
