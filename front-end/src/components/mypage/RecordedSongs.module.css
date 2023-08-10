@@ -61,7 +61,7 @@
 }
 
 .recordAvg {
-  color: yellow;
+  color: #ffb860;
   font-size: 1.1rem;
   /* font-weight: bold; */
 }
@@ -75,6 +75,7 @@
   text-align: center;
   font-family: "lineTh";
   padding-top: 4px;
+  font-size: 0.7rem;
 }
 
 .growthBack {

@@ -47,12 +47,12 @@ const Growth = () => {
         margin={{ top: 30, right: 70, bottom: 30, left: 30 }}
         theme={{
           textColor: "#FFFFFF",
-          fontSize: 15,
+          fontSize: 14,
           fontFamily: 'lineRg',
           axis: { // 바닥 날짜
             ticks: {
                 text: {
-                    fontSize: 14,
+                    fontSize: 11,
                     fill: '#c7c7c7',
                 },
             },
