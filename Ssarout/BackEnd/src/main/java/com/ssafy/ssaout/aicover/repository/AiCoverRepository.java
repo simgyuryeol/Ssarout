@@ -8,4 +8,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 public interface AiCoverRepository extends JpaRepository<AiCover, Long> {
 
     List<AiCover> findAllByUser(User user);
+
+    void deleteAllByUser(User user);
 }

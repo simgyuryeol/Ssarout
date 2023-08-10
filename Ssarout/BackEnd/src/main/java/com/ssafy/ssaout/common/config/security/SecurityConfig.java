@@ -68,7 +68,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
             .and()
             .authorizeRequests()
             .requestMatchers(CorsUtils::isPreFlightRequest).permitAll()
-            .antMatchers(HttpMethod.PUT, "/api/v1/ai/covers").permitAll()
+            .antMatchers(HttpMethod.PUT, "/api/v1/ai/covers").hasIpAddress("34.87.63.236")
             .antMatchers("/api/v1/users/**").hasAnyAuthority(RoleType.USER.getCode())
             //   .antMatchers("/api/v1/fav/**").hasAnyAuthority(RoleType.USER.getCode())
             .antMatchers("/api/**/admin/**").hasAnyAuthority(RoleType.ADMIN.getCode())

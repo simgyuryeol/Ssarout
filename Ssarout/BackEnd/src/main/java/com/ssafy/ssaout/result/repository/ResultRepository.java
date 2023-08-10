@@ -31,4 +31,6 @@ public interface ResultRepository extends JpaRepository<Result, Long> {
             + "WHERE r.user = :user"
     )
     Long countDistinctSongIdByUser(User user);
+
+    void deleteAllByUser(User user);
 }

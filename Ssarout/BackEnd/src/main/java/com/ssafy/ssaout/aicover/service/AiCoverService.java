@@ -76,7 +76,7 @@ public class AiCoverService {
         Long userSeq = user.getUserSeq();
         Long aiCoverId = aiCoverRepository.save(AiCover.builder().user(user).song(song).build())
             .getAiCoverId();
-        List<String> voiceFileUrlList = resultRepository.findAllByUserAndSong(user, song).stream()
+        List<String> voiceFileUrlList = resultRepository.findAllByUser(user).stream()
             .map(Result::getRecordFile).collect(Collectors.toList());
         String singerVoiceFileUrl = song.getVoiceFile();
 
