@@ -23,15 +23,7 @@ const Favorite = () => {
       await Api.post("/api/v1/fav", {
         contentId: songId,
       }).then((response) => {
-        console.log(response)
-        // 누르면 새로고침되는거 다시.
-        // setfavResults((prevResults) =>
-        //   prevResults.map((item) =>
-        //     item.songId === songId
-        //       ? { ...item, isFav: !item.isFav }
-        //       : item
-        //   )
-        // );
+        // console.log(response)
         window.location.reload();
       })
     } catch (error) {

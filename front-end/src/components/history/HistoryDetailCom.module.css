@@ -1,0 +1,45 @@
+.playBtn {
+  width: 50px;
+  height: 50px;
+  display: inline;
+  margin-right: 2.8rem;
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.dateTime {
+  /* font-size: 1.1rem; */
+  text-align: start;
+  margin-top: auto;
+  margin-bottom: auto;
+  margin-left: 2.8rem;
+  /* margin-bottom: 0.2rem; */
+}
+
+.dataNBtn {
+  display: flex;
+  justify-content: space-between;
+}
+
+.line {
+  border: dashed 1px;
+  margin-right: 1.8rem;
+  margin-left: 1.8rem;
+  margin-top: 0.5rem;
+}
+
+.titleMent {
+  margin-top: 1.5rem;
+  margin-bottom: 0;
+
+  font-family: 'lineTh';
+  font-size: 1.2rem;
+}
+
+.growthMent {
+  margin-top: 0.2rem;
+  margin-bottom: 0.8rem;
+  font-family: 'lineTh';
+  font-size: 0.9rem;
+  font-style: italic;
+}

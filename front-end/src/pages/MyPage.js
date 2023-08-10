@@ -39,7 +39,7 @@ const MyPage = () => {
       </div>
       <Favorite/>
       <RecordedSongs/>
-      <br/><br/>
+      {/* <br/><br/> */}
       <Link to="/singingAI" className={styles.singingAI}>
         AI가 불러주는 노래 들으러 가기
       </Link>

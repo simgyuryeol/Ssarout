@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import styles from './Sidebar.module.css';
 import { Link, useNavigate } from 'react-router-dom';
 import Api from "../../Api/Api";
+import close from './close.png'
 
 
 const SideBarWrap = styled.div`
@@ -57,7 +58,7 @@ const Sidebar = ({ isOpen, setIsOpen }) => {
     <SideBarWrap className={isOpen ? 'open' : ''}>
       <img
         className={styles.closeIcon}
-        src="./close.png"
+        src={close}
         alt="close"
         onClick={toggleSide}
         onKeyDown={toggleSide}

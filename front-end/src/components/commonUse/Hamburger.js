@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import styles from "./Hamburger.module.css";
 import Sidebar from "./Sidebar";
+import burger from './burger.png'
 
 function Burger() {
   const [isOpen, setIsOpen] = useState(false);
@@ -14,7 +15,7 @@ function Burger() {
       <img
         className={styles.burgerIcon}
         alt="burger"
-        src="./burger.png"
+        src={burger}
         onClick={toggleSide}
       />
       <Sidebar isOpen={isOpen} setIsOpen={setIsOpen} />

@@ -36,9 +36,9 @@ const History = () => {
         removeDuplicates(historyResults, 'title').map((item, index) => (
           <div key={index} className={styles.hisData}>
             <Link to={{
-              pathname: `/history/${item.title}`,
+              pathname: `/history/${encodeURIComponent(item.title)}`,
               state: {
-                title: item.title,
+                title: encodeURIComponent(item.title),
               },
             }}><img className={styles.hisAlbumcover} alt="" src={item.albumCoverImage} /></Link>
             <p className={styles.titleNsinger}>{item.title} - {item.singer}</p>

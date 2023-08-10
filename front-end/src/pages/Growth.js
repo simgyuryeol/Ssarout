@@ -86,11 +86,11 @@ const Growth = () => {
         }}
         axisLeft={null}
         enableGridX={true} // 배경 세로 줄
-        colors="#f47560" // 데이터들 잇는 선 색
+        colors="#B96BAA" // 데이터들 잇는 선 색
         pointSize={13}
-        pointColor="#f47560" // 동그라미
+        pointColor="#B96BAA" // 동그라미
         pointBorderWidth={2}
-        pointBorderColor="#f47560" // 동그라미 테두리
+        pointBorderColor="#B96BAA" // 동그라미 테두리
         enablePointLabel={true}
         pointLabel="y"
         pointLabelYOffset={-16}

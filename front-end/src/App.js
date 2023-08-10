@@ -105,7 +105,7 @@ function App() {
         />
         
         <Route 
-          exact path="/history/:title" 
+          exact path="/history/:title"
           element={
             <PrivateRoute>
               <HistoryDetail />  
