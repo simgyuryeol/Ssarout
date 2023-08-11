@@ -6,14 +6,12 @@ import lombok.Getter;
 @Getter
 public class AiCoverUpdateRequestDto {
 
-    private final Long userSeq;
     private final Long aiCoverId;
     private final String aiCoverFile;
 
     @Builder
-    public AiCoverUpdateRequestDto(Long userSeq, Long aiCoverId,
+    public AiCoverUpdateRequestDto(Long aiCoverId,
         String aiCoverFile) {
-        this.userSeq = userSeq;
         this.aiCoverId = aiCoverId;
         this.aiCoverFile = aiCoverFile;
     }
