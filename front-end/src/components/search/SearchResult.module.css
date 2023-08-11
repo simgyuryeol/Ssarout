@@ -48,7 +48,7 @@
   height: 30px;
   background-color: white;
   border-radius: 20px;
-  font-family: lineRg;
+  font-family: 'lineRg';
   font-size: 15px;
   color: #4B72C5;
   font-weight: bold;
@@ -61,7 +61,7 @@
   height: 30px;
   background-color: white;
   border-radius: 20px;
-  font-family: lineRg;
+  font-family: 'lineRg';
   font-size: 15px;
   color: #7A63B6;
   font-weight: bold;
