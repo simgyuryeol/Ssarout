@@ -68,7 +68,7 @@ const Growth = () => {
         yScale={{
             type: 'linear',
             min: 'auto',
-            max: '100',
+            max: 'auto',
             stacked: true,
             reverse: false,
         }}

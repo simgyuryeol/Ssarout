@@ -59,7 +59,7 @@ const HistoryDetail = () => {
   };
 
   useEffect(() => {
-    f1();
+    // f1();
     console.log(title);
     getHistoryDetail();
   }, []);

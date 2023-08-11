@@ -4,6 +4,7 @@ import Header from "../components/commonUse/Header";
 import Footer from "../components/commonUse/Footer";
 import Favorite from "../components/mypage/Favorite";
 import RecordedSongs from "../components/mypage/RecordedSongs";
+import MakeAI from "../components/mypage/MakeAI";
 import styles from "./MyPage.module.css";
 import Api from "../Api/Api";
 
@@ -38,12 +39,14 @@ const MyPage = () => {
         </div>
       </div>
       <Favorite/>
-      <RecordedSongs/>
+      <RecordedSongs/><br/>
+      <MakeAI/>
       {/* <br/><br/> */}
-      <Link to="/singingAI" className={styles.singingAI}>
+      {/* <Link to="/singingAI" className={styles.singingAI}>
         AI가 불러주는 노래 들으러 가기
-      </Link>
-      <Footer />
+      </Link> */}
+      <br/><br/>
+      {/* <Footer /> */}
     </div>
   );
 };

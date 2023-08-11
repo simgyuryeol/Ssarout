@@ -9,7 +9,7 @@ const Favorite = () => {
   const getFav = async () => {
     try {
       const response = await Api.get("/api/v1/fav");
-      console.log(response.data.data);
+      // console.log(response.data.data);
       if (response.data && response.data.data && response.data.data.length > 0) {
         setfavResults(response.data.data);
       }
