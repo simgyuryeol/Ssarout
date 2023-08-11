@@ -8,15 +8,13 @@ public class AiCoverUpdateRequestDto {
 
     private final Long userSeq;
     private final Long aiCoverId;
-    private final String modelFile;
     private final String aiCoverFile;
 
     @Builder
-    public AiCoverUpdateRequestDto(Long userSeq, Long aiCoverId, String modelFile,
+    public AiCoverUpdateRequestDto(Long userSeq, Long aiCoverId,
         String aiCoverFile) {
         this.userSeq = userSeq;
         this.aiCoverId = aiCoverId;
-        this.modelFile = modelFile;
         this.aiCoverFile = aiCoverFile;
     }
 

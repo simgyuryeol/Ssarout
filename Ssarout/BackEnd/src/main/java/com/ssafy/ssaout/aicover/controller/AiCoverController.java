@@ -4,13 +4,13 @@ import com.ssafy.ssaout.aicover.dto.request.AiCoverUpdateRequestDto;
 import com.ssafy.ssaout.aicover.dto.response.AiCoversResponseDto;
 import com.ssafy.ssaout.aicover.service.AiCoverService;
 import com.ssafy.ssaout.common.response.ApiResponse;
+import java.util.List;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -38,20 +38,20 @@ public class AiCoverController {
                 .data(aiCoversResponseDto).build());
     }
 
-    @PostMapping("/covers/{songId}")
-    public ResponseEntity createAiCover(@PathVariable("songId") Long songId) {
+    @PostMapping("/covers")
+    public ResponseEntity createAiCover() {
         User principal = (User) SecurityContextHolder.getContext().getAuthentication()
             .getPrincipal();
 
-        aiCoverService.createAiCover(principal.getUsername(), songId);
+        aiCoverService.createAiCover(principal.getUsername());
 
         return ResponseEntity.ok().body("요청이 정상적으로 처리되었습니다.");
     }
 
     @PutMapping("/covers")
     public ResponseEntity updateAiCover(
-        @RequestBody AiCoverUpdateRequestDto aiCoverUpdateRequestDto) {
-        aiCoverService.updateAiCover(aiCoverUpdateRequestDto);
+        @RequestBody List<AiCoverUpdateRequestDto> aiCoverUpdateRequestDtoList) {
+        aiCoverService.updateAiCover(aiCoverUpdateRequestDtoList);
 
         return ResponseEntity.ok("요청이 정상적으로 처리되었습니다.");
     }

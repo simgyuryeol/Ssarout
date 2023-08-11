@@ -18,4 +18,6 @@ public interface SongRepository extends JpaRepository<Song, Long> {
     @Modifying
     @Query("update Song s set s.view = s.view + 1 where s.songId = :songId")
     void updateViews(@Param("songId") Long songId);
+
+    List<Song> findAllByIsTrainableIsTrue();
 }

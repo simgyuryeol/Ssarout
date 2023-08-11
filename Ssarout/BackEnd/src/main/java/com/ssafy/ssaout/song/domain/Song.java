@@ -51,6 +51,10 @@ public class Song {
     @OneToMany(mappedBy = "contentId", cascade = CascadeType.ALL)
     private List<Favorite> favorite;
 
+    @Column(name = "IS_TRAINABLE")
+    @NotNull
+    private Boolean isTrainable;
+
     @Override
     public String toString() {
         return "Song{" +

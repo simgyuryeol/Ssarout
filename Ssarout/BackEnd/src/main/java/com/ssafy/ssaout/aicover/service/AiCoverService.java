@@ -4,8 +4,6 @@ import static com.ssafy.ssaout.common.error.ErrorCode.AI_COVER_NOT_FOUND;
 import static com.ssafy.ssaout.common.error.ErrorCode.FAIL_CONNECTING_AI_SERVER;
 import static com.ssafy.ssaout.common.error.ErrorCode.FAIL_CONVERT_TO_JSON;
 import static com.ssafy.ssaout.common.error.ErrorCode.INVALID_AI_COVER_REQUEST_CONDITION;
-import static com.ssafy.ssaout.common.error.ErrorCode.SONG_NOT_FOUND;
-import static com.ssafy.ssaout.common.error.ErrorCode.USER_NOT_FOUND;
 
 import com.ssafy.ssaout.aicover.domain.AiCover;
 import com.ssafy.ssaout.aicover.dto.request.AiCoverUpdateRequestDto;
@@ -22,6 +20,7 @@ import com.ssafy.ssaout.song.domain.Song;
 import com.ssafy.ssaout.song.repository.SongRepository;
 import com.ssafy.ssaout.user.domain.entity.User;
 import com.ssafy.ssaout.user.repository.UserRepository;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 import lombok.RequiredArgsConstructor;
@@ -63,41 +62,45 @@ public class AiCoverService {
             .resultCount(aiCoverResponseDtoList.size()).build();
     }
 
-    public void createAiCover(String userId, Long songId) {
+    public void createAiCover(String userId) {
         // 개별 10곡 불렀는지 확인
         User user = userRepository.findByUserId(userId);
-        Song song = songRepository.findById(songId)
-            .orElseThrow(() -> new NotFoundException(
-                SONG_NOT_FOUND));
+        List<Song> trainableSongs = songRepository.findAllByIsTrainableIsTrue();
 
         Long recordedSongs = resultRepository.countDistinctSongIdByUser(user);
         checkRecordedSongs(recordedSongs);
 
         Long userSeq = user.getUserSeq();
-        Long aiCoverId = aiCoverRepository.save(AiCover.builder().user(user).song(song).build())
-            .getAiCoverId();
+
+        List<Long> aiCoverIdList = new ArrayList<>();
+        for (Song song : trainableSongs) {
+            Long aiCoverId = aiCoverRepository.save(AiCover.builder().user(user).song(song).build())
+                .getAiCoverId();
+            aiCoverIdList.add(aiCoverId);
+        }
+
         List<String> voiceFileUrlList = resultRepository.findAllByUser(user).stream()
             .map(Result::getRecordFile).collect(Collectors.toList());
-        String singerVoiceFileUrl = song.getVoiceFile();
+        List<String> singerVoiceFileUrlList = trainableSongs.stream()
+            .map((song) -> song.getVoiceFile()).collect(
+                Collectors.toList());
 
         // Flask 서버로 요청 보내는 로직 추가 후 호출 (userSeq, aiCoverId, voiceFileUrlList, singerVoiceFileUrl)
         try {
-            aiCoverRequestToFlaskServer(userSeq, aiCoverId, voiceFileUrlList, singerVoiceFileUrl);
+            aiCoverRequestToFlaskServer(userSeq, aiCoverIdList, voiceFileUrlList,
+                singerVoiceFileUrlList);
         } catch (JSONException e) {
             throw new JsonException(FAIL_CONVERT_TO_JSON);
         }
     }
 
-    public void updateAiCover(AiCoverUpdateRequestDto aiCoverUpdateRequestDto) {
+    public void updateAiCover(List<AiCoverUpdateRequestDto> aiCoverUpdateRequestDtoList) {
         // AI 커버곡 파일 링크 update
-        AiCover aiCover = aiCoverRepository.findById(aiCoverUpdateRequestDto.getAiCoverId())
-            .orElseThrow(() -> new NotFoundException(AI_COVER_NOT_FOUND));
-        aiCover.setAiCoverFile(aiCoverUpdateRequestDto.getAiCoverFile());
-
-        // 사용자의 목소리로 만들어진 모델 파일 링크 update
-        User user = userRepository.findById(aiCoverUpdateRequestDto.getUserSeq())
-            .orElseThrow(() -> new NotFoundException(USER_NOT_FOUND));
-        user.setAiModelFile(aiCoverUpdateRequestDto.getModelFile());
+        for (AiCoverUpdateRequestDto aiCoverUpdateRequestDto : aiCoverUpdateRequestDtoList) {
+            AiCover aiCover = aiCoverRepository.findById(aiCoverUpdateRequestDto.getAiCoverId())
+                .orElseThrow(() -> new NotFoundException(AI_COVER_NOT_FOUND));
+            aiCover.setAiCoverFile(aiCoverUpdateRequestDto.getAiCoverFile());
+        }
     }
 
     private void checkRecordedSongs(Long recordedSongs) {
@@ -106,8 +109,8 @@ public class AiCoverService {
         }
     }
 
-    private void aiCoverRequestToFlaskServer(Long userSeq, Long aiCoverId,
-        List<String> voiceFileUrlList, String singerVoiceFileUrl)
+    private void aiCoverRequestToFlaskServer(Long userSeq, List<Long> aiCoverIdList,
+        List<String> voiceFileUrlList, List<String> singerVoiceFileUrlList)
         throws JSONException {
 
         ClientHttpRequestFactory httpRequestFactory = new HttpComponentsClientHttpRequestFactory();
@@ -118,14 +121,25 @@ public class AiCoverService {
 
         JSONObject jsonObject = new JSONObject();
         jsonObject.put("userSeq", userSeq);
-        jsonObject.put("aiCoverId", aiCoverId);
-        JSONArray jsonArray = new JSONArray();
-        for (String url : voiceFileUrlList) {
-            jsonArray.put(url);
-        }
-        jsonObject.put("voiceFileUrlList", jsonArray);
-        jsonObject.put("singerVoiceFileUrl", singerVoiceFileUrl);
 
+        JSONArray aiCoverIdJsonArray = new JSONArray();
+        for (Long aiCoverId : aiCoverIdList) {
+            aiCoverIdJsonArray.put(aiCoverId);
+        }
+        jsonObject.put("aiCoverId", aiCoverIdJsonArray);
+
+        JSONArray voiceFileJsonArray = new JSONArray();
+        for (String url : voiceFileUrlList) {
+            voiceFileJsonArray.put(url);
+        }
+        jsonObject.put("voiceFileUrlList", voiceFileJsonArray);
+
+        JSONArray singerVoiceFileJsonArray = new JSONArray();
+        for (String url : singerVoiceFileUrlList) {
+            singerVoiceFileJsonArray.put(url);
+        }
+        jsonObject.put("singerVoiceFileUrl", singerVoiceFileJsonArray);
+        System.out.println("request: " + jsonObject);
         HttpEntity<String> request = new HttpEntity<>(jsonObject.toString(), httpHeaders);
         ResponseEntity<String> response = restTemplate.exchange(
             "http://34.87.63.236:5000/process_audio",

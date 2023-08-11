@@ -102,9 +102,6 @@ public class User {
     @OneToMany(mappedBy = "userId", cascade = CascadeType.ALL)
     private List<Favorite> favorite;
 
-    @Column(name = "AI_MODEL_FILE", columnDefinition = "TEXT")
-    private String aiModelFile;
-
     public User(
         @NotNull @Size(max = 64) String userId,
         @NotNull @Size(max = 100) String username,
