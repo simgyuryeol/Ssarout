@@ -1,5 +1,7 @@
 import createElem from './DOMUtil';
 import EventEmitter from './EventEmitter';
+import mr from '../mr.mp3'
+
 
 function cBtn(text) {
   return createElem('button', {}, text);
@@ -12,6 +14,7 @@ class SongEditor extends EventEmitter {
     this.btnStop = cBtn('Stop');
     this.audio = null;
     this.audioUrl = null;
+    this.startTime = 0;
     // this.btnSave = cBtn("Save");
     // this.btnUpload = cBtn("Upload");
     // this.btnKeyUp = cBtn("Key Up");
@@ -45,22 +48,24 @@ class SongEditor extends EventEmitter {
       // this.btnUpload,
     ]);
 
-    const musicStop = () => {
-      if(this.audio){
-        this.audio.pause();
-        this.audio = null;
-      }
+    // const musicStop = () => {
+    //   if(this.audio){
+    //     this.audio.pause();
+    //     this.audio = null;
+    //   }
       
-    };
+    // };
     this.btnPlay.addEventListener('click', (e) => {
       if (this.audio != null) this.audio.pause();
-      this.audio = new Audio(this.audioUrl);
+      // this.audio = new Audio(this.audioUrl);
+      this.audio = new Audio(mr);
+      this.audio.currentTime = this.startTime;
       this.audio.load();
       this.audio.play();
       this._clickHandler('play');
     });
     this.btnStop.addEventListener('click', (e) => {
-      musicStop();
+      // musicStop();
       this._clickHandler('stop');
     });
     // this.btnKeyDown.addEventListener("click", (e) => {
@@ -85,6 +90,18 @@ class SongEditor extends EventEmitter {
   // set key(v) {
   //   this.inKey.value = v.toString();
   // }
+
+  setStartTime(startTime){
+    this.startTime = startTime;
+    console.log("스타트타임 : ", startTime);
+
+  }
+  mrStop(){
+    if(this.audio){
+      this.audio.pause();
+      this.audio = null;
+    }
+  }
 
   setAudioURl(audioUrl) {
     this.audioUrl = audioUrl;

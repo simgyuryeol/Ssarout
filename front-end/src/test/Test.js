@@ -39,6 +39,8 @@ export class Test {
     this.rerecordlyrics = rerecordlyrics
     this.lyric = (this.response ?this.response.lyric  : rerecordlyrics );
     this.local = JSON.parse(localStorage.getItem('data'))
+
+   
     
     if (this.local !== null){
       if(this.local.mrUrl){
@@ -99,7 +101,10 @@ export class Test {
         // this.playSong(parseScore(this.songEditor.score))
         // }, 9100);
       } else {
-        this.playSong(this.rerecordlyrics)
+         const idx = JSON.parse(localStorage.getItem('ly'));
+
+        //  this.songEditor.setStartTime((idx.startTime/1000)+9.1)
+        this.playSong(idx.rerecordlyrics)
       }
     });
     this.songEditor.on('stop', this.stopSong.bind(this));
@@ -152,7 +157,7 @@ export class Test {
   stopSong() {
     console.log('ㅁㄴㅇㄻㄴㅇㄻㄴㅇㄻㄴㅇㄹ')
     this.score = this.drawer.scores();
-    
+    this.songEditor.mrStop();
     let data = this.drawer.stop();
     
     // 서버에서 실행 할 때는 주석해제 
@@ -195,6 +200,9 @@ export class Test {
       this.stopSong();
     }
 
+    const idx = JSON.parse(localStorage.getItem('ly'));
+
+    if(idx) this.songEditor.setStartTime((idx.startTime/1000)+9.1)
     // const idx = localStorage.getItem('idx');
     // if(idx){
     //   this.lyric = rerecordlyrics[idx];

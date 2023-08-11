@@ -57,6 +57,7 @@ export class ScoreDrawer {
     console.log(notes)
     this._playScore = notes.slice();
     this._elapsed = -1000;
+    this._scores = new Array(100).fill(-1);
 
     if (this._scores.length < this._playScore.length) {
       this._scores.unshift(
@@ -76,6 +77,7 @@ export class ScoreDrawer {
   }
 
   stop() {
+    // console.log("왜 안오니 친구야")
     this.stopRecord = true;
     let perfect = 0;
     let good = 0;
@@ -277,7 +279,7 @@ export class ScoreDrawer {
     ) {
       // console.log('d이게 아닌가')
       this._check = 1;
-      this.stop();
+      this.stopRecord = true
       // console.log(this._scores)
     }
   }

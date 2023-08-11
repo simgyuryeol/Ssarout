@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, json } from "react-router-dom";
 import SingTest from "../../test";
 import Header from "../commonUse/Header";
 
@@ -31,7 +31,10 @@ const lyricsTime =[{"startnode":0,"endnode":20,"starttime":0,"endtime":9000},
 {"startnode":418,"endnode":432,"starttime":132900,"endtime":137550},
 {"startnode":433,"endnode":450,"starttime":137550,"endtime":142350},
 {"startnode":451,"endnode":465,"starttime":142350,"endtime":147150},
-{"startnode":466,"endnode":481,"starttime":147150,"endtime":151500}]
+{"startnode":466,"endnode":481,"starttime":147150,"endtime":151500},
+{"startnode":482,"endnode":488,"starttime":151500,"endtime":154200},
+
+]
 
 
 const LyricsBar = ({ val, startTime, endTime, endnode, onClick }) => {
@@ -70,16 +73,22 @@ const LyricsBars = () => {
     );
     const mrFile = data.mrUrl
     let lenrerecordlyrics = rerecordlyrics.length
-    const starTime = rerecordlyrics[0].start
+    const startTime = rerecordlyrics[0].start
     for(let i = 0;i < lenrerecordlyrics; i++){
-      rerecordlyrics[i].start -= starTime
+      rerecordlyrics[i].start -= startTime
     }
+
     console.log(rerecordlyrics)
+    const ly = Object()
+    ly.rerecordlyrics = rerecordlyrics
+    ly.startTime = startTime
+    localStorage.setItem('ly',JSON.stringify(ly))
     setRecord(rerecordlyrics)
   };
 
   let data = localStorage.getItem("data");
   data = JSON.parse(data);
+  console.log('asdfasdfasdf:' ,data)
 
   let idx = data.scores.findIndex((score) => score === -1);
   if (idx === -1) {
@@ -87,11 +96,10 @@ const LyricsBars = () => {
   } else {
     idx = idx - 1;
   }
-
   let nodeidx = lyricsTime.findIndex(
     (time) => time.startnode <= idx && time.endnode >= idx
   );
-
+    console.log(nodeidx)
   const resultArray = [];
   for (let i = 0; i <= nodeidx; i++) {
     let bad = 0;
@@ -100,6 +108,7 @@ const LyricsBars = () => {
         bad += 1;
       }
     }
+    console.log("i : ", i);
     resultArray.push({
       val: bad < (lyricsTime[i].endnode - lyricsTime[i].startnode + 1) / 2,
       startTime: lyricsTime[i].starttime,
