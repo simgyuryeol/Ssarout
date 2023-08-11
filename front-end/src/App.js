@@ -80,11 +80,12 @@ function App() {
         <Route 
           exact path="/analysis" 
           element={
-            <PrivateRoute>
+            // <PrivateRoute>
               <Analysis />  
-            </PrivateRoute>
+            // </PrivateRoute>
           }
         />
+
 
         <Route 
           exact path="/nickNamePage" 

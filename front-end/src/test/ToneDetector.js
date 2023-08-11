@@ -87,29 +87,31 @@ class ToneDetector extends EventEmitter {
         // console.log(blobURL);
         // console.log("sound : ", this.sound);
         // 여기에 로그인 중인지 아닌지 확인하는 조건문 필요
-        this.Url = blobURL;
-        let finalScore = Math.ceil((this.data.PitchScore + this.data.beatScore) / 2);
-        let songId = this.data.songId;
-        if (localStorage.getItem('token')) {
-          try {
-            //결과, 녹음파일 서버에 저장
-            const formData = new FormData();
-            console.log(finalScore);
-            formData.append('songId', songId);
-            formData.append('accuracy', finalScore);
-            formData.append('recordFile', this.sound);
-
-            //서버에 녹음 파일 전송 할려면 주석 지워주세요
-            // await Api.post("/api/v1/result", formData, {
-            //   headers: { "Content-Type": "multipart/form-data" },
-            // }).then((response) => {
-            //   console.log(response);
-            // });
-          } catch (error) {
-            alert.error(error);
-          }
+        this.Url = blobURL
+        let finalScore = 0
+        if(this.data.PitchScore > 0 && this.data.beatScore > 0){
+          let finalScore = Math.ceil((this.data.PitchScore+this.data.beatScore)/2)
+          console.log(this.Url,"여기 동영상 url")
+        let songId = this.data.songId
+        if(localStorage.getItem('token')){
+        try {
+          //결과, 녹음파일 서버에 저장
+          const formData = new FormData();
+          console.log(finalScore)
+          formData.append("songId", songId);
+          formData.append("accuracy", finalScore);
+          formData.append("recordFile", this.sound);
+          
+          //서버에 녹음 파일 전송 할려면 주석 지워주세요
+          // await Api.post("/api/v1/result", formData, {
+          //   headers: { "Content-Type": "multipart/form-data" },
+          // }).then((response) => {
+          //   console.log(response);
+          // });
+        } catch (error) {
+          alert.error(error);
         }
-      };
+      }}};
 
       this.mediaRecorder.start();
       this.isRecording = true;

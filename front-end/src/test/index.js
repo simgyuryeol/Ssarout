@@ -6,14 +6,16 @@ import Footer from '../components/commonUse/Footer';
 import { useParams } from 'react-router-dom';
 import Api from '../Api/Api';
 
-const SingTest = () => {
+const SingTest = (rerecordlyrics,mrFile) => {
   const songId = useParams(); // songId에 담겨있음!
-
+  console.log(songId,"shdfasdklfjad")
+  console.log(rerecordlyrics)
   React.useEffect(() => {
     const appContainer = document.querySelector('#Singtest');
-    const test = new Test(appContainer, songId);
-    // console.log(window.location)
-    // console.log(songId)
+    const test = new Test(appContainer,songId,rerecordlyrics.rerecordlyrics,mrFile);
+    console.log(window.location)
+    console.log(songId)
+    
   }, [songId]);
 
   return (

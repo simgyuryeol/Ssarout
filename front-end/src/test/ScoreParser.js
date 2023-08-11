@@ -126,7 +126,7 @@ function parseScore(txt) {
     }
 
     curTime += notelen;
-    console.log(note);
+    // console.log(note);
   }
 
   function parseStringLylic() {

@@ -54,6 +54,7 @@ export class ScoreDrawer {
   }
 
   start(notes) {
+    console.log(notes)
     this._playScore = notes.slice();
     this._elapsed = -1000;
 
@@ -113,9 +114,9 @@ export class ScoreDrawer {
     console.log(beatScore, "박자 점수");
     console.log(this._beat, "박자 array");
     // this._colors = []
-    // this._scores = []
     // console.log(this._colors)
     let data = {'PitchScore':PitchScore,"beatScore":beatScore, "scores":this._scores,"beat":this._beat }
+    // this._scores = []
     return data;
   }
 
