@@ -46,8 +46,11 @@ class SongEditor extends EventEmitter {
     ]);
 
     const musicStop = () => {
-      this.audio.pause();
-      this.audio = null;
+      if(this.audio){
+        this.audio.pause();
+        this.audio = null;
+      }
+      
     };
     this.btnPlay.addEventListener('click', (e) => {
       if (this.audio != null) this.audio.pause();

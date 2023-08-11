@@ -25,7 +25,7 @@ export class Test {
     this.playMusic = true;
     this.sharer = new Sharer();
     this.songEditor = new SongEditor();
-    this.blind = null;
+    // this.blind = null;
     this.response = null;
     this.loop = this.loop.bind(this);
     this.drawer = new ScoreDrawer();
@@ -51,7 +51,7 @@ export class Test {
   }
 
   async createElements() {
-    this.blind = createElem("div", { class: "blind" }, "Click to start app");
+    // this.blind = createElem("div", { class: "blind" }, "Click to start app");
     const wrapper = createElem("div", {});
     const canvasContainer = createElem("div", {});
     const canvas = this.drawer.renderElement();
@@ -64,7 +64,7 @@ export class Test {
     wrapper.appendChild(this.sharer.render());
     this.wrapper = wrapper;
     this.bindEvents();
-    document.body.appendChild(this.blind);
+    // document.body.appendChild(this.blind);
     console.log('그때로 돌아가', this.songId)
     if (Object.keys(this.songId).length > 0){
       try {
@@ -84,6 +84,7 @@ export class Test {
     this.sharer.on('song-select', this.songSelected.bind(this));
 
     this.songEditor.on('play', async () => {
+      await this.init();
       if (!this.inited) return;
       this.detector.recording(); // 녹음 시작
       // setTimeout(() => { // 노래 시간에 따라 맞춰야함
@@ -98,8 +99,6 @@ export class Test {
         // this.playSong(parseScore(this.songEditor.score))
         // }, 9100);
       } else {
-        console.log(this.songEditor.score)
-        console.log(this.rerecordlyrics)
         this.playSong(this.rerecordlyrics)
       }
     });
@@ -117,10 +116,10 @@ export class Test {
       }
     });
 
-    this.blind.addEventListener('click', async () => {
-      await this.init();
-      this.blind.style.display = 'none';
-    });
+    // this.blind.addEventListener('click', async () => {
+    //   await this.init();
+    //   this.blind.style.display = 'none';
+    // });
   }
 
   // @autobind 데코레이터를 제거하고 바인딩된 메소드를 정의합니다.
@@ -195,6 +194,11 @@ export class Test {
       //mr 끝났을때 녹음 완료
       this.stopSong();
     }
+
+    // const idx = localStorage.getItem('idx');
+    // if(idx){
+    //   this.lyric = rerecordlyrics[idx];
+    // }
 
     if (this.lastTime === 0) {
       this.lastTime = time;
