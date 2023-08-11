@@ -21,3 +21,9 @@
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+
+## 파일 무시
+front-end/src/Api/Api.js
+front-end/src/pages/Login.js
+Api.js
+Login.js
