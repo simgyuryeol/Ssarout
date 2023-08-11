@@ -52,7 +52,11 @@
 
 .recordTitle {
   font-size: 1rem;
-  font-family: "lineTh"
+  font-family: "lineTh";
+  white-space: nowrap; 
+  overflow: hidden; 
+  text-overflow: ellipsis;
+  max-width: 205px;
 }
 
 .avgNBtn {
