@@ -21,9 +21,12 @@
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+<<<<<<< HEAD
+=======
 
 ## 파일 무시
 front-end/src/Api/Api.js
 front-end/src/pages/Login.js
 Api.js
 Login.js
+>>>>>>> f450f301002b8425ce6392b44956d651572082bc
