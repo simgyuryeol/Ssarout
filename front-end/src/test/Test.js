@@ -40,6 +40,7 @@ export class Test {
     this.lyric = (this.response ?this.response.lyric  : rerecordlyrics );
     this.local = JSON.parse(localStorage.getItem('data'))
 
+
    
     
     if (this.local !== null){
@@ -49,21 +50,19 @@ export class Test {
       }
     }
     
-    
-  }
 
+  }
+  
   async createElements() {
+    
     // this.blind = createElem("div", { class: "blind" }, "Click to start app");
     const wrapper = createElem("div", {});
     const canvasContainer = createElem("div", {});
     const canvas = this.drawer.renderElement();
     canvasContainer.appendChild(canvas);
     this.drawer.start([]);
-
-    wrapper.appendChild(canvasContainer);
-
-    wrapper.appendChild(this.songEditor.render());
-    wrapper.appendChild(this.sharer.render());
+    
+    // wrapper.appendChild(this.sharer.render());
     this.wrapper = wrapper;
     this.bindEvents();
     // document.body.appendChild(this.blind);
@@ -72,15 +71,34 @@ export class Test {
       try {
         this.response = await Api.get('api/v1/song/info', { params: this.songId });
         this.response = this.response.data.data;
-  
+        this.songTitle = this.response.title
+        this.singer = this.response.singer
+        // console.log(this.songTitle, this.singer)
+        this.wrapper.appendChild(this.createSong(this.songTitle,this.singer))
         this.songEditor.setAudioURl(this.response.mrFile);
         // console.log(this.response);
       } catch (e) {
         console.error(e);
       }
-
+      
     }
+    wrapper.appendChild(document.createElement("br"));
+    wrapper.appendChild(canvasContainer);
+
+    wrapper.appendChild(this.songEditor.render());
   }
+
+  createSong(songTitle,singer){
+    const creatediv = document.createElement("div");
+    const songInfo = songTitle +" - " + singer
+    const newContent = document.createTextNode(songInfo);
+    // newContent = document.createTextNode(songTitle);
+
+    creatediv.appendChild(newContent)
+    // creatediv.innerHTML(</br>)
+    return creatediv
+  }
+
 
   bindEvents() {
     this.sharer.on('song-select', this.songSelected.bind(this));
@@ -135,6 +153,7 @@ export class Test {
   async init() {
     this.audio = new (window.AudioContext || window.webkitAudioContext)();
     this.detector = new ToneDetector(this.audio);
+    if(this.local) this.detector.setResultLine()
     // this.player = new ToneGenerator(this.audio);
 
     this.detector.on('note', this.onNote.bind(this));
@@ -186,6 +205,7 @@ export class Test {
         window.location.href="/analysis"
       }});}
   }
+  
 
   // @autobind 데코레이터를 제거하고 바인딩된 메소드를 정의합니다.
   onNote(note) {

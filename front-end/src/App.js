@@ -1,5 +1,5 @@
 import './App.css';
-import {Routes, Route} from "react-router-dom"
+import {Routes, Route,useLocation} from "react-router-dom"
 import MainPage from "./pages/MainPage"
 import MyPage from "./pages/MyPage"
 import UserUpdate from './pages/UserUpdate';
@@ -17,10 +17,20 @@ import SingTest from '../src/test'
 import Analysis from './pages/Analysis';
 import Growth from './pages/Growth';
 import HistoryDetail from './pages/HistoryDetail'
+import { useEffect } from 'react';
 
 // Private : 다시부르기 나중에 추가하기
 
 function App() {
+  const location = useLocation()
+  useEffect(() =>{
+    if(location.pathname !=="/analysis" ){
+      localStorage.removeItem('ly')
+      localStorage.removeItem('data')
+    }
+    console.log("Asdf")
+},[location])
+
   return (
     <div className="App">
       <Routes>

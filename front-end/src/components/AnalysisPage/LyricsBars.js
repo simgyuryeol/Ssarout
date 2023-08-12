@@ -42,7 +42,10 @@ const LyricsBar = ({ val, startTime, endTime, endnode, onClick }) => {
   const barStyle = {
     width: `${(timeInterval / lyricsTime[endnode].endtime) * 100}%`,
     height: "10px",
-    backgroundColor: val === true ? "green" : "red",
+    borderRadius: "30px",
+    opacity: 0.7,
+    border: "solid 0.5px",
+    backgroundColor: val === true ? "#008EDE" : "#FF317B",
     cursor: "pointer",
   };
 
@@ -121,6 +124,7 @@ const LyricsBars = () => {
     display: "flex",
     flexDirection: "row",
     alignItems: "center",
+    padding: "15px"
   };
 
   const cardStyle = {
@@ -138,9 +142,10 @@ const LyricsBars = () => {
       <Header />
     )}
 
-      <div className="card">
-        <div style={cardStyle}>
+
           <div className="bar-container">
+            <br/>
+            <h3>노래 제목, 가수</h3>
             <div style={flexContainerStyle}>
               {resultArray.map((timeInfo, index) => (
                 <LyricsBar
@@ -155,8 +160,7 @@ const LyricsBars = () => {
             </div>
           </div>
         </div>
-      </div>
-    </div>
+
   );
 };
 

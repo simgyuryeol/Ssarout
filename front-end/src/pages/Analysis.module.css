@@ -1,0 +1,27 @@
+.pitchMent {
+    margin-bottom: 2px;
+}
+
+.beatMent {
+    margin-top: 5px;
+}
+
+.toMainPageBtn {
+    background-color: transparent;
+    border: dashed 1px white;
+    border-radius: 40px;
+    color: white;
+    padding-top: 3px;
+    margin-bottom: 40px;
+}
+
+.toMainMent {
+    color: white;
+    text-decoration: none;
+    font-family: 'lineTh';
+}
+
+.praticeMent {
+    font-size: 0.8rem;
+    font-family: 'lineTh';
+}

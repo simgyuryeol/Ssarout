@@ -1,6 +1,7 @@
 import createElem from './DOMUtil';
 import EventEmitter from './EventEmitter';
 import mr from '../mr.mp3'
+import './SongEditor.css'
 
 
 function cBtn(text) {
@@ -10,8 +11,8 @@ function cBtn(text) {
 class SongEditor extends EventEmitter {
   constructor() {
     super();
-    this.btnPlay = cBtn('Play');
-    this.btnStop = cBtn('Stop');
+    this.btnPlay = cBtn('PLAY');
+    this.btnStop = cBtn('STOP');
     this.audio = null;
     this.audioUrl = null;
     this.startTime = 0;

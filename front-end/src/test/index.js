@@ -2,7 +2,6 @@ import React from 'react';
 import Test from './Test';
 import './style.css';
 import Header from '../components/commonUse/Header';
-import Footer from '../components/commonUse/Footer';
 import { useParams } from 'react-router-dom';
 import Api from '../Api/Api';
 
@@ -19,11 +18,13 @@ const SingTest = (rerecordlyrics,mrFile) => {
   }, [songId]);
 
   return (
-    <div id="Singtest">
-      <Header />
-      <br />
-      {/* Your component's JSX content here */}
-      <Footer />
+    <div class="box" id="Singtest">
+        <Header />
+        <div class='wave -one'></div>
+        <div class='wave -two'></div>
+        <div class='wave -three'></div>
+        <br />
+
     </div>
   );
 };

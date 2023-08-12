@@ -1,6 +1,9 @@
 function createElem(tag, attrs, children) {
   const el = document.createElement(tag);
-
+  if(tag==="button"){
+    console.log('이건버튼')
+    el.setAttribute("class","btn")
+  }
   Object.keys(attrs).forEach(key => {
       if (key === 'class') {
           let classes = attrs[key];

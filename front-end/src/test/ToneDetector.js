@@ -43,6 +43,7 @@ class ToneDetector extends EventEmitter {
     this.sound = null;
     this.Url = ""
     this.data = Object()
+    this.resultline = false
   }
 
   async init() {
@@ -93,7 +94,7 @@ class ToneDetector extends EventEmitter {
           let finalScore = Math.ceil((this.data.PitchScore+this.data.beatScore)/2)
           console.log(this.Url,"여기 동영상 url")
         let songId = this.data.songId
-        if(localStorage.getItem('token')){
+        if(localStorage.getItem('token')&& !this.resultline){
         try {
           //결과, 녹음파일 서버에 저장
           const formData = new FormData();
@@ -103,11 +104,11 @@ class ToneDetector extends EventEmitter {
           formData.append("recordFile", this.sound);
           
           //서버에 녹음 파일 전송 할려면 주석 지워주세요
-          // await Api.post("/api/v1/result", formData, {
-          //   headers: { "Content-Type": "multipart/form-data" },
-          // }).then((response) => {
-          //   console.log(response);
-          // });
+          await Api.post("/api/v1/result", formData, {
+            headers: { "Content-Type": "multipart/form-data" },
+          }).then((response) => {
+            console.log(response,'여기가 Api 녹음 파일전송');
+          });
         } catch (error) {
           alert.error(error);
         }
@@ -126,6 +127,10 @@ class ToneDetector extends EventEmitter {
     const arrayBuffer = await blob.arrayBuffer();
     const audioBuffer = await this.ctx.decodeAudioData(arrayBuffer);
     return toWav(audioBuffer);
+  }
+
+  setResultLine(){
+    this.resultline = true
   }
   getSound() {
     return this.sound;

@@ -5,7 +5,7 @@ export class ScoreDrawer {
     this._canvas = document.createElement("canvas");
     // this._canvas.width = this._screenWidth;
     this._canvas.width = window.innerWidth; // 초기화 추가
-    this._canvas.height = 330;
+    this._canvas.height = 190;
     this._canvas.style.width = "100%";
     this._oct = 0;
     this._notes = new Array(300).fill(-1);
@@ -14,6 +14,10 @@ export class ScoreDrawer {
     this._beat = new Array(100).fill(-1);
     this._ment = new Array(100).fill(-1);
     this.stopRecord = false;
+    this.height = 195; 
+    this.heightRect = 5; 
+    this.count = 0
+    this.turn= 0
 
     this._check = 1;
 
@@ -163,7 +167,7 @@ export class ScoreDrawer {
       const y =
         noteTop[note.note] * 5 * 2 +
         (note.octav - 3) * 35 * 2 +
-        100 +
+        this.height +
         this._oct * 5 -
         2.5;
       //여기
@@ -172,9 +176,9 @@ export class ScoreDrawer {
         note.start + note.length - fps >= this._elapsed
       ) {
         current = note;
-        ctx.fillStyle = "orange";
-      } else if (note.start > this._elapsed) {
         ctx.fillStyle = "#00fffb";
+      } else if (note.start > this._elapsed) {
+        ctx.fillStyle = "#DDDDDD";
       } else {
         if (this._scores[index] === -1) {
           // console.log(note.start)
@@ -233,14 +237,14 @@ export class ScoreDrawer {
           }
         }
         if (this._scores[index] === "perfect") {
-          ctx.fillStyle = "#86ff00";
+          ctx.fillStyle = "#ff33d4";
         } else if (this._scores[index] === "good") {
-          ctx.fillStyle = "#ffce00";
+          ctx.fillStyle = "#86ff00";
         } else {
           ctx.fillStyle = "#ff2400";
         }
       }
-      ctx.fillRect((x + latency) * 2, y, width * 2, 10);
+      ctx.fillRect((x + latency) * 2, y, width * 2, this.heightRect);
       if (note.lylic) {
         ctx.save();
         ctx.fillStyle = "white";
@@ -307,7 +311,7 @@ export class ScoreDrawer {
     this._fitToContainer();
     const ctx = this._canvas.getContext("2d");
     ctx.save();
-    ctx.font = "14px monospace";
+    ctx.font = "lighter 15px lineRg"; // 가사, bad
     ctx.textBaseline = "top";
     // ctx.clearRect(0, 0, this._canvas.width, this._canvas.height);
 
@@ -325,12 +329,14 @@ export class ScoreDrawer {
 
     ctx.strokeStyle = "yellowgreen";
     ctx.beginPath();
-    ctx.moveTo(this._screenWidth / 2, 0);
+    ctx.moveTo(this._screenWidth / 2, 160);
     ctx.lineTo(this._screenWidth / 2, 400);
     ctx.stroke();
 
     ctx.restore();
-    ctx.font = "30px monospace";
+    ctx.font = "bold 25px lineRg";
+    // ctx.textAlign="center";
+
     if (this._beat[0] === -1 && this._ment[0] === -1) {
       ctx.fillText("", 0, 20);
     } else {
@@ -341,17 +347,31 @@ export class ScoreDrawer {
       for (let j = beatLength; j >= 0; j--) {
         if (this._beat[j] !== -1 || this._ment[j] !== -1) {
           if (this._ment[j] === "red") {
-            mentcomment = "음정이 높습니다 Down! Down!";
+            mentcomment = "음정이 높아요 Down! Down!";
           } else if (this._ment[j] === "blue") {
-            mentcomment = "음정이 낮습니다 Up! Up!";
+            mentcomment = "음정이 떨어집니다!! Up! Up!";
           } else if (this._ment[j] === "noPitch") {
-            mentcomment = "음정이 전혀 맞지 않습니다 집중해 주세요";
+            mentcomment = "음정이 흔들리고 있어요 집중하세요!";
           }
           if (this._beat[j] === "false") {
-            beatcomment = "박자가 맞지 않습니다 조금 빠르게 해주세요";
+            beatcomment = "박자가 맞지 않습니다!!";
           }
           comment = mentcomment + " " + beatcomment;
-          ctx.fillText(comment, 0, 50);
+          ctx.fillStyle="white";
+          // ctx.textAlign="center";
+          const strwidth = ctx.measureText(comment).width
+          console.log(strwidth)
+          ctx.fillText(comment, window.innerWidth/2-strwidth/2+this.count, 180);
+          if(this.turn === 0){
+            this.count += 1
+          } else{
+            this.count -= 1
+          }
+          if(this.count == 50){
+            this.turn = 1
+          } else if(this.count === 0){
+            this.turn = 0
+          }
           break;
         }
       }
@@ -377,7 +397,7 @@ export class ScoreDrawer {
       curNoteY =
         noteTop[curNote.note] * 5 * 2 +
         (curNote.octav - 3) * 35 * 2 +
-        100 +
+        this.height +
         this._oct * 5 -
         2.5;
     }
@@ -387,16 +407,19 @@ export class ScoreDrawer {
         const octav = Math.floor(note / 12) - 4;
         const n = note % 12;
         // let y = noteTop[n] * 5 + 150 + octav * 35 - 2.5;
-        let y = noteTop[n] * 5 * 2 + 100 + octav * 35 * 2 - 2.5;
+        let y = noteTop[n] * 5 * 2 + this.height + octav * 35 * 2 - 2.5;
         if (this._colors[x] !== -1) {
-          ctx.fillStyle = this._colors[x];
+          if (this._colors[x]==="black"){
+          ctx.fillStyle = '#ff33d4'} else{
+            ctx.fillStyle = this._colors[x]
+          };
         } else if (curNote != null) {
           ctx.fillStyle = "red";
           this._colors[x] = "red";
           //   console.log("curNoteY : ", curNoteY);
 
           if (Math.abs(curNoteY - y) <= 5) {
-            ctx.fillStyle = "black";
+            ctx.fillStyle = "#ff33d4";
             this._colors[x] = "black";
           } else if (curNoteY > y) {
             ctx.fillStyle = "blue";
@@ -407,12 +430,12 @@ export class ScoreDrawer {
         ctx.save();
 
         ctx.translate((x - halfLength - latency) * 2, 0);
-        ctx.fillRect((x + latency) * 2 - halfLength, y, 5, 10);
+        ctx.fillRect((x + latency) * 2 - halfLength, y, 5, this.heightRect);
 
         // ctx.translate((x + latency) * 2, 0);
-        // ctx.fillRect((x + latency) * 2, y, 5, 10);
+        // ctx.fillRect((x + latency) * 2, y, 5, this.heightRect);
         ctx.restore();
-        // ctx.fillRect(x, curNoteY, 1, 5);
+        // ctx.fillRect(x, curNoteY, 1, this.heightRect);
       }
     });
     // ctx.restore();
@@ -425,8 +448,8 @@ export class ScoreDrawer {
   _renderLines(ctx) {
     ctx.strokeStyle = "black";
     ctx.beginPath();
-    const heightSetting = 20;
-    const h = 20;
+    const heightSetting = 10;
+    const h = 160;
     const h1 = heightSetting * 5 + h;
     const h2 = heightSetting * 10 + h;
     for (let i = 0; i < 5; i++) {
