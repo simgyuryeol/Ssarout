@@ -51,9 +51,9 @@ public class Song {
     @OneToMany(mappedBy = "contentId", cascade = CascadeType.ALL)
     private List<Favorite> favorite;
 
-    @Column(name = "IS_TRAINABLE")
+    @Column(name = "ONLY_TRAINING")
     @NotNull
-    private Boolean isTrainable;
+    private Boolean onlyTraining;
 
     @Override
     public String toString() {

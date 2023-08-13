@@ -65,7 +65,7 @@ public class AiCoverService {
     public void createAiCover(String userId) {
         // 개별 10곡 불렀는지 확인
         User user = userRepository.findByUserId(userId);
-        List<Song> trainableSongs = songRepository.findAllByIsTrainableIsTrue();
+        List<Song> trainableSongs = songRepository.findAll();
 
         Long recordedSongs = resultRepository.countDistinctSongIdByUser(user);
         checkRecordedSongs(recordedSongs);
