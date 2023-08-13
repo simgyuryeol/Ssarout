@@ -327,7 +327,7 @@ export class ScoreDrawer {
 
     this._renderVoice(ctx);
 
-    ctx.strokeStyle = "yellowgreen";
+    ctx.strokeStyle = "yellow";
     ctx.beginPath();
     ctx.moveTo(this._screenWidth / 2, 160);
     ctx.lineTo(this._screenWidth / 2, 400);

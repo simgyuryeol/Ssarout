@@ -18,8 +18,16 @@ const SingTest = (rerecordlyrics,mrFile) => {
   }, [songId]);
 
   return (
+    // class="box" - 파도
     <div class="box" id="Singtest">
         <Header />
+
+        {/* <svg class="pulse" version="1.1" viewBox="0 0 800 800">
+          <circle id="Oval1" cx='400' cy='400' r='400'/>
+          <circle id="Oval2" cx='400' cy='400' r='400'/>
+          <circle id="Oval3" cx='400' cy='400' r='400'/>
+        </svg> */}
+
         <div class='wave -one'></div>
         <div class='wave -two'></div>
         <div class='wave -three'></div>
