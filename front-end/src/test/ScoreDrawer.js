@@ -360,7 +360,6 @@ export class ScoreDrawer {
           ctx.fillStyle="white";
           // ctx.textAlign="center";
           const strwidth = ctx.measureText(comment).width
-          console.log(strwidth)
           ctx.fillText(comment, window.innerWidth/2-strwidth/2+this.count, 180);
           if(this.turn === 0){
             this.count += 1

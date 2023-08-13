@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Link, json } from "react-router-dom";
 import SingTest from "../../test";
 import Header from "../commonUse/Header";
+import Api from "../../Api/Api";
 
 const lyricsTime =[{"startnode":0,"endnode":20,"starttime":0,"endtime":9000},
 {"startnode":21,"endnode":36,"starttime":9000,"endtime":13800},
@@ -37,15 +38,16 @@ const lyricsTime =[{"startnode":0,"endnode":20,"starttime":0,"endtime":9000},
 ]
 
 
-const LyricsBar = ({ val, startTime, endTime, endnode, onClick }) => {
+const LyricsBar = ({ val, startTime, endTime, endnode, onClick,activeBar }) => {
   const timeInterval = endTime - startTime;
+  console.log(endTime,activeBar,"여기가 궁금궁금")
   const barStyle = {
     width: `${(timeInterval / lyricsTime[endnode].endtime) * 100}%`,
     height: "10px",
     borderRadius: "30px",
     opacity: 0.7,
     border: "solid 0.5px",
-    backgroundColor: val === true ? "#008EDE" : "#FF317B",
+    backgroundColor: (activeBar===endTime) ? "#000000" : (val ? "#008EDE" : "#FF317B"),
     cursor: "pointer",
   };
 
@@ -59,6 +61,7 @@ const LyricsBars = () => {
   const setRecord = (rerecordlyrics) =>{
     setRerecordLyrics(rerecordlyrics)
   }
+  const [activeBar, setActiveBar] = useState(null);
   const onClick = (endnode, endTime) => {
     let rerecord = endnode;
     for (let i = 0; i < endnode + 1; i++) {
@@ -66,6 +69,12 @@ const LyricsBars = () => {
         rerecord = i;
         break;
       }
+      // console.log(activeBar,"여기는 activeBar")
+    }
+    if (endTime === activeBar) {
+      setActiveBar(null);
+    } else {
+      setActiveBar(endTime);
     }
 
     let data = localStorage.getItem("data");
@@ -91,7 +100,6 @@ const LyricsBars = () => {
 
   let data = localStorage.getItem("data");
   data = JSON.parse(data);
-  console.log('asdfasdfasdf:' ,data)
 
   let idx = data.scores.findIndex((score) => score === -1);
   if (idx === -1) {
@@ -102,7 +110,6 @@ const LyricsBars = () => {
   let nodeidx = lyricsTime.findIndex(
     (time) => time.startnode <= idx && time.endnode >= idx
   );
-    console.log(nodeidx)
   const resultArray = [];
   for (let i = 0; i <= nodeidx; i++) {
     let bad = 0;
@@ -111,7 +118,6 @@ const LyricsBars = () => {
         bad += 1;
       }
     }
-    console.log("i : ", i);
     resultArray.push({
       val: bad < (lyricsTime[i].endnode - lyricsTime[i].startnode + 1) / 2,
       startTime: lyricsTime[i].starttime,
@@ -119,6 +125,14 @@ const LyricsBars = () => {
       endnode: nodeidx,
     });
   }
+  
+  // API 요청이 잘 안되는 이유가 뭔지 모르곘어
+  let songData =JSON.parse(localStorage.getItem('data'))
+  let songTitle = songData.songTitle
+  let singer = songData.singer
+
+  
+
 
   const flexContainerStyle = {
     display: "flex",
@@ -134,9 +148,10 @@ const LyricsBars = () => {
     boxShadow: "0 2px 4px rgba(0, 0, 0, 0.1)",
   };
 
+
   return (
     <div>
-          {Object.keys(rerecordlyrics).length > 0 ? (
+          {(Object.keys(rerecordlyrics).length > 0 && activeBar !== null) ? (
       <SingTest rerecordlyrics={rerecordlyrics} mrFile={0}/>
     ) : (
       <Header />
@@ -145,7 +160,7 @@ const LyricsBars = () => {
 
           <div className="bar-container">
             <br/>
-            <h3>노래 제목, 가수</h3>
+            <h3>{songTitle} -  {singer}</h3>
             <div style={flexContainerStyle}>
               {resultArray.map((timeInfo, index) => (
                 <LyricsBar
@@ -155,6 +170,7 @@ const LyricsBars = () => {
                   endnode={timeInfo.endnode}
                   val={timeInfo.val}
                   onClick={onClick}
+                  activeBar={activeBar}
                 />
               ))}
             </div>
