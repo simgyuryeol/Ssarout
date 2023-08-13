@@ -203,7 +203,7 @@ export class Test {
         if(this.response.lyric.length > 0){
       
         window.localStorage.setItem("data", JSON.stringify(data))
-        // window.location.href="/analysis"
+        window.location.href="/analysis"
       }});}
   }
   
