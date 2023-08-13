@@ -26,7 +26,7 @@
   height: 30px;
   background-color: white;
   border-radius: 20px;
-  font-family: lineRg;
+  font-family: 'lineRg';
   font-size: 15px;
   padding-top: 3px;
   color: #4B72C5;
@@ -35,7 +35,7 @@
 
 /* 회원정보 수정 글자 */
 .updateHeader {
-  font-family: lineTh;
+  font-family: 'lineTh';
   margin-bottom: 14px;
 }
 
@@ -55,7 +55,7 @@
 .updateBackA {
   text-decoration: none;
   color: white;
-  font-family: lineRg;
+  font-family: 'lineRg';
   display: flex;
   justify-content: center;
   padding-top: 3px;
@@ -63,7 +63,7 @@
 
 /* 회원탈퇴 */
 .delete {
-  font-family: lineTh;
+  font-family: 'lineTh';
   display: flex;
   justify-content: end;
   margin-right: 30px;

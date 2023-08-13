@@ -5,11 +5,13 @@ import Api from "../Api/Api";
 import styles from "./NickNamePage.module.css";
 
 
-const Redirecion = () => {
+const Redirecion = ({history}) => {
   const searchParams = new URLSearchParams(window.location.search);
   useEffect(() => {
     f1();
   }, []);
+
+
   let profileImg;
   const f1 = async () => {
     try {
@@ -48,7 +50,9 @@ const Redirecion = () => {
 
   return (
     <div>
-      <Header/>
+      <div className={styles.logoContainer}>
+        <div className={styles.div1}>싸:라웃</div>
+      </div>
       <p className={styles.loginMent}><span className={styles.logo}>싸:라웃</span>에서 이용할 닉네임을 설정해주세요!</p>
 
       <hr className={styles.line}/>

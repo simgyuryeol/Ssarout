@@ -3,11 +3,15 @@ import SearchBar from "./SearchBar";
 import { Link, useLocation } from "react-router-dom";
 import Api from '../../Api/Api';
 import styles from "./SearchResult.module.css";
+import none from "./none.png"
+import fullstar from "./fullstar.png"
+import emptystar from "./emptystar.png"
 
 const SearchResult = () => {
   const location = useLocation();
   const data = location.state?.data;
   const [searchResults, setSearchResults] = useState([]);
+  const isLogin = !!localStorage.getItem("token")
 
   const handleSearch = async (keyword) => {
     try {
@@ -77,12 +81,16 @@ const SearchResult = () => {
               },
             }}><button className={styles.LineBtn}>소절</button></Link>
           </div>
-          <img
-            className={styles.favImage}
-            alt={item.isFav ? "즐겨찾기" : "즐겨찾기 안함"}
-            src={item.isFav ? "./fullstar.png" : "./emptystar.png"}
-            onClick={() => toggleFav(item.songId)}
-          />
+          {isLogin ? (
+            <img
+              className={styles.favImage}
+              alt={item.isFav ? "즐겨찾기" : "즐겨찾기 안함"}
+              src={item.isFav ? fullstar : emptystar}
+              onClick={() => toggleFav(item.songId)}
+            />
+          ) : (
+            <img className={styles.noneImage} alt="none" src={none} />
+          )}
         </div>
       ))}
     </div>

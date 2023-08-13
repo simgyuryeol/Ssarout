@@ -47,7 +47,7 @@ const History = () => {
       ) : (
         <p className={styles.nohisMent}>아직 부른 노래가 없네요!</p>
       )}
-        </div>
+      </div>
 
     </div>
   );

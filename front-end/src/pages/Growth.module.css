@@ -16,7 +16,7 @@
 .updateBackA {
   text-decoration: none;
   color: white;
-  font-family: lineRg;
+  font-family: 'lineRg';
   display: flex;
   justify-content: center;
   font-size: 1rem;

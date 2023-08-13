@@ -2,7 +2,7 @@
   /* position: relative; */
   font-size: 23px;
   letter-spacing: -0.05em;
-  font-family: var(--font-hs);
+  font-family: 'logo';
   display: inline-block;
   justify-content: center;
   text-decoration: none;
@@ -182,7 +182,7 @@
   text-align: center;
   font-size: var(--font-size-mini);
   color: black;
-  font-family: var(--font-line-seed-sans-kr);
+  font-family: 'lineRg';
 }
 
 .headerContainer {

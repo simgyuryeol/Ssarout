@@ -72,10 +72,18 @@
 .dataNBtn {
   display: block;
   text-align: start;
+  width: 160px;
 }
 
 .favImage {
   width: 30px;
+  height: 28px;
+  margin-left: 10px;
+  margin-top: 13px;
+}
+
+.noneImage {
+  width: 10px;
   height: 28px;
   margin-left: 10px;
   margin-top: 13px;

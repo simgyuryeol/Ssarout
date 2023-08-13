@@ -5,7 +5,7 @@
 
 .loginMent {
   margin-top: 100px;
-  font-family: lineRg;
+  font-family: 'lineRg';
   margin-bottom: 0;
 }
 
@@ -41,9 +41,28 @@
   height: 30px;
   background-color: white;
   border-radius: 20px;
-  font-family: lineRg;
+  font-family: 'lineRg';
   font-size: 15px;
   padding-top: 3px;
   color: #4B72C5;
   font-weight: bold;
+}
+
+.logoContainer {
+  flex: 1;
+  text-align: center;
+  align-self: center;
+  padding: 10px;
+}
+
+.div1 {
+  margin-top: 2px;
+  margin-left: 10px;
+  font-size: 23px;
+  letter-spacing: -0.05em;
+  font-family: 'logo';
+  display: inline-block;
+  justify-content: center;
+  text-decoration: none;
+  color: rgb(255, 255, 255);
 }

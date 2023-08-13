@@ -1,6 +1,6 @@
 import React from 'react';
 import Test from './Test';
-import './style.css';
+import styles from './style.module.css';
 import Header from '../components/commonUse/Header';
 import { useParams } from 'react-router-dom';
 import Api from '../Api/Api';
@@ -19,18 +19,18 @@ const SingTest = (rerecordlyrics,mrFile) => {
 
   return (
     // class="box" - 파도
-    <div class="box" id="Singtest">
+    <div className={styles.box} id="Singtest">
         <Header />
 
-        {/* <svg class="pulse" version="1.1" viewBox="0 0 800 800">
-          <circle id="Oval1" cx='400' cy='400' r='400'/>
-          <circle id="Oval2" cx='400' cy='400' r='400'/>
-          <circle id="Oval3" cx='400' cy='400' r='400'/>
-        </svg> */}
+      {/* <svg className={styles.pulse} viewBox="0 0 1024 1024">
+        <circle className={styles.Oval1} cx="512" cy="512" r="512"></circle>
+        <circle className={styles.Oval2} cx="512" cy="512" r="512"></circle>
+		    <circle className={styles.Oval3} cx="512" cy="512" r="512"></circle>
+      </svg> */}
 
-        <div class='wave -one'></div>
-        <div class='wave -two'></div>
-        <div class='wave -three'></div>
+        <div className={styles.wave}></div>
+        <div className={`${styles['-two']} ${styles['wave']}`}></div>
+        <div className={`${styles['-three']} ${styles['wave']}`}></div>
         <br />
 
     </div>

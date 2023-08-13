@@ -10,16 +10,6 @@ const HistoryDetail = () => {
   const decodedTitle = decodeURIComponent(title);
   const [hisDetailResults, sethisDetailResults] = useState([]);
   const [activeIndex, setActiveIndex] = useState(null);
-  const [nickname, setNickname] = useState("Guest");
-
-  const f1 = async () => {
-    try {
-      const response = await Api.get("/api/v1/users");
-      setNickname(response.data.data.nickname);
-    } catch (error) {
-      console.error(error);
-    }
-  };
 
   const getHistoryDetail = async () => {
     try {
@@ -27,7 +17,6 @@ const HistoryDetail = () => {
       const matchingItems = response.data.data.results.filter((item) => item.title === decodedTitle);
       console.log(matchingItems);
       sethisDetailResults(matchingItems.map(item => ({ ...item, audio1: new Audio(item.mrFile), audio2: new Audio(item.recordFile) })));
-
     } catch (error) {
       console.error(error);
     }

@@ -6,7 +6,7 @@
 .googleMent {
   display: flex;
   color: black;
-  font-family: lineRg;
+  font-family: 'lineRg';
   font-size: 15px;
   margin-right: 7px;
 }
@@ -43,7 +43,7 @@
 
 .loginMent {
   margin-top: 100px;
-  font-family: lineRg;
+  font-family: 'lineRg';
   margin-bottom: 0;
 }
 

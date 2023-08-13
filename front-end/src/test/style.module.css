@@ -88,11 +88,11 @@ div.blind {
   animation: drift 8000ms infinite linear;
 }
 
-.wave.-two {
+/* .wave.-two {
   animation: drift 9000ms infinite linear;
   opacity: .1;
   background: yellow;
-}
+} */
 
 .box:after {
   content: '';
@@ -112,13 +112,16 @@ div.blind {
   from { transform: rotate(360deg); }
 }
 
+
 /* 배경 그라데이션
 이 페이지의 body에만 적용시켜야함 */
-body {
+.box {
   background: linear-gradient(-45deg, #ee7752, #e05b8e, #23a6d5, #23d5ab);
   background-size: 400% 400%;
   animation: gradient 15s ease infinite;
   height: 100vh;
+
+	overflow: hidden;
 }
 
 @keyframes gradient {
@@ -132,45 +135,3 @@ body {
     background-position: 0% 50%;
   }
 }
-
-
-
-
-/* .pulse {
-  fill: transparent;
-	z-index: -1;
-	position: absolute;
-	top: 50%;
-	left: 50%;
-	transform: translate(-50%, -50%);
-	max-width: 30rem;
-}
-
-#Oval1 {
-		fill: #ff5154;
-		transform: scale(0);
-		opacity: 0;
-		transform-origin: 50% 50%;
-		animation: pulse 2s cubic-bezier(.5,.5,0,1);
-}
-
-#Oval2 {
-			fill: #7fc6a4;
-			animation: pulse 2s 0.75s cubic-bezier(.5,.5,0,1);
-}
-		
-#Oval3 {
-			fill: #e5f77d;
-			animation: pulse 2s 1.5s cubic-bezier(.5,.5,0,1);
-}
-
-@keyframes pulse {
-	
-	25% {
-		opacity: 0.4;
-	}
-	
-	100% {
-		transform: scale(1);
-	}
-} */
