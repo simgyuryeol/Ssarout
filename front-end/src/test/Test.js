@@ -65,11 +65,11 @@ export class Test {
     // wrapper.appendChild(this.sharer.render());
     this.wrapper = wrapper;
     this.bindEvents();
-    // document.body.appendChild(this.blind);
-    console.log('그때로 돌아가', this.songId)
+    console.log(this.songId, typeof(this.songId), "durldfhslkfhjalkfjdklfjsl")
     if (Object.keys(this.songId).length > 0){
       try {
         this.response = await Api.get('api/v1/song/info', { params: this.songId });
+        console.log(this.response,'API', "성공!")
         this.response = this.response.data.data;
         this.songTitle = this.response.title
         this.singer = this.response.singer
@@ -197,12 +197,13 @@ export class Test {
     this.getBlobUrl(data);
     setTimeout(() => {
       console.log(this.BlobUrl)
-      data.BlobUrl = this.BlobUrl
+      data.songTitle = this.songTitle
+      data.singer = this.singer
       // if(this.songEditor.score.length > 0){
         if(this.response.lyric.length > 0){
       
         window.localStorage.setItem("data", JSON.stringify(data))
-        window.location.href="/analysis"
+        // window.location.href="/analysis"
       }});}
   }
   
