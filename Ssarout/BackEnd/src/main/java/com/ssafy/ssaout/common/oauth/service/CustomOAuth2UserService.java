@@ -1,7 +1,7 @@
 package com.ssafy.ssaout.common.oauth.service;
 
 import com.ssafy.ssaout.common.error.ErrorCode;
-import com.ssafy.ssaout.common.error.exception.OAuthProviderMissMatchException;
+import com.ssafy.ssaout.common.error.exception.OAuthException;
 import com.ssafy.ssaout.common.oauth.entity.ProviderType;
 import com.ssafy.ssaout.common.oauth.entity.RoleType;
 import com.ssafy.ssaout.common.oauth.entity.UserPrincipal;
@@ -49,7 +49,7 @@ public class CustomOAuth2UserService extends DefaultOAuth2UserService {
 
         if (savedUser != null) {
             if (providerType != savedUser.getProviderType()) {
-                throw new OAuthProviderMissMatchException(
+                throw new OAuthException(
                     ErrorCode.OAUTH_PROVIDER_MISMATCH
                 );
             }

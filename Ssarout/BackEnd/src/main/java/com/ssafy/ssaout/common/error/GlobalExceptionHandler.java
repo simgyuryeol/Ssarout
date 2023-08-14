@@ -6,7 +6,7 @@ import com.ssafy.ssaout.common.error.exception.ConnectionException;
 import com.ssafy.ssaout.common.error.exception.InvalidRequestException;
 import com.ssafy.ssaout.common.error.exception.JsonException;
 import com.ssafy.ssaout.common.error.exception.NotFoundException;
-import com.ssafy.ssaout.common.error.exception.OAuthProviderMissMatchException;
+import com.ssafy.ssaout.common.error.exception.OAuthException;
 import com.ssafy.ssaout.common.error.exception.TokenValidFailedException;
 import com.ssafy.ssaout.common.response.ErrorResponse;
 import org.springframework.http.ResponseEntity;
@@ -21,9 +21,9 @@ public class GlobalExceptionHandler {
         return handleException(e, ErrorCode.INTERNAL_SERVER_ERROR);
     }
 
-    @ExceptionHandler(OAuthProviderMissMatchException.class)
+    @ExceptionHandler(OAuthException.class)
     public ResponseEntity<ErrorResponse> handleOAuthProviderMissMatchException(
-        OAuthProviderMissMatchException e) {
+        OAuthException e) {
         return handleException(e, e.getErrorCode());
     }
 

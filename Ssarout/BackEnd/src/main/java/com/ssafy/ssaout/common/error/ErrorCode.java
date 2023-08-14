@@ -17,6 +17,7 @@ public enum ErrorCode {
     INVALID_ACCESS_TOKEN(500, "Invalid access token."),
     NOT_EXPIRED_TOKEN_YET(500, "Not expired token yet."),
     OAUTH_PROVIDER_MISMATCH(500, "기존에 가입된 SNS 계정이 있습니다. 해당 계정을 이용해주세요."),
+    FAIL_UNLINKING_KAKAO_ACCOUNT(500, "카카오 계정의 연결을 끊는데 실패했습니다."),
     FAIL_TOKEN_GENERATION(500, "Failed to generate Token."),
     CONFLICT_RESOURCE(409, "중복된 값이 있습니다. 다시 입력해주세요"),
 
