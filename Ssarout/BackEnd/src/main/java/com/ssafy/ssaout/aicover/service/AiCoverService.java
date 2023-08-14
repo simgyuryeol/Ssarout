@@ -55,7 +55,7 @@ public class AiCoverService {
         User user = userRepository.findByUserId(userId);
 
         List<AiCoverResponseDto> aiCoverResponseDtoList = aiCoverRepository.findAllByUser(user)
-            .stream().map(AiCoverResponseDto::new).collect(
+            .stream().map(aiCover -> AiCoverResponseDto.builder().aiCover(aiCover).build()).collect(
                 Collectors.toList());
 
         return AiCoversResponseDto.builder().results(aiCoverResponseDtoList)

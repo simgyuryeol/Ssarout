@@ -30,7 +30,7 @@ public class AiCoverController {
             .getPrincipal();
 
         AiCoversResponseDto aiCoversResponseDto = aiCoverService.getAiCovers(
-            principal.getPassword());
+            principal.getUsername());
 
         return ResponseEntity.ok(
             ApiResponse.<AiCoversResponseDto>builder().message("AI 커버곡 조회 완료")
