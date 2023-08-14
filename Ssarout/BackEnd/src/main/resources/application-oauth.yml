@@ -29,4 +29,4 @@ spring:
           userNameAttribute: id
 
 kakao:
-  adminKey: "${KAKAO_ADMIN_KEY}"
+  adminKey: ${KAKAO_API_ADMIN_KEY}
