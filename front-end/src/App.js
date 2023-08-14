@@ -18,7 +18,7 @@ import Analysis from './pages/Analysis';
 import Growth from './pages/Growth';
 import HistoryDetail from './pages/HistoryDetail'
 import { useEffect } from 'react';
-
+import PageBlock from './lib/PageBlock';
 // Private : 다시부르기 나중에 추가하기
 
 function App() {
@@ -90,9 +90,9 @@ function App() {
         <Route 
           exact path="/analysis" 
           element={
-            // <PrivateRoute>
+            <PageBlock>
               <Analysis />  
-            // </PrivateRoute>
+            </PageBlock>
           }
         />
 

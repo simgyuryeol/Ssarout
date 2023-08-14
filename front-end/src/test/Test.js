@@ -39,6 +39,7 @@ export class Test {
     this.rerecordlyrics = rerecordlyrics
     this.lyric = (this.response ?this.response.lyric  : rerecordlyrics );
     this.local = JSON.parse(localStorage.getItem('data'))
+    this.pageOut = false;
 
 
    
@@ -174,8 +175,10 @@ export class Test {
   }
   // @autobind 데코레이터를 제거하고 바인딩된 메소드를 정의합니다.
   stopSong() {
-    console.log('ㅁㄴㅇㄻㄴㅇㄻㄴㅇㄻㄴㅇㄹ')
     this.score = this.drawer.scores();
+    if(this.score.length === 0){
+      return
+    }
     this.songEditor.mrStop();
     let data = this.drawer.stop();
     
@@ -196,6 +199,9 @@ export class Test {
     // this.detector.recording();
     this.getBlobUrl(data);
     setTimeout(() => {
+      if(data.PitchScore === NaN){
+        return
+      }
       console.log(this.BlobUrl)
       data.songTitle = this.songTitle
       data.singer = this.singer
@@ -203,7 +209,10 @@ export class Test {
         if(this.response.lyric.length > 0){
       
         window.localStorage.setItem("data", JSON.stringify(data))
-        window.location.href="/analysis"
+        if(!this.pageOut){
+          console.log('1')
+        // window.location.href="/analysis"
+        }
       }});}
   }
   
@@ -215,10 +224,14 @@ export class Test {
 
   loop(time) {
     const stopRecord = this.drawer.getStopRecord();
-
+    if(!(window.location.pathname.includes('/record')|| window.location.pathname.includes('/analysis') )){
+      this.pageOut = true;
+      window.location.reload();
+    }
     if (stopRecord) {
       //mr 끝났을때 녹음 완료
       this.stopSong();
+
     }
 
     const idx = JSON.parse(localStorage.getItem('ly'));

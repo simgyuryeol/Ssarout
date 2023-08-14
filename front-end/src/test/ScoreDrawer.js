@@ -5,7 +5,7 @@ export class ScoreDrawer {
     this._canvas = document.createElement("canvas");
     // this._canvas.width = this._screenWidth;
     this._canvas.width = window.innerWidth; // 초기화 추가
-    this._canvas.height = 190;
+    this._canvas.height = 200;
     this._canvas.style.width = "100%";
     this._oct = 0;
     this._notes = new Array(300).fill(-1);
@@ -14,7 +14,7 @@ export class ScoreDrawer {
     this._beat = new Array(100).fill(-1);
     this._ment = new Array(100).fill(-1);
     this.stopRecord = false;
-    this.height = 195; 
+    this.height = 200; 
     this.heightRect = 5; 
     this.count = 0
     this.turn= 0
@@ -165,8 +165,8 @@ export class ScoreDrawer {
 
       // const y = noteTop[note.note] * 5 + (note.octav - 3) * 35 + 150 + this._oct * 5 - 2.5;
       const y =
-        noteTop[note.note] * 5 * 2 +
-        (note.octav - 3) * 35 * 2 +
+        noteTop[note.note] * 5 +
+        (note.octav - 3) * 35  +
         this.height +
         this._oct * 5 -
         2.5;
@@ -394,8 +394,8 @@ export class ScoreDrawer {
     if (curNote !== null) {
       // curNoteY = noteTop[curNote.note] * 5 + (curNote.octav - 3) * 35 + 150 + this._oct * 5 - 2.5;
       curNoteY =
-        noteTop[curNote.note] * 5 * 2 +
-        (curNote.octav - 3) * 35 * 2 +
+        noteTop[curNote.note] * 5 +
+        (curNote.octav - 3) * 35 +
         this.height +
         this._oct * 5 -
         2.5;
@@ -406,7 +406,7 @@ export class ScoreDrawer {
         const octav = Math.floor(note / 12) - 4;
         const n = note % 12;
         // let y = noteTop[n] * 5 + 150 + octav * 35 - 2.5;
-        let y = noteTop[n] * 5 * 2 + this.height + octav * 35 * 2 - 2.5;
+        let y = noteTop[n] * 5 + this.height + octav * 35 - 2.5;
         if (this._colors[x] !== -1) {
           if (this._colors[x]==="black"){
           ctx.fillStyle = '#ff33d4'} else{
