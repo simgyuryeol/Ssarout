@@ -27,6 +27,3 @@ spring:
           tokenUri: https://kauth.kakao.com/oauth/token
           userInfoUri: https://kapi.kakao.com/v2/user/me
           userNameAttribute: id
-
-kakao:
-  adminKey: ${KAKAO_API_ADMIN_KEY}

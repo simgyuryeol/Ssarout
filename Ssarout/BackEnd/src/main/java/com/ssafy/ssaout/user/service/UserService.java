@@ -32,7 +32,7 @@ public class UserService {
     private final ResultRepository resultRepository;
     private final AiCoverRepository aiCoverRepository;
 
-    @Value("${kakao.adminKey}")
+    @Value("${kakao.admin}")
     private String kakaoAdminKey;
 
     public User getUser(String userId) {
