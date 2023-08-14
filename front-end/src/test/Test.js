@@ -210,9 +210,8 @@ export class Test {
       
         window.localStorage.setItem("data", JSON.stringify(data))
         if(!this.pageOut){
-          console.log('1')
-        // window.location.href="/analysis"
-        }
+        window.location.href="/analysis"
+      }
       }});}
   }
   
@@ -224,7 +223,7 @@ export class Test {
 
   loop(time) {
     const stopRecord = this.drawer.getStopRecord();
-    if(!(window.location.pathname.includes('/record')|| window.location.pathname.includes('/analysis') )){
+    if(!(window.location.pathname.includes('/record')|| window.location.pathname.includes('/analysis') )&&!this.pageOut){
       this.pageOut = true;
       window.location.reload();
     }
