@@ -6,11 +6,9 @@ import com.ssafy.ssaout.song.domain.Song;
 import com.ssafy.ssaout.song.domain.SongLine;
 import com.ssafy.ssaout.song.dto.response.SongLineDto;
 import com.ssafy.ssaout.song.repository.SongLineRepository;
-
-import java.util.ArrayList;
-import java.util.List;
-
 import com.ssafy.ssaout.song.repository.SongRepository;
+import java.util.List;
+import java.util.stream.Collectors;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -23,20 +21,16 @@ public class SongLineService {
 
     public List<SongLineDto> getAllSongLineById(Long songId) {
         Song song = songRepository.findById(songId).orElseThrow(() -> new NotFoundException(
-                ErrorCode.SONG_NOT_FOUND));
-        List<SongLine> allBySongOrderByStartTimeAsc = songLineRepository.findAllBySongOrderByStartTimeAsc(song);
+            ErrorCode.SONG_NOT_FOUND));
+        List<SongLine> allBySongOrderByStartTimeAsc = songLineRepository.findAllBySongOrderByStartTimeAsc(
+            song);
 
-        List<SongLineDto> songLineDtos = new ArrayList<>();
-        for (SongLine songLine : allBySongOrderByStartTimeAsc) {
-            SongLineDto songLineDto = new SongLineDto(
-                    songLine.getSongLineId(),
-                    songLine.getSong().getSongId(),
-                    songLine.getLyric(),
-                    songLine.getStartTime()
-            );
-            songLineDtos.add(songLineDto);
-        }
+        List<SongLineDto> songLineDtoList = allBySongOrderByStartTimeAsc.stream()
+            .map(songLine -> SongLineDto.builder().startNode(
+                    songLine.getStartNode()).endNode(songLine.getEndNode())
+                .startTime(songLine.getStartTime()).endTime(songLine.getEndTime()).build()).collect(
+                Collectors.toList());
 
-        return songLineDtos;
+        return songLineDtoList;
     }
 }

@@ -1,14 +1,13 @@
 package com.ssafy.ssaout.song.dto.response;
 
 import com.ssafy.ssaout.song.domain.Song;
+import java.sql.Time;
+import java.util.List;
 import lombok.Builder;
 import lombok.Getter;
 
-import java.sql.Time;
-import java.util.List;
-
 @Getter
-public class WholeSongResponse {
+public class SongInformationResponse {
 
     private Long songId;
     private String title;
@@ -19,9 +18,10 @@ public class WholeSongResponse {
     private String lyric;
     private String albumCoverImage;
     private Time runningTime;
+    private List<SongLineDto> songLineList;
 
     @Builder
-    public WholeSongResponse(Song song, List<SongLineDto> songLines) {
+    public SongInformationResponse(Song song, List<SongLineDto> songLines) {
         this.songId = song.getSongId();
         this.title = song.getTitle();
         this.singer = song.getSinger();
@@ -31,20 +31,7 @@ public class WholeSongResponse {
         this.lyric = song.getLyric();
         this.albumCoverImage = song.getAlbumCoverImage();
         this.runningTime = song.getRunningTime();
+        this.songLineList = songLines;
     }
 
-    @Override
-    public String toString() {
-        return "WholeSongResponse{" +
-                "songId=" + songId +
-                ", title='" + title + '\'' +
-                ", singer='" + singer + '\'' +
-                ", view=" + view +
-                ", voiceFile='" + voiceFile + '\'' +
-                ", mrFile='" + mrFile + '\'' +
-                ", lyrics=" + lyric +
-                ", albumCoverImage='" + albumCoverImage + '\'' +
-                ", runningTime=" + runningTime +
-                '}';
-    }
 }

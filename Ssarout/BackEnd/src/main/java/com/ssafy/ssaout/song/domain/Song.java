@@ -1,14 +1,20 @@
 package com.ssafy.ssaout.song.domain;
 
 import com.ssafy.ssaout.fav.domain.entity.Favorite;
+import java.sql.Time;
+import java.util.List;
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-
-import javax.persistence.*;
-import javax.validation.constraints.NotNull;
-import java.sql.Time;
-import java.util.List;
 
 @Getter
 @NoArgsConstructor
@@ -41,8 +47,11 @@ public class Song {
     @Column(name = "ALBUM_COVER_IMAGE", columnDefinition = "TEXT")
     private String albumCoverImage;
 
-    @Column(name = "LYRIC" , columnDefinition = "TEXT")
+    @Column(name = "LYRIC", columnDefinition = "TEXT")
     private String lyric;
+
+    @Column(name = "START_TIMING")
+    private Long startTiming;
 
     @Column(name = "RUNNING_TIME")
     @NotNull
@@ -58,15 +67,15 @@ public class Song {
     @Override
     public String toString() {
         return "Song{" +
-                "songId=" + songId +
-                ", title='" + title + '\'' +
-                ", singer='" + singer + '\'' +
-                ", view=" + view +
-                ", voiceFile='" + voiceFile + '\'' +
-                ", mrFile='" + mrFile + '\'' +
-                ", albumCoverImage='" + albumCoverImage + '\'' +
-                ", runningTime=" + runningTime +
-                ", favorite=" + favorite +
-                '}';
+            "songId=" + songId +
+            ", title='" + title + '\'' +
+            ", singer='" + singer + '\'' +
+            ", view=" + view +
+            ", voiceFile='" + voiceFile + '\'' +
+            ", mrFile='" + mrFile + '\'' +
+            ", albumCoverImage='" + albumCoverImage + '\'' +
+            ", runningTime=" + runningTime +
+            ", favorite=" + favorite +
+            '}';
     }
 }

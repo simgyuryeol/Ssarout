@@ -1,32 +1,22 @@
 package com.ssafy.ssaout.song.dto.response;
 
+import lombok.Builder;
 import lombok.Getter;
-import lombok.Setter;
-
-import java.sql.Time;
 
 @Getter
-@Setter
 public class SongLineDto {
-    private Long SongLineId;
-    private Long songId;
-    private String lyric;
-    private Time startTime;
 
-    public SongLineDto(Long songLineId, Long songId, String lyric, Time startTime) {
-        SongLineId = songLineId;
-        this.songId = songId;
-        this.lyric = lyric;
+    private Long startNode;
+    private Long endNode;
+    private Long startTime;
+    private Long endTime;
+
+    @Builder
+    public SongLineDto(Long startNode, Long endNode, Long startTime, Long endTime) {
+        this.startNode = startNode;
+        this.endNode = endNode;
         this.startTime = startTime;
+        this.endTime = endTime;
     }
 
-    @Override
-    public String toString() {
-        return "SongLineDto{" +
-                "SongLineId=" + SongLineId +
-                ", songId=" + songId +
-                ", lyric='" + lyric + '\'' +
-                ", startTime=" + startTime +
-                '}';
-    }
 }

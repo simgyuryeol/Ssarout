@@ -51,8 +51,8 @@ public class SongService {
                 song.getTitle(),
                 isFav,
                 song.getSinger(),
+                song.getStartTiming(),
                 song.getAlbumCoverImage()
-
             );
             songLineDtos.add(songDto);
         }

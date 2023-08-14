@@ -5,8 +5,8 @@ import static org.springframework.http.HttpStatus.OK;
 import com.ssafy.ssaout.common.response.ApiResponse;
 import com.ssafy.ssaout.song.domain.Song;
 import com.ssafy.ssaout.song.dto.response.SongDto;
+import com.ssafy.ssaout.song.dto.response.SongInformationResponse;
 import com.ssafy.ssaout.song.dto.response.SongLineDto;
-import com.ssafy.ssaout.song.dto.response.WholeSongResponse;
 import com.ssafy.ssaout.song.service.SongLineService;
 import com.ssafy.ssaout.song.service.SongService;
 import java.util.List;
@@ -41,12 +41,11 @@ public class SongController {
     @GetMapping("/info")
     public ResponseEntity<ApiResponse> getSongInfo(@RequestParam(value = "songId") Long songId) {
         Song song = songService.getSongById(songId);
-//        List<SongLine> songLineList = songLineService.getAllSongLineById(songId);
         List<SongLineDto> songLineList = songLineService.getAllSongLineById(songId);
 
         songService.updateViews(songId);
 
-        WholeSongResponse wholeSongResponse = WholeSongResponse.builder()
+        SongInformationResponse songInformationResponse = SongInformationResponse.builder()
             .song(song)
             .songLines(songLineList)
             .build();
@@ -54,7 +53,7 @@ public class SongController {
         ApiResponse apiResponse = ApiResponse.builder()
             .message("곡 정보")
             .status(OK.value())
-            .data(wholeSongResponse)
+            .data(songInformationResponse)
             .build();
         return ResponseEntity.ok(apiResponse);
     }
