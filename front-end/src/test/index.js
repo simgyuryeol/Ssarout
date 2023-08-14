@@ -1,6 +1,7 @@
 import React from 'react';
 import Test from './Test';
-import styles from './style.module.css';
+// import styles from './style.module.css';
+import './style.css';
 import Header from '../components/commonUse/Header';
 import { useParams } from 'react-router-dom';
 import Api from '../Api/Api';
@@ -19,7 +20,7 @@ const SingTest = (rerecordlyrics,mrFile) => {
 
   return (
     // class="box" - 파도
-    <div className={styles.box} id="Singtest">
+    <div class='box' id="Singtest">
         <Header />
 
       {/* <svg className={styles.pulse} viewBox="0 0 1024 1024">
@@ -28,9 +29,11 @@ const SingTest = (rerecordlyrics,mrFile) => {
 		    <circle className={styles.Oval3} cx="512" cy="512" r="512"></circle>
       </svg> */}
 
-        <div className={styles.wave}></div>
-        <div className={`${styles['-two']} ${styles['wave']}`}></div>
-        <div className={`${styles['-three']} ${styles['wave']}`}></div>
+        <div class="wave"></div>
+        {/* <div className={`${styles['-two']} ${styles['wave']}`}></div> */}
+        <div class="wave -two"></div>
+        {/* <div className={`${styles['-three']} ${styles['wave']}`}></div> */}
+        <div class="wave -three"></div>
         <br />
 
     </div>

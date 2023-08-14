@@ -44,9 +44,10 @@
 } */
 
 .FullBtn {
-  width: 70px;
+  width: 85px;
   height: 30px;
   background-color: white;
+  border: transparent;
   border-radius: 20px;
   font-family: 'lineRg';
   font-size: 15px;
@@ -54,9 +55,13 @@
   font-weight: bold;
   padding-top: 3px;
   margin-left: 0;
+  box-shadow: 1px 2px;
 }
 
-.LineBtn {
+.FullBtn:hover {
+  background-color: #4B72C5;
+}
+/* .LineBtn {
   width: 70px;
   height: 30px;
   background-color: white;
@@ -67,7 +72,7 @@
   font-weight: bold;
   padding-top: 3px;
   margin-left: 10px;
-}
+} */
 
 .dataNBtn {
   display: block;

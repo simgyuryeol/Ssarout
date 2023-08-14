@@ -73,13 +73,13 @@ const SearchResult = () => {
               state: {
                 songId: item.songId,
               },
-            }}><button className={styles.FullBtn}>완곡</button></Link>
-            <Link to={{
+            }}><button className={styles.FullBtn}>부르러가기</button></Link>
+            {/* <Link to={{
               pathname: `/record/${item.songId}`,
               state: {
                 songId: item.songId,
               },
-            }}><button className={styles.LineBtn}>소절</button></Link>
+            }}><button className={styles.LineBtn}>소절</button></Link> */}
           </div>
           {isLogin ? (
             <img

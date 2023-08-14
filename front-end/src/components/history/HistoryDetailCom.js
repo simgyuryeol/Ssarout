@@ -10,6 +10,7 @@ const HistoryDetail = () => {
   const decodedTitle = decodeURIComponent(title);
   const [hisDetailResults, sethisDetailResults] = useState([]);
   const [activeIndex, setActiveIndex] = useState(null);
+  const [stopSong, setStopSong] = useState('/history/')
 
   const getHistoryDetail = async () => {
     try {
@@ -46,12 +47,13 @@ const HistoryDetail = () => {
     hisDetailResults[index].audio2.pause();
     hisDetailResults[index].audio2.currentTime = 0; // 오디오 시간 초기화
   };
-
+  
   useEffect(() => {
     // f1();
     console.log(title);
     getHistoryDetail();
-  }, []);
+    
+  }, [stopSong]);
 
   return (
     <div>

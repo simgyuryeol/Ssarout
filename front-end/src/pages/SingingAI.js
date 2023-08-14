@@ -4,9 +4,16 @@ import Api from '../Api/Api';
 import Header from "../components/commonUse/Header"
 import Footer from '../components/commonUse/Footer';
 import styles from "./SingingAI.module.css";
+import play from '../components/history/play.png'
 
 const AISongs = () =>{
   const [AIResults, setAIResults] = useState([]);
+
+  const removeDuplicates = (arr, prop) => { // 같은 노래 파일 여러 개인 경우 중복 제거
+    return arr.filter((obj, index, self) =>
+      index === self.findIndex(item => item[prop] === obj[prop])
+    );
+  };
 
   const getAISongs = async () => {
     try {
@@ -30,10 +37,11 @@ const AISongs = () =>{
       <h3 className={styles.pageTitle}>AI가 불러주는 노래</h3>
 
       <div className={styles.aiContainer}>
-      {AIResults.map((item, index) => (
+      {removeDuplicates(AIResults, 'title').map((item, index) => (
           <div key={index} className={styles.aiData}>
             <img className={styles.aiAlbumcover} alt="" src={item.albumCoverImage} />
             <p className={styles.titleNsinger}>{item.title} - {item.singer}</p>
+            <img className={styles.playBtn} alt="play" src={play}/>
           </div>
         ))}
       </div>

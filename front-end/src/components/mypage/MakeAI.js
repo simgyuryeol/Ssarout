@@ -3,12 +3,14 @@ import { Link } from "react-router-dom";
 import styles from "./MakeAI.module.css";
 import Api from '../../Api/Api';
 import { Progress } from 'antd';
-import { Button, Space } from 'antd';
+import { Button, Space, Spin } from 'antd';
+import { LoadingOutlined } from '@ant-design/icons';
 
 const MakeAI = () => {
   const [recordCounts, setrecordCounts] = useState([]);
   const [showGenerateButton, setShowGenerateButton] = useState(true);
   const [showAISongPageButton, setshowAISongPageButton] = useState(false);
+  const antIcon = <LoadingOutlined style={{ marginTop:'-3px', paddingBottom:'3px', visibility:'visible', fontSize: 18, marginRight:'10px', color:'white' }} spin />;
 
   const getRecordCounts = async () => {
     try {
@@ -32,10 +34,24 @@ const MakeAI = () => {
       const response = await Api.get("/api/v1/ai/covers");
       console.log(response.data)
       console.log(response.data.data.results)
-      if (response.data.data.results.aiCoverFile) {
+      console.log(response.data.data.results[0].aiCoverFile)
+      console.log(response.data.data.resultCount)
+      if (response.data.data.resultCount && response.data.data.results[0].aiCoverFile) {
         setshowAISongPageButton(true)
+        setShowGenerateButton(false);
+        console.log('들으러가는버튼 생겨야함',showAISongPageButton)
+        console.log('만들어주세요 버튼 false돼야함',showGenerateButton)
+        // 1. 요청은 이미 보낸 상태고(resultCount>=1), aiCoverFile url까지 있다면
+        // ai 노래가 완성된거임
         // 생성중입니다 버튼을 ai 노래 들으러가기 링크로 바꿔주는 함수
-      }
+      } if (response.data.data.resultCount && !response.data.data.results[0].aiCoverFile) {
+        setShowGenerateButton(false);
+        console.log('아직 안만들어졌고 신청만함', showGenerateButton)
+        // 2. 요청을 이미 보낸 상탠데 아직 안만들어졌으면 생성중입니다 - setGeneration(false)
+      } 
+      // else {
+      //   setShowGenerateButton(true);
+      // } // 3. 아직 요청도 안보냈으면 만들어주세요! - setGeneration(true)
     } catch (error) {
       console.error(error);
     }
@@ -82,7 +98,7 @@ const MakeAI = () => {
               AI가 불러주는 노래 들으러 가기
               </Link>
             ) : (
-              <Button className={styles.AIRequest} onClick={checkAIsongsExist} type="primary">AI 노래를 생성중입니다</Button>
+              <Button className={styles.AIRequest} onClick={checkAIsongsExist} type="primary"><Spin indicator={antIcon}/>AI 노래를 생성중입니다</Button>
             )
           )}
         </>
