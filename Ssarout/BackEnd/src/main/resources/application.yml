@@ -75,4 +75,4 @@ cloud:
       auto: false
 
 kakao:
-  admin: "${KAKAO_API_ADMIN_KEY}"
+  admin: ${KAKAO_API_ADMIN_KEY}
