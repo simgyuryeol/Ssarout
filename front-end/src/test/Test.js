@@ -44,7 +44,6 @@ export class Test {
 
     if (this.local !== null){
       if(this.local.mrUrl){
-        console.log(this.local.mrUrl,"this.local")
         this.songEditor.setAudioURl(this.local.mrUrl);
       }
     }
@@ -211,7 +210,7 @@ export class Test {
       if(data.PitchScore === NaN){
         return
       }
-      console.log(this.BlobUrl)
+      data.lyricsTime = this.songLineList
       data.songTitle = this.songTitle
       data.singer = this.singer
       // if(this.songEditor.score.length > 0){

@@ -85,8 +85,6 @@ class ToneDetector extends EventEmitter {
           lastModified: new Date().getTime(),
           type: "audio",
         });
-        // console.log(blobURL);
-        // console.log("sound : ", this.sound);
         // 여기에 로그인 중인지 아닌지 확인하는 조건문 필요
         this.Url = blobURL
         let finalScore = 0
@@ -104,11 +102,11 @@ class ToneDetector extends EventEmitter {
           formData.append("recordFile", this.sound);
           
           //서버에 녹음 파일 전송 할려면 주석 지워주세요
-          await Api.post("/api/v1/result", formData, {
-            headers: { "Content-Type": "multipart/form-data" },
-          }).then((response) => {
-            console.log(response,'여기가 Api 녹음 파일전송');
-          });
+          // await Api.post("/api/v1/result", formData, {
+          //   headers: { "Content-Type": "multipart/form-data" },
+          // }).then((response) => {
+          //   console.log(response,'여기가 Api 녹음 파일전송');
+          // });
         } catch (error) {
           alert.error(error);
         }
