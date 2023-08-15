@@ -11,7 +11,7 @@ const Analysis = () =>{
   const text = <span className={styles.questMent}>틀린 구간은 빨강으로 표시됩니다.</span>;
   let resultData = localStorage.getItem('data')
   resultData = JSON.parse(resultData)
-  console.log(resultData)
+  
   return(
     <div className={styles.box}>
       <LyricsBars />

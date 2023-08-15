@@ -13,15 +13,12 @@ const SingTest = (rerecordlyrics,mrFile) => {
   React.useEffect(() => {
     const appContainer = document.querySelector('#Singtest');
     const test = new Test(appContainer,songId,rerecordlyrics.rerecordlyrics,mrFile);
-    console.log(window.location)
-    console.log(songId)
     
   }, [songId]);
 
   return (
     // class="box" - 파도
-    <div>
-        <Header />
+    <div>{(Object.keys(rerecordlyrics).length === 0) ?(<Header />):null}
     <div class='box' id="Singtest">
         {/* <Header /> */}
 

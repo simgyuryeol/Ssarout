@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link, json } from "react-router-dom";
 import SingTest from "../../test";
 import Header from "../commonUse/Header";
@@ -40,7 +40,6 @@ const lyricsTime =[{"startnode":0,"endnode":20,"starttime":0,"endtime":9000},
 
 const LyricsBar = ({ val, startTime, endTime, endnode, onClick,activeBar }) => {
   const timeInterval = endTime - startTime;
-  console.log(endTime,activeBar,"여기가 궁금궁금")
   const barStyle = {
     width: `${(timeInterval / lyricsTime[endnode].endtime) * 100}%`,
     height: "10px",
@@ -50,6 +49,7 @@ const LyricsBar = ({ val, startTime, endTime, endnode, onClick,activeBar }) => {
     backgroundColor: (activeBar===endTime) ? "#000000" : (val ? "#008EDE" : "#FF317B"),
     cursor: "pointer",
   };
+
 
   return (
     <button className="lyrics-bar" style={barStyle} onClick={() => onClick(endnode, endTime)}></button>
@@ -89,13 +89,25 @@ const LyricsBars = () => {
     for(let i = 0;i < lenrerecordlyrics; i++){
       rerecordlyrics[i].start -= startTime
     }
-
-    console.log(rerecordlyrics)
     const ly = Object()
     ly.rerecordlyrics = rerecordlyrics
     ly.startTime = startTime
+    console.log(ly,'여기만 하면 가사는 끝!')
     localStorage.setItem('ly',JSON.stringify(ly))
     setRecord(rerecordlyrics)
+    setTimeout(() =>{
+      let LineLyrics = document.querySelector("#lineLyrics")
+      let LineLyricsTxt = ""
+      rerecordlyrics.forEach(element => {
+        if(element.lylic){
+          LineLyricsTxt += element.lylic
+        } else{
+          LineLyricsTxt += " "
+        }
+      });
+      if(LineLyrics){
+      LineLyrics.textContent = LineLyricsTxt}
+    })
   };
 
   let data = localStorage.getItem("data");
@@ -131,7 +143,7 @@ const LyricsBars = () => {
   let songTitle = songData.songTitle
   let singer = songData.singer
 
-  
+
 
 
   const flexContainerStyle = {
@@ -151,13 +163,7 @@ const LyricsBars = () => {
 
   return (
     <div>
-          {(Object.keys(rerecordlyrics).length > 0 && activeBar !== null) ? (
-      <SingTest rerecordlyrics={rerecordlyrics} mrFile={0}/>
-    ) : (
       <Header />
-    )}
-
-
           <div className="bar-container">
             <br/>
             <h3>{songTitle} -  {singer}</h3>
@@ -175,6 +181,11 @@ const LyricsBars = () => {
               ))}
             </div>
           </div>
+          {(Object.keys(rerecordlyrics).length > 0 && activeBar !== null) ? (
+      <SingTest rerecordlyrics={rerecordlyrics} mrFile={0}/>
+    ) : null}
+
+
         </div>
 
   );

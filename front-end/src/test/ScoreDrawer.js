@@ -1,3 +1,5 @@
+import { Line } from "@nivo/line";
+
 const noteTop = [0, 0.5, 1, 1.5, 2, 3, 3.5, 4, 4.5, 5, 5.5, 6];
 
 export class ScoreDrawer {
@@ -26,6 +28,11 @@ export class ScoreDrawer {
     //   this._resizeCallback(entries);
     // };
     this._screenWidth = window.innerWidth;
+    this.LineLyrics = null
+  }
+
+  getLineLyrics(LineLyrics){
+    this.LineLyrics = LineLyrics
   }
 
   setStopRecord(t) {
@@ -59,7 +66,6 @@ export class ScoreDrawer {
   }
 
   start(notes) {
-    console.log(notes);
     this._playScore = notes.slice();
     this._elapsed = -1000;
     this._scores = new Array(100).fill(-1);
@@ -161,6 +167,27 @@ export class ScoreDrawer {
       // const y = noteTop[note.note] * 5 + (note.octav - 3) * 35 + 150 + this._oct * 5 - 2.5;
       const y = noteTop[note.note] * 5 + (note.octav - 3) * 35 + this.height + this._oct * 5 - 2.5;
       //여기
+      if(this.LineLyrics){
+      let LineLyrics = document.querySelector("#lineLyrics")
+      let nextLineLyrics = ""
+      if (note.start <= this._elapsed && note.start + note.length - fps >= this._elapsed){
+        this.LineLyrics.forEach(element => {
+          if(element.starttime<= note.start && note.start <= element.endtime){
+            let lyricStart = element.startnode
+            let lyricend = element.endnode
+
+            for(let i = lyricStart; i <= lyricend; i ++ ){
+              if(this._playScore[i].lylic){
+              nextLineLyrics += this._playScore[i].lylic + ''} else{
+                nextLineLyrics =nextLineLyrics +  " " + " "
+              }
+            }
+            return
+          }
+        });
+        LineLyrics.textContent =  nextLineLyrics
+      }}
+
       if (note.start <= this._elapsed && note.start + note.length - fps >= this._elapsed) {
         current = note;
         ctx.fillStyle = '#00fffb';
@@ -376,6 +403,11 @@ export class ScoreDrawer {
       curNoteY = noteTop[curNote.note] * 5 + (curNote.octav - 3) * 35 + this.height + this._oct * 5 - 2.5;
     }
     this._notes.forEach((note, x) => {
+      if(this._notes[x+1]||this._notes[x+2]){
+        if ((this._notes[x+1] !== note)||(this._notes[x+2]!==note)){
+          note = -1
+        }
+      }
       ctx.fillStyle = 'red';
       if (note !== -1) {
         const octav = Math.floor(note / 12) - 4;
