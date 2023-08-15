@@ -16,8 +16,9 @@ const Redirecion = () => {
   };
   return (
     <div>
+      <div class="container">
       <Header/>
-      <h2 className={styles.loginIng}>로그인 중입니다</h2>
+      <h2 className={styles.loginIng}>로그인 중입니다</h2></div>
       <Footer/>
     </div>
   )

@@ -20,8 +20,10 @@ const SingTest = (rerecordlyrics,mrFile) => {
 
   return (
     // class="box" - 파도
-    <div class='box' id="Singtest">
+    <div>
         <Header />
+    <div class='box' id="Singtest">
+        {/* <Header /> */}
 
       {/* <svg className={styles.pulse} viewBox="0 0 1024 1024">
         <circle className={styles.Oval1} cx="512" cy="512" r="512"></circle>
@@ -29,14 +31,14 @@ const SingTest = (rerecordlyrics,mrFile) => {
 		    <circle className={styles.Oval3} cx="512" cy="512" r="512"></circle>
       </svg> */}
 
-        <div class="wave"></div>
-        {/* <div className={`${styles['-two']} ${styles['wave']}`}></div> */}
+        {/* <div class="wave"></div>
         <div class="wave -two"></div>
+        <div class="wave -three"></div> */}
+        {/* <div className={`${styles['-two']} ${styles['wave']}`}></div> */}
         {/* <div className={`${styles['-three']} ${styles['wave']}`}></div> */}
-        <div class="wave -three"></div>
         <br />
 
-    </div>
+    </div></div>
   );
 };
 

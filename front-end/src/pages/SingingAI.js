@@ -32,6 +32,7 @@ const AISongs = () =>{
 
   return(
     <>
+      <div class="container">
       <Header/>
       <button className={styles.updateBackBtn}><Link to="/mypage" className={styles.updateBackA}>뒤로가기</Link></button>
       <h3 className={styles.pageTitle}>AI가 불러주는 노래</h3>
@@ -45,7 +46,7 @@ const AISongs = () =>{
           </div>
         ))}
       </div>
-
+      </div>
       <Footer/>
     </>
   )

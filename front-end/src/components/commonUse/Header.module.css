@@ -1,0 +1,42 @@
+.header {
+  /* position: fixed; */
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 51.4px;
+  z-index: 100;
+}
+
+.headerContainer {
+  display: flex;
+  justify-content: space-between;
+  /* justify-content: center; */
+  align-items: center;
+  text-align: center;
+  padding: 10px;
+  /* flex-direction: column; */
+}
+
+.logoContainer {
+  flex: 1;
+  text-align: center;
+  align-self: center;
+  margin: auto;
+  margin-left: 25px;
+}
+
+.hamburgerContainer {
+  align-self: flex-end;
+}
+
+.logo {
+  /* position: relative; */
+  font-size: 23px;
+  letter-spacing: -0.05em;
+  font-family: 'logo';
+  display: inline-block;
+  justify-content: center;
+  text-decoration: none;
+  color: rgb(255, 255, 255);
+  /* position: fixed; */
+}

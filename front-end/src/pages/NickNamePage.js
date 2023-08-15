@@ -50,6 +50,7 @@ const Redirecion = ({history}) => {
 
   return (
     <div>
+      <div class="container">
       <div className={styles.logoContainer}>
         <div className={styles.div1}>싸:라웃</div>
       </div>
@@ -61,7 +62,7 @@ const Redirecion = ({history}) => {
         <br/>
         <button className={styles.changeBtn} onClick={f2}>확인</button>
 
-      </form>
+      </form></div>
       <Footer/>
 
     </div>

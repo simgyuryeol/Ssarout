@@ -16,11 +16,14 @@
   border-color: white;
   background-color: transparent;
   border-width: 1px;
+  /* padding-top: 2px; */
 }
 
 input::placeholder {
   color: white;
   font-family: 'lineTh';
+  padding-top: 4px;
+  padding-bottom: 0;
 }
 
 input:focus {
@@ -33,6 +36,8 @@ input {
   text-align: center;
   font-family: 'lineRg';
   border-style: none;
+  padding-top: 4px;
+  padding-bottom: 0;
 }
 
 .searchIcon {

@@ -60,6 +60,7 @@ const UpdatePage = () => {
 
   return (
     <div>
+      <div className={styles.container}>
       <Header/>
       <button className={styles.updateBackBtn}><Link to="/mypage" className={styles.updateBackA}>뒤로가기</Link></button>
       <br/>
@@ -71,6 +72,7 @@ const UpdatePage = () => {
       <br/><br/>
       <button className={styles.changeBtn} onClick={nicknameChange}>확인</button>
       <p className={styles.delete} onClick={f3}>회원탈퇴</p>
+      </div>
       <Footer/>
     </div>
   );

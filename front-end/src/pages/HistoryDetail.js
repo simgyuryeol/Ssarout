@@ -12,9 +12,10 @@ const History = () => {
 
   return (
     <div>
+     <div className={styles.hisContainer}>
       <Header/>
       <button onClick={reloadPage} className={styles.updateBackBtn}><Link to="/history" className={styles.updateBackA}>뒤로가기</Link></button>
-      <HistoryDetailCom/>
+      <HistoryDetailCom/></div>
       <Footer/>
     </div>
   );

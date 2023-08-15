@@ -1,6 +1,8 @@
-html, body {
-  margin: 0;
-  padding: 0;
+html {
+  /* padding-top: 51.4px; */
+  background: linear-gradient(-90deg, #ee7752, #e05b8e, #23a6d5, #23d5ab);
+  background-size: 400% 400%;
+  animation: gradient 25s ease infinite;
 }
 
 .sharer input[type=search] {
@@ -56,11 +58,10 @@ div.blind {
 
 
 /* 파도치기 */
-
 .box {
   width: 100%;
   height: 100%;
-  box-shadow: 0 2px 30px rgba(black, .2);
+  /* box-shadow: 0 2px 30px rgba(black, .2); */
   background: lighten(#f0f4c3, 10%);
   position: relative;
   overflow: hidden;
@@ -77,7 +78,8 @@ div.blind {
   width: 1200px;
   height: 1100px;
   margin-left: -650px;
-  margin-top: -930px;
+  /* margin-top: -930px; */
+  margin-top: 130px;
   transform-origin: 50% 48%;
   border-radius: 43%;
   animation: drift 7000ms infinite linear;
@@ -94,7 +96,7 @@ div.blind {
   background: yellow;
 } */
 
-.box:after {
+/* .box:after {
   content: '';
   display: block;
   left: 0;
@@ -104,7 +106,7 @@ div.blind {
   background: linear-gradient(to bottom, rgba(#e8a, 1), rgba(#def, 0) 80%, rgba(white, .5));
   z-index: 11;
   transform: translate3d(0, 0, 0);
-}
+} */
 
 
 @keyframes drift {
@@ -115,13 +117,23 @@ div.blind {
 
 /* 배경 그라데이션
 이 페이지의 body에만 적용시켜야함 */
-.box {
+/* .box {
   background: linear-gradient(-45deg, #ee7752, #e05b8e, #23a6d5, #23d5ab);
   background-size: 400% 400%;
   animation: gradient 15s ease infinite;
   height: 100vh;
 	overflow: hidden;
-}
+  padding-top: 51.4px;
+  width: 100vh;
+  height: 100vh;
+  overflow: hidden;
+  transform: translate3d(0, 0, 0);
+  width: 100%;
+  height: 100%;
+  background: lighten(#f0f4c3, 10%);
+  position: relative;
+} */
+
 
 @keyframes gradient {
   0% {
@@ -133,4 +145,8 @@ div.blind {
   100% {
     background-position: 0% 50%;
   }
+}
+
+.container {
+  min-height:calc(100vh - 38px);
 }

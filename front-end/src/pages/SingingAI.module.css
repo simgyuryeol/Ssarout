@@ -29,19 +29,42 @@
   justify-content: center;
 }
 
-.aiData {
-  display: flex;
-  flex-direction: column;
-  margin-left: 5px;
-  margin-right: 5px;
-  width: 300;
-}
-
+/* 앨범커버 */
 .aiAlbumcover {
   display: inline;
   width: 130px;
   height: 130px;
   margin: 10px;
+
+  position: relative;
+  z-index: 1;
+
+}
+
+/* 재생버튼 */
+.playBtn {
+  width: 50px;
+  height: 50px;
+  display: inline;
+  margin-right: 2.8rem;
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+
+  position: absolute;
+  z-index: 2;
+
+}
+
+/* 합친거 */
+.aiData {
+  /* display: flex;
+  flex-direction: column; */
+  margin-left: 5px;
+  margin-right: 5px;
+  width: 300;
+
+  display: inline;
+  justify-content: space-evenly;
 }
 
 .titleNsinger {
@@ -52,11 +75,6 @@
   font-family: 'lineTh';
 }
 
-.playBtn {
-  width: 50px;
-  height: 50px;
-  display: inline;
-  margin-right: 2.8rem;
-  margin-top: 0.5rem;
-  margin-bottom: 0.5rem;
+.container {
+  min-height:calc(100vh - 88px);
 }

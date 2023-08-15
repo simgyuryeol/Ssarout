@@ -1,3 +1,4 @@
+/* 앨범아트 */
 .favAlbumcover {
   width: 80px;
   height: 80px;
@@ -6,6 +7,7 @@
   z-index: 1;
 }
 
+/* 별 이미지 */
 .favImage {
   width: 20px;
   height: 20px;
@@ -15,6 +17,7 @@
   margin-top: 2px;
 }
 
+/* 앨범커버랑 별 감싼 */
 .favsongData {
   display: inline;
   justify-content: space-evenly;

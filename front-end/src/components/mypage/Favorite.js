@@ -40,8 +40,11 @@ const Favorite = () => {
       {favResults.length > 0 ? (
         <p className={styles.favMent}>즐겨찾기</p>
       ) : (
-        <p className={styles.favMent}>즐겨찾기가 없습니다.</p>
-      )}
+        <>
+          <p className={styles.favMent}>즐겨찾기가 없습니다.</p>
+          <br/>
+        </>
+     )}
       {favResults.map((item, index) => (
         <div key={index} className={styles.favsongData}>
           <Link to={{

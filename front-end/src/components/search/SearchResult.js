@@ -53,46 +53,40 @@ const SearchResult = () => {
   }, []);
 
   return (
-    <div>
+    <div className={styles.container}>
       <br />
       <SearchBar onSearch={handleSearch}/>
       <br />
-      {/* <p style={{ fontSize: '0.9rem' }}>(음악 넣기전 확인용)검색어: {data}</p> */}
       {searchResults.length > 0 ? (
+        <>
         <p style={{ fontSize: '0.9rem' }}>검색 결과입니다.</p>
+        {searchResults.map((item, index) => (
+          <div key={index} className={styles.songdata}>
+            <img className={styles.albumcover} alt="" src={item.albumCoverImage} />
+            <div className={styles.dataNBtn}>
+              <p className={styles.titleNsinger}>{item.title} - {item.singer}</p>
+              <Link to={{
+                pathname: `/record/${item.songId}`,
+                state: {
+                  songId: item.songId,
+                },
+              }}><button className={styles.FullBtn}>부르러가기</button></Link>
+            </div>
+            {isLogin ? (
+              <img
+                className={styles.favImage}
+                alt={item.isFav ? "즐겨찾기" : "즐겨찾기 안함"}
+                src={item.isFav ? fullstar : emptystar}
+                onClick={() => toggleFav(item.songId)}
+              />
+            ) : (
+              <img className={styles.noneImage} alt="none" src={none} />
+            )}
+          </div>
+        ))}</>
       ) : (
         <p style={{ fontSize: '0.9rem' }}>검색 결과가 없습니다.</p>
       )}
-      {searchResults.map((item, index) => (
-        <div key={index} className={styles.songdata}>
-          <img className={styles.albumcover} alt="" src={item.albumCoverImage} />
-          <div className={styles.dataNBtn}>
-            <p className={styles.titleNsinger}>{item.title} - {item.singer}</p>
-            <Link to={{
-              pathname: `/record/${item.songId}`,
-              state: {
-                songId: item.songId,
-              },
-            }}><button className={styles.FullBtn}>부르러가기</button></Link>
-            {/* <Link to={{
-              pathname: `/record/${item.songId}`,
-              state: {
-                songId: item.songId,
-              },
-            }}><button className={styles.LineBtn}>소절</button></Link> */}
-          </div>
-          {isLogin ? (
-            <img
-              className={styles.favImage}
-              alt={item.isFav ? "즐겨찾기" : "즐겨찾기 안함"}
-              src={item.isFav ? fullstar : emptystar}
-              onClick={() => toggleFav(item.songId)}
-            />
-          ) : (
-            <img className={styles.noneImage} alt="none" src={none} />
-          )}
-        </div>
-      ))}
     </div>
   );
 };
