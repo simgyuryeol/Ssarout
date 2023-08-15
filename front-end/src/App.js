@@ -27,7 +27,6 @@ function App() {
       localStorage.removeItem('ly')
       localStorage.removeItem('data')
     }
-    console.log("Asdf")
 },[location])
 
   return (

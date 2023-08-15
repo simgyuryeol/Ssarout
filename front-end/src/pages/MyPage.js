@@ -42,10 +42,6 @@ const MyPage = () => {
       <Favorite/>
       <RecordedSongs/><br/>
       <MakeAI/>
-      {/* <br/><br/> */}
-      {/* <Link to="/singingAI" className={styles.singingAI}>
-        AI가 불러주는 노래 들으러 가기
-      </Link> */}
       <br/><br/></div>
       <Footer />
     </div>

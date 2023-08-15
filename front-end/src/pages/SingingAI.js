@@ -18,8 +18,8 @@ const AISongs = () =>{
   const getAISongs = async () => {
     try {
       const response = await Api.get("/api/v1/ai/covers");
-      console.log(response.data)
-      console.log(response.data.data.results)
+      // console.log(response.data)
+      // console.log(response.data.data.results)
       setAIResults(response.data.data.results);
     } catch (error) {
       console.error(error);

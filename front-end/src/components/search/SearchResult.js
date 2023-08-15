@@ -18,7 +18,7 @@ const SearchResult = () => {
       const response = await Api.get("/api/v1/song/search", {
         params: { text: keyword },
       });    
-      console.log(response.data.data);
+      // console.log(response.data.data);
       if (response.data && response.data.data && response.data.data.length > 0) {
         setSearchResults(response.data.data);
       }
@@ -33,7 +33,7 @@ const SearchResult = () => {
       await Api.post("/api/v1/fav", {
         contentId: songId,
       }).then((response) => {
-        console.log(response)
+        // console.log(response)
         // window.location.replace("/search");
         setSearchResults((prevResults) =>
           prevResults.map((item) =>

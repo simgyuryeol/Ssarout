@@ -29,7 +29,7 @@ const UpdatePage = () => {
   const nicknameChange = async () => {
     try {
       const nn = document.querySelector("#nickname").value;
-      console.log(nn);
+      // console.log(nn);
       if (!nn) {
         alert("닉네임을 입력해주세요");
         return;
@@ -38,7 +38,7 @@ const UpdatePage = () => {
         nickname: nn,
         profileImg: profileImg,
       }).then((response) => {
-        console.log(response);
+        // console.log(response);
         window.location.replace("/mypage");
       });
     } catch (error) {

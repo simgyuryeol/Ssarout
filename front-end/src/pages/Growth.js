@@ -15,7 +15,7 @@ const Growth = () => {
     try {
       const response = await Api.get(`/api/v1/result/recorded-songs/${data.songId}`);
       setGrowthGraph(response.data.data.results);
-      console.log(response.data.data.results)
+      // console.log(response.data.data.results)
     } catch (error) {
       console.error(error);
     }
@@ -86,11 +86,11 @@ const Growth = () => {
         }}
         axisLeft={null}
         enableGridX={true} // 배경 세로 줄
-        colors="#B96BAA" // 데이터들 잇는 선 색
+        colors="#ffb860" // 데이터들 잇는 선 색
         pointSize={13}
-        pointColor="#B96BAA" // 동그라미
+        pointColor="#ffb860" // 동그라미
         pointBorderWidth={2}
-        pointBorderColor="#B96BAA" // 동그라미 테두리
+        pointBorderColor="#ffb860" // 동그라미 테두리
         enablePointLabel={true}
         pointLabel="y"
         pointLabelYOffset={-16}
@@ -105,7 +105,7 @@ const Growth = () => {
   return (
     <div className="growthContainer">
       {/* <Header/> */}
-      <br/>
+      <br/><br/><br/>
       <p className={styles.recordTitle}>{data.title} - {data.singer}</p>
       <MyResponsiveLine/>
       <br/><br/>

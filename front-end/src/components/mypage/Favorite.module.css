@@ -20,13 +20,25 @@
 /* 앨범커버랑 별 감싼 */
 .favsongData {
   display: inline;
-  justify-content: space-evenly;
+  justify-content: flex-start;
+  float: left;
+  padding-left: 25px;
+  /* display: flex; */
+  /* flex-direction: row; */
+  /* width: 80px; */
+
   /* align-items: left; */
   /* display: flex; */
   /* align-items: flex-start; */
-  margin-left: 15px;
-  margin-right: 15px;
+  margin-left: 5px;
+  /* margin-right: 5px; */
   /* margin-bottom: 40px; */
+}
+
+.favTotal {
+  float: left;
+  display: inline;
+  justify-content: flex-start;
 }
 
 .titleNsinger {
@@ -53,4 +65,3 @@
   margin-left: 1.8rem;
   margin-top: 1.5rem;
 }
-

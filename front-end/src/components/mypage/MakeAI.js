@@ -15,7 +15,7 @@ const MakeAI = () => {
   const getRecordCounts = async () => {
     try {
       const response = await Api.get("/api/v1/result/recorded-songs");
-      console.log(response.data.data.resultCount)
+      // console.log(response.data.data.resultCount)
       setrecordCounts(response.data.data.resultCount)
     } catch (error) {
       console.error(error);
@@ -33,20 +33,20 @@ const MakeAI = () => {
     try {
       const response = await Api.get("/api/v1/ai/covers");
       console.log(response.data)
-      console.log(response.data.data.results)
-      console.log(response.data.data.results[0].aiCoverFile)
-      console.log(response.data.data.resultCount)
+      // console.log(response.data.data.results)
+      // console.log(response.data.data.results[0].aiCoverFile)
+      // console.log(response.data.data.resultCount)
       if (response.data.data.resultCount && response.data.data.results[0].aiCoverFile) {
         setshowAISongPageButton(true)
         setShowGenerateButton(false);
-        console.log('들으러가는버튼 생겨야함',showAISongPageButton)
-        console.log('만들어주세요 버튼 false돼야함',showGenerateButton)
+        // console.log('들으러가는버튼 생겨야함',showAISongPageButton)
+        // console.log('만들어주세요 버튼 false돼야함',showGenerateButton)
         // 1. 요청은 이미 보낸 상태고(resultCount>=1), aiCoverFile url까지 있다면
         // ai 노래가 완성된거임
         // 생성중입니다 버튼을 ai 노래 들으러가기 링크로 바꿔주는 함수
       } if (response.data.data.resultCount && !response.data.data.results[0].aiCoverFile) {
         setShowGenerateButton(false);
-        console.log('아직 안만들어졌고 신청만함', showGenerateButton)
+        // console.log('아직 안만들어졌고 신청만함', showGenerateButton)
         // 2. 요청을 이미 보낸 상탠데 아직 안만들어졌으면 생성중입니다 - setGeneration(false)
       } 
       // else {
@@ -61,7 +61,7 @@ const MakeAI = () => {
     try {
       await Api.post("/api/v1/ai/covers"
       ).then((response) => {
-        console.log(response)
+        // console.log(response)
         setShowGenerateButton(false);
       })
     } catch (error) {
@@ -81,17 +81,8 @@ const MakeAI = () => {
       {recordCounts < 10 ? (
         <>
           <Progress size={[300, 15]} percent={changePercent(recordCounts)} showInfo={false} status="active" trailColor='white' strokeColor={{ from: '#108ee9', to: '#87d068' }} />
-          {{recordCounts} >= 0 ? (
-            <>
-            <p className={styles.recordMent1}>{recordCounts} / 10</p>
-            <p className={styles.recordMent}>아직 녹음 데이터가 부족해요!</p>
-            </>
-          ) : (
-            <>
-            <p className={styles.recordMent1}>0 / 10</p>
-            <p className={styles.recordMent}>아직 녹음 데이터가 부족해요!</p>
-            </>
-          )}
+          <p className={styles.recordMent1}>{recordCounts} / 10</p>
+          <p className={styles.recordMent}>아직 녹음 데이터가 부족해요!</p>
         </>
       ) : (
         <>

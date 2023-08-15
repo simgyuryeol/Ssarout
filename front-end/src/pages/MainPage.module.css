@@ -67,13 +67,6 @@
   align-items: center;
   justify-content: center;
 }
-.container {
-  border-radius: var(--br-81xl);
-  overflow: hidden;
-  display: flex;
-  flex-direction: row;
-  
-}
 .leadingIcon {
   width: 48px;
   height: 48px;
@@ -192,6 +185,7 @@
   color: white;
   font-size: 17px;
   letter-spacing: -0.5px;
+  /* margin-bottom: 0.2rem; */
 }
 
 .footer {
@@ -225,4 +219,24 @@
   width: 90%;
   opacity: 0.7;
   display: flex;
+}
+
+.notice {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 0;
+}
+
+.noticeMent {
+  margin-top: 0;
+  margin-bottom: 0.2rem;
+  margin-left: 0.5rem;
+  color : white;
+  font-family: 'lineTh';
+  font-size: 0.9rem;
+  font-style: italic;
+}
+
+.questMent {
+  font-family: 'lineRg';
 }

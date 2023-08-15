@@ -31,7 +31,6 @@
 .titleMent {
   margin-top: 1.5rem;
   margin-bottom: 0;
-
   font-family: 'lineTh';
   font-size: 1.2rem;
 }
@@ -42,8 +41,4 @@
   font-family: 'lineTh';
   font-size: 0.9rem;
   font-style: italic;
-}
-
-.container {
-  min-height:calc(100vh - 50px);
 }

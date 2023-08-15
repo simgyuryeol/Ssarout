@@ -1,5 +1,16 @@
 .pageTitle {
-  margin-bottom: 5px;
+  margin-top: 1rem;
+  margin-bottom: 0;
+  font-family: 'lineRg';
+  font-size: 1.2rem;
+}
+
+.historyMent {
+  margin-top: 0.2rem;
+  margin-bottom: 0.8rem;
+  font-family: 'lineTh';
+  font-size: 0.9rem;
+  font-style: italic;
 }
 
 .hisAlbumcover {
@@ -36,3 +47,4 @@
   margin-left: auto;
   margin-right: auto;
 }
+

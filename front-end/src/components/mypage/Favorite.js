@@ -36,7 +36,7 @@ const Favorite = () => {
   }, []);
 
   return (
-    <div>
+    <div className={styles.favTotal}>
       {favResults.length > 0 ? (
         <p className={styles.favMent}>즐겨찾기</p>
       ) : (
@@ -47,7 +47,7 @@ const Favorite = () => {
      )}
       {favResults.map((item, index) => (
         <div key={index} className={styles.favsongData}>
-          <Link to={{
+          <Link className={styles.favLink} to={{
               pathname: `/record/${item.songId}`,
               state: {
                 songId: item.songId,

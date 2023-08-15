@@ -10,7 +10,6 @@ const SearchBar = () => {
   const [keyword, setKeyword] = useState(data || "")
 
   const updatePage = () => {
-    // window.location.reload(); 하면 메인페이지가 뜨눈군..
     window.location.replace("/search");
   }
 
@@ -20,7 +19,7 @@ const SearchBar = () => {
 
   const enterPress = (event) => {
     if(event.key === "Enter"){
-      console.log('눌림')
+      // console.log('눌림')
       event.preventDefault();
       navigate('/search', { state: { data: keyword } });
       window.location.replace("/search"); // 두번째검색부턴 리렌더링 해줘야

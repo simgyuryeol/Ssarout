@@ -16,7 +16,7 @@ const Redirecion = ({history}) => {
   const f1 = async () => {
     try {
       await Api.get("/api/v1/users").then((response) => {
-        console.log(response.data);
+        // console.log(response.data);
         profileImg = response.data.data.profileImg;
         if (response.data.data.nickname != null) {
           window.location.replace("/");
@@ -30,7 +30,7 @@ const Redirecion = ({history}) => {
   const f2 = async () => {
     try {
       const nn = document.querySelector("#nickname").value;
-      console.log(nn);
+      // console.log(nn);
       if (!nn) {
         window.alert("닉네임을 입력해주세요");
         return;
@@ -40,7 +40,7 @@ const Redirecion = ({history}) => {
         nickname: nn,
         profileImg: profileImg,
       }).then((response) => {
-        console.log(response);
+        // console.log(response);
         window.location.replace("/");
       });
     } catch (error) {

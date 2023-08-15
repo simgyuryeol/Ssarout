@@ -1,0 +1,71 @@
+.singingAI {
+  display: block;
+  padding: 10px 20px;
+  height: 18px;
+  background-color: transparent;
+  border-color: white;
+  border: solid 1px;
+  color: white;
+  text-decoration: none;
+  border-radius: 33px;
+  margin-top: 10px;
+  text-align: center;
+
+  width: fit-content;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* ai 노래 만들어주세요! 버튼 */
+.AIRequest { 
+  font-family: 'lineRg';
+  font-size: 1rem;
+  padding: 5px 10px;
+  padding-top: 4px;
+  margin-top: 0.4rem;
+}
+
+.test {
+  color: white;
+}
+
+.recordMent1 {
+  margin-top: 2px;
+  margin-bottom: 2px;
+  font-weight: bold;
+  color: #ceffa0;
+}
+
+.recordMent {
+  margin-top: 2px;
+  margin-bottom: 2px;
+}
+
+.AItitle {
+  color: white;
+  text-align: center;
+  margin-bottom: 0.2rem;
+  margin-top: 3rem;
+}
+
+.AIRequestMent {
+  font-family: 'lineTh';
+  font-size: 0.8rem;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.questIcon {
+  width: 24px;
+  height: 22px;
+  margin-left: 7px;
+}
+
+.mentNquest {
+  display: flex;
+  justify-content: center;
+}
+
+.questMent {
+  font-family: 'lineRg';
+}

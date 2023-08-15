@@ -15,7 +15,7 @@ const HistoryDetail = () => {
     try {
       const response = await Api.get("/api/v1/result/history");
       const matchingItems = response.data.data.results.filter((item) => item.title === decodedTitle);
-      console.log(matchingItems);
+      // console.log(matchingItems);
       sethisDetailResults(matchingItems.map(item => ({ ...item, audio1: new Audio(item.mrFile), audio2: new Audio(item.recordFile) })));
     } catch (error) {
       console.error(error);
@@ -54,12 +54,12 @@ const HistoryDetail = () => {
     // 창 벗어나면 음악 멈춤
     let stopSongInterval;
     stopSongInterval = setInterval(() => {
-      console.log('sdafds');
-      console.log('재생중인', activeIndex);
+      // console.log('sdafds');
+      // console.log('재생중인', activeIndex);
       if (!window.location.pathname.includes('/history/') && activeIndex !== null) {
         pauseAudio(activeIndex);
         clearInterval(stopSongInterval);
-        console.log('이제머뭋ㅁ');
+        // console.log('이제머뭋ㅁ');
       }
     }, 100);
     return () => {

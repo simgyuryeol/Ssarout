@@ -10,8 +10,8 @@ const RecordedSongs = () => {
     try {
       const response = await Api.get("/api/v1/result/recorded-songs");
       // console.log(response.data)
-      console.log(response.data.data.resultCount)
-      console.log(response.data.data.results);
+      // console.log(response.data.data.resultCount)
+      // console.log(response.data.data.results);
       if (response.data && response.data.data.results && response.data.data.results.length > 0) {
         setrecordResults(response.data.data.results);
       }

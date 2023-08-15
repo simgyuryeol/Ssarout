@@ -29,42 +29,35 @@
   justify-content: center;
 }
 
-/* 앨범커버 */
+/* 앨범아트 */
 .aiAlbumcover {
   display: inline;
   width: 130px;
   height: 130px;
   margin: 10px;
-
   position: relative;
   z-index: 1;
-
 }
 
 /* 재생버튼 */
 .playBtn {
   width: 50px;
   height: 50px;
-  display: inline;
-  margin-right: 2.8rem;
-  margin-top: 0.5rem;
-  margin-bottom: 0.5rem;
-
+  margin-left: 50px;
+  margin-top: 50px;
   position: absolute;
   z-index: 2;
-
 }
 
 /* 합친거 */
 .aiData {
-  /* display: flex;
-  flex-direction: column; */
-  margin-left: 5px;
-  margin-right: 5px;
+  display: flex;
+  flex-direction: column;
+  margin-left: 10px;
+  margin-right: 10px;
   width: 300;
-
-  display: inline;
-  justify-content: space-evenly;
+  /* display: inline;
+  justify-content: space-evenly; */
 }
 
 .titleNsinger {
