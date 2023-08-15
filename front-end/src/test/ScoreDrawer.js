@@ -172,10 +172,9 @@ export class ScoreDrawer {
       let nextLineLyrics = ""
       if (note.start <= this._elapsed && note.start + note.length - fps >= this._elapsed){
         this.LineLyrics.forEach(element => {
-          if(element.startTime<= note.start && note.start <= element.endTime){
-   
-            let lyricStart = element.startNode
-            let lyricend = element.endNode
+          if(element.starttime<= note.start && note.start <= element.endtime){
+            let lyricStart = element.startnode
+            let lyricend = element.endnode
 
             for(let i = lyricStart; i <= lyricend; i ++ ){
               if(this._playScore[i].lylic){
@@ -187,7 +186,6 @@ export class ScoreDrawer {
           }
         });
         LineLyrics.textContent =  nextLineLyrics
-
       }}
 
       if (note.start <= this._elapsed && note.start + note.length - fps >= this._elapsed) {
