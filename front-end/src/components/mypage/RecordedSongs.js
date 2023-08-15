@@ -29,7 +29,7 @@ const RecordedSongs = () => {
       {recordResults.length > 0 ? (
         <p className={styles.recordMent}>기록된 노래</p>
       ) : (
-        <p className={styles.recordMent}>기록된 노래가 없어요!</p>
+        <p className={styles.recordMent}>기록된 노래가 없습니다.</p>
       )}
       {recordResults.map((item, index) => (
         <div key={index} className={styles.favsongData}>

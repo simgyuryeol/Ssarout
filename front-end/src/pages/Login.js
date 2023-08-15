@@ -32,6 +32,7 @@ const Login = () => {
 
   return (
     <div>
+      <div class="container">
       <Header/>
       <p className={styles.loginMent}>소셜로그인 후 서비스를 즐겨보세요!</p>
       <hr className={styles.line}/>
@@ -50,7 +51,7 @@ const Login = () => {
             <p className={styles.googleMent}>카카오톡 로그인하기</p>
           </button>
         </a>
-      </h1>
+      </h1></div>
       <Footer/>
 
     </div>

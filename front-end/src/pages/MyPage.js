@@ -29,6 +29,7 @@ const MyPage = () => {
 
   return (
     <div>
+      <div className={styles.container}>
       <Header />
       <br/>
       <div className={styles.profile}>
@@ -45,8 +46,8 @@ const MyPage = () => {
       {/* <Link to="/singingAI" className={styles.singingAI}>
         AI가 불러주는 노래 들으러 가기
       </Link> */}
-      <br/><br/>
-      {/* <Footer /> */}
+      <br/><br/></div>
+      <Footer />
     </div>
   );
 };

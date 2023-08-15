@@ -10,7 +10,6 @@ const HistoryDetail = () => {
   const decodedTitle = decodeURIComponent(title);
   const [hisDetailResults, sethisDetailResults] = useState([]);
   const [activeIndex, setActiveIndex] = useState(null);
-  const [stopSong, setStopSong] = useState('/history/')
 
   const getHistoryDetail = async () => {
     try {
@@ -49,11 +48,27 @@ const HistoryDetail = () => {
   };
   
   useEffect(() => {
-    // f1();
     console.log(title);
     getHistoryDetail();
-    
-  }, [stopSong]);
+
+    // 창 벗어나면 음악 멈춤
+    let stopSongInterval;
+    stopSongInterval = setInterval(() => {
+      console.log('sdafds');
+      console.log('재생중인', activeIndex);
+      if (!window.location.pathname.includes('/history/') && activeIndex !== null) {
+        pauseAudio(activeIndex);
+        clearInterval(stopSongInterval);
+        console.log('이제머뭋ㅁ');
+      }
+    }, 100);
+    return () => {
+      clearInterval(stopSongInterval);
+      if (activeIndex !== null) {
+        pauseAudio(activeIndex);
+      }
+    };
+  }, [activeIndex]);
 
   return (
     <div>

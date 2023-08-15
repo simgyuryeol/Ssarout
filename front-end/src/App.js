@@ -5,7 +5,6 @@ import MyPage from "./pages/MyPage"
 import UserUpdate from './pages/UserUpdate';
 import SearchResult from "./pages/SearchResult"
 import SingingAI from "./pages/SingingAI"
-import SingingAIResult from "./pages/SingingAIResult"
 import Login from './pages/Login';
 import Redirecion from './pages/Redirection';
 import ServiceIntro from './pages/ServiceIntro';
@@ -61,15 +60,6 @@ function App() {
           element={
             <PrivateRoute>
               <SingingAI />  
-            </PrivateRoute>
-          }
-        />
-
-        <Route 
-          exact path="/singingAIresult" 
-          element={
-            <PrivateRoute>
-              <SingingAIResult />  
             </PrivateRoute>
           }
         />

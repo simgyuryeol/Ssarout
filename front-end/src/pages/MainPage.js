@@ -10,13 +10,14 @@ const MainPage = () => {
   return (
     <div className={styles.div}>
       <Header />
-      <div id='wrapper'>
+      <div id='wrap-container'>
+        <div className={styles.homecontainer}>
         <br/>
         <p className={styles.searchMent}>연습하고 싶은 노래를 검색해보세요!</p>
         <br/>
         <SearchBar/>
         <br/><br/><br/>
-        <Slider/>
+        <Slider/></div>
       </div>
       <Footer />
     </div>

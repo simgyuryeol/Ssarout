@@ -1,5 +1,6 @@
 .App {
   text-align: center;
+  
 }
 
 /* .App-header {
@@ -60,6 +61,7 @@ body {
   margin: 0;
   line-height: normal;
 }
+
 :root {
   /* fonts */
   --font-line-seed-sans-kr: "LINE Seed Sans KR";

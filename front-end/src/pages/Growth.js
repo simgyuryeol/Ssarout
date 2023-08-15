@@ -103,14 +103,14 @@ const Growth = () => {
   )
 
   return (
-    <div>
-      <Header/>
+    <div className="growthContainer">
+      {/* <Header/> */}
       <br/>
       <p className={styles.recordTitle}>{data.title} - {data.singer}</p>
       <MyResponsiveLine/>
       <br/><br/>
       <button className={styles.updateBackBtn}><Link to="/mypage" className={styles.updateBackA}>확인</Link></button>
-      <Footer/>
+      {/* <Footer/> */}
     </div>
   );
 };
