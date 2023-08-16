@@ -349,19 +349,43 @@ export class ScoreDrawer {
         if (this._beat[j] !== -1 || this._ment[j] !== -1) {
           if (this._ment[j] === 'red') {
             mentcomment = '음정이 높아요 Down! Down!';
+          ctx.fillStyle = 'red';
           } else if (this._ment[j] === 'blue') {
             mentcomment = '음정이 떨어집니다!! Up! Up!';
+          ctx.fillStyle = 'blue';
           } else if (this._ment[j] === 'noPitch') {
             mentcomment = '음정이 흔들리고 있어요 집중하세요!';
+          ctx.fillStyle = 'yellow';
+
           }
           if (this._beat[j] === 'false') {
             beatcomment = '박자가 맞지 않습니다!!';
+
           }
+
           comment = mentcomment + ' ' + beatcomment;
-          ctx.fillStyle = 'white';
-          // ctx.textAlign="center";
           const strwidth = ctx.measureText(comment).width;
-          ctx.fillText(comment, window.innerWidth / 2 - strwidth / 2 + this.count, 180);
+          const centerX = window.innerWidth / 2 - strwidth / 2 + this.count;
+          const centerY = 180;
+          
+          if (mentcomment === '음정이 높아요 Down! Down!') {
+            // mentcomment = '음정이 높아요 Down! Down!';
+          ctx.fillStyle = 'red';
+          } else if (mentcomment === '음정이 떨어집니다!! Up! Up!') {
+            // mentcomment = '음정이 떨어집니다!! Up! Up!';
+          ctx.fillStyle = 'blue';
+          } else if (mentcomment === '음정이 흔들리고 있어요 집중하세요!') {
+            // mentcomment = '음정이 흔들리고 있어요 집중하세요!';
+          ctx.fillStyle = 'yellow';
+        }
+          ctx.fillText(mentcomment, centerX, centerY);
+          // Draw beatcomment
+          ctx.fillStyle = 'purple'; // Set the color for beatcomment
+          ctx.fillText(beatcomment, centerX +10 + ctx.measureText(mentcomment).width, centerY);
+  
+          // // ctx.textAlign="center";
+          // const strwidth = ctx.measureText(comment).width;
+          // ctx.fillText(comment, window.innerWidth / 2 - strwidth / 2 + this.count, 180);
           if (this.turn === 0) {
             this.count += 1;
           } else {
