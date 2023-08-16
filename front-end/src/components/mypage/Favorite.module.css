@@ -1,7 +1,9 @@
 /* 앨범아트 */
 .favAlbumcover {
-  width: 80px;
-  height: 80px;
+  /* width: 80px;
+  height: 80px; */
+  width: 24vw;
+  height: 24vw;
   position: relative;
   margin-bottom: 0.5rem;
   z-index: 1;
@@ -33,7 +35,7 @@
   /* display: flex; */
   /* align-items: flex-start; */
   /* margin-left: 5px; */
-  margin-right: 2rem;
+  margin-right: 6vw;
   /* margin-bottom: 40px; */
 }
 
@@ -41,8 +43,10 @@
   float: left;
   /* width: 360px; */
   display: inline;
-  margin-left: 1.8rem;
-  margin-right: 1.6rem;
+  margin-left: 8vw;
+  margin-right: 8vw;
+  /* margin-left: 1.8rem;
+  margin-right: 1.6rem; */
   width: 100vw;
   /* justify-content: flex-start; */
 }
