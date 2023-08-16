@@ -39,7 +39,7 @@ const MyPage = () => {
           <Link to="/update" className={styles.updateBtn}>회원 정보 수정</Link>
         </div>
       </div>
-      <Favorite/>
+      <Favorite/><br/>
       <RecordedSongs/><br/>
       <MakeAI/>
       <br/><br/></div>

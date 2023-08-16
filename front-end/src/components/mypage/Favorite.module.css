@@ -3,7 +3,7 @@
   width: 80px;
   height: 80px;
   position: relative;
-  margin-bottom: 1rem;
+  margin-bottom: 0.5rem;
   z-index: 1;
 }
 
@@ -22,7 +22,9 @@
   display: inline;
   justify-content: flex-start;
   float: left;
-  padding-left: 25px;
+  /* width: 360px; */
+
+  /* padding-left: 30px; */
   /* display: flex; */
   /* flex-direction: row; */
   /* width: 80px; */
@@ -30,14 +32,18 @@
   /* align-items: left; */
   /* display: flex; */
   /* align-items: flex-start; */
-  margin-left: 5px;
-  /* margin-right: 5px; */
+  /* margin-left: 5px; */
+  margin-right: 1.8rem;
   /* margin-bottom: 40px; */
 }
 
 .favTotal {
   float: left;
+  width: 360px;
   display: inline;
+  margin-left: 1.8rem;
+  margin-right: 1.8rem;
+  width: 100vw;
   justify-content: flex-start;
 }
 
@@ -62,6 +68,6 @@
   font-size: 1rem;
   text-align: start;
   margin-bottom: 0.5rem;
-  margin-left: 1.8rem;
+  /* margin-left: 1.8rem; */
   margin-top: 1.5rem;
 }
