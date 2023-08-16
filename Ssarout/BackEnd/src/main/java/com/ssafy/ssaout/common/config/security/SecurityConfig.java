@@ -13,6 +13,8 @@ import com.ssafy.ssaout.common.oauth.service.CustomOAuth2UserService;
 import com.ssafy.ssaout.common.oauth.service.CustomUserDetailsService;
 import com.ssafy.ssaout.common.oauth.token.AuthTokenProvider;
 import com.ssafy.ssaout.user.repository.UserRefreshTokenRepository;
+
+import java.io.IOException;
 import java.util.Arrays;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
@@ -24,11 +26,17 @@ import org.springframework.security.config.annotation.authentication.builders.Au
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.config.http.SessionCreationPolicy;
+import org.springframework.security.core.Authentication;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
+import org.springframework.security.web.authentication.logout.LogoutSuccessHandler;
 import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.CorsUtils;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
+
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 @Configuration
 @RequiredArgsConstructor
@@ -90,7 +98,15 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
             .failureHandler(oAuth2AuthenticationFailureHandler())
             .and()
             .logout()
-            .logoutSuccessUrl("/");
+                .logoutUrl("/logout") // 로그아웃 U
+                .logoutSuccessHandler(new LogoutSuccessHandler() {
+
+                    @Override
+                    public void onLogoutSuccess(HttpServletRequest request, HttpServletResponse response,
+                                                Authentication authentication) throws IOException, ServletException {
+                        System.out.println("success");
+                    }
+                });
 
         http.addFilterBefore(tokenAuthenticationFilter(),
             UsernamePasswordAuthenticationFilter.class);
