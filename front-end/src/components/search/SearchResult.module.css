@@ -3,6 +3,10 @@
   height: 70px;
 }
 
+.withStartTiming {
+  opacity: 0.3;
+}
+
 .songdata {
   display: flex;
   justify-content: space-between;
@@ -35,9 +39,9 @@
   margin-left: 0;
 }
 
-.FullBtn:hover {
+/* .FullBtn:hover {
   background-color: #4B72C5;
-}
+} */
 
 .dataNBtn {
   display: block;

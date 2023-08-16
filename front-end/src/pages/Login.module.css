@@ -11,6 +11,15 @@
   margin-right: 7px;
 }
 
+.kakaoMent {
+  display: flex;
+  color: black;
+  padding-top: 4px;
+  font-family: 'lineRg';
+  font-size: 15px;
+  margin-right: 7px;
+}
+
 .google {
   margin-top: 10;
   display: flex;
@@ -53,3 +62,6 @@
   opacity: 0.5;
 }
 
+.container {
+  min-height:calc(100vh - 38px);
+}

@@ -15,7 +15,7 @@ const Growth = () => {
     try {
       const response = await Api.get(`/api/v1/result/recorded-songs/${data.songId}`);
       setGrowthGraph(response.data.data.results);
-      // console.log(response.data.data.results)
+      console.log(response.data.data.results)
     } catch (error) {
       console.error(error);
     }

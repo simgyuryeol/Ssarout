@@ -19,7 +19,7 @@ const MainPage = () => {
       <Header />
       <div id='wrap-container'>
         <div className={styles.homecontainer}>
-        <br/>
+        <br/><br/><br/><br/><br/><br/><br/><br/><br/>
         <div className={styles.notice}>
           <p className={styles.searchMent}>연습하고 싶은 노래를 검색해보세요!</p>
           <div style={{marginTop: 0}}>
@@ -32,8 +32,8 @@ const MainPage = () => {
         </div>
         <br/>
         <SearchBar/>
-        <br/><br/><br/>
-        <Slider/><br/><br/><br/>
+        <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+        {/* <Slider/><br/><br/><br/> */}
         {isLogin && (
         <AIProgress/>
         )}</div>

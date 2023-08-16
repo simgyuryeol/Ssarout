@@ -37,17 +37,17 @@ const Sidebar = ({ isOpen, setIsOpen }) => {
 
   const logout = async () => {
     try {
-      await Api.post("/logout").then((response) => {
+      await Api.get("/logout").then((response) => {
         localStorage.removeItem("token");
+        window.location.reload();
         // console.log(response);
         // toggleSide(); 
         // window.location.replace("/");
         // navigate("/")
-      }).then((response) => {
-        window.location.reload();
       })
     } catch (error) {
       localStorage.removeItem("token");
+      window.location.reload();
       console.error(error);
     }
   };

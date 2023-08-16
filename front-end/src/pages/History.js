@@ -7,7 +7,7 @@ import styles from "./History.module.css"
 const History = () => {
   return (
     <div>
-      <div class="container">
+      <div className={styles.container}>
       <Header/>
       <HistoryCom/></div>
       <Footer/>
