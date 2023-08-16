@@ -169,12 +169,8 @@
   font-family: 'lineRg';
 }
 
-
-/* footer 하단 고정 */
-#wrap-container {
-  /* height: auto; */
+.container {
   min-height:calc(100vh - 38px);
-  padding-bottom: 60px;
 }
 
 .homecontainer {

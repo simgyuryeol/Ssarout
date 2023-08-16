@@ -16,8 +16,8 @@ const MainPage = () => {
 
   return (
     <div className={styles.div}>
+      <div className={styles.container}>
       <Header />
-      <div id='wrap-container'>
         <div className={styles.homecontainer}>
         <br/><br/><br/><br/><br/><br/><br/><br/><br/>
         <div className={styles.notice}>

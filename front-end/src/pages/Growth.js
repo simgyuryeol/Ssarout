@@ -56,10 +56,10 @@ const Growth = () => {
   ]
   
   const MyResponsiveLine = () => (
-    <div style={{ width: '400px', height: '300px', margin: '0 auto' }}>
+    <div style={{ width: 'auto', height: '90vw', margin: '0 auto' }}>
     <ResponsiveLine
         data={test}
-        margin={{ top: 30, right: 70, bottom: 30, left: 30 }}
+        margin={{ top: 30, right: 30, bottom: 30, left: 30 }}
         theme={{
           textColor: "#FFFFFF",
           fontSize: 14,
@@ -119,7 +119,7 @@ const Growth = () => {
 
   return (
     <div className="growthContainer">
-      {/* <Header/> */}
+      <Header/>
       <br/><br/><br/>
       <p className={styles.recordTitle}>{songTitle} - {singer}</p>
       <MyResponsiveLine/>
