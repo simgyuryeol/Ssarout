@@ -114,7 +114,7 @@ function App() {
         />
 
         <Route 
-          exact path="/growth/:songId/:title/:singer" 
+          exact path="/growth/:songId/" 
           element={
             <PrivateRoute>
               <Growth />  

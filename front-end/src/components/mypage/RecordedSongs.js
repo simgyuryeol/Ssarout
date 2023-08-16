@@ -40,11 +40,9 @@ const RecordedSongs = () => {
               <p className={styles.recordAvg}>{item.averageAccuracy}%</p>
               <button className={styles.growthBtn}>
                 <Link to={{
-                  pathname: `/growth/${item.songId}/${item.title}/${item.singer}`,
+                  pathname: `/growth/${item.songId}`,
                   state: {
-                    songId: item.songId,
-                    title: item.title,
-                    singer: item.singer,
+                    songId: item.songId
                   },
                 }} className={styles.growthBack}>+ 성장그래프 보기</Link></button>
             </div>
