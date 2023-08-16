@@ -150,3 +150,13 @@ div.blind {
 .container {
   min-height:calc(100vh - 38px);
 }
+
+#lineLyrics {
+  margin-top: 0;
+  margin-bottom: 0;
+  color: rgb(0, 0, 0);
+}
+
+#songTitleNSinger {
+  font-size: 1.2rem;
+}

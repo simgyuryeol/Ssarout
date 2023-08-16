@@ -90,8 +90,8 @@ export class Test {
     const LineLyrics = document.createElement('p')
     LineLyrics.id = "lineLyrics"
     wrapper.appendChild(LineLyrics)
-    LineLyrics.textContent = ""
-    wrapper.appendChild(document.createElement("br"));
+    LineLyrics.textContent = "가사가 여기에 표시됩니다"
+    // wrapper.appendChild(document.createElement("br"));
     wrapper.appendChild(canvasContainer);
 
     wrapper.appendChild(this.songEditor.render());
@@ -104,6 +104,8 @@ export class Test {
     // newContent = document.createTextNode(songTitle);
 
     creatediv.appendChild(newContent)
+    console.log(creatediv)
+    creatediv.id=("songTitleNSinger")
     // creatediv.innerHTML(</br>)
     return creatediv
   }

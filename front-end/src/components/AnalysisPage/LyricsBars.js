@@ -135,8 +135,9 @@ const LyricsBars = () => {
     <div>
       <Header />
           <div className="bar-container">
-            <br/>
-            <h3>{songTitle} -  {singer}</h3>
+              {(Object.keys(rerecordlyrics).length > 0 && activeBar !== null) ? (
+          <SingTest rerecordlyrics={rerecordlyrics} mrFile={0}/>
+        ) : null}
             <div style={flexContainerStyle}>
               {resultArray.map((timeInfo, index) => (
                 <LyricsBar
@@ -151,10 +152,9 @@ const LyricsBars = () => {
                 />
               ))}
             </div>
+            <br/>
+            <h3>{songTitle} -  {singer}</h3>
           </div>
-          {(Object.keys(rerecordlyrics).length > 0 && activeBar !== null) ? (
-      <SingTest rerecordlyrics={rerecordlyrics} mrFile={0}/>
-    ) : null}
 
 
         </div>
