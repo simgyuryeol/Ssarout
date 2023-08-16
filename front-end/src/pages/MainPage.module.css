@@ -170,12 +170,12 @@
 }
 
 .container {
-  min-height:calc(100vh - 38px);
+  min-height:calc(100vh - 24.8vh);
 }
 
-.homecontainer {
+/* .homecontainer {
   min-height:calc(100vh - 90px);
-}
+} */
 
 .searchMent {
   color: white;

@@ -31,13 +31,12 @@ const MainPage = () => {
           </div>
         </div>
         <br/>
-        <SearchBar/>
-        <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
-        {/* <Slider/><br/><br/><br/> */}
+        <SearchBar/></div></div>
+        
         {isLogin && (
         <AIProgress/>
-        )}</div>
-      </div>
+        )}<br/>
+      
       <Footer />
     </div>
   );

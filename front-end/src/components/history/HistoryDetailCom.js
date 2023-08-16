@@ -15,7 +15,7 @@ const HistoryDetail = () => {
     try {
       const response = await Api.get("/api/v1/result/history");
       const matchingItems = response.data.data.results.filter((item) => item.title === decodedTitle);
-      // console.log(matchingItems);
+      console.log('이건매칭',matchingItems);
       sethisDetailResults(matchingItems.map(item => ({ ...item, audio1: new Audio(item.mrFile), audio2: new Audio(item.recordFile) })));
     } catch (error) {
       console.error(error);
