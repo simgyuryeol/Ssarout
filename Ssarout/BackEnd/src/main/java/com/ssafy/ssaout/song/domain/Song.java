@@ -41,6 +41,9 @@ public class Song {
     @Column(name = "VOICE_FILE", columnDefinition = "TEXT")
     private String voiceFile;
 
+    @Column(name = "AI_MR_FILE", columnDefinition = "TEXT")
+    private String aiMrFile;
+
     @Column(name = "MR_FILE", columnDefinition = "TEXT")
     private String mrFile;
 
