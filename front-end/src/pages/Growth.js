@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { Link, useParams } from 'react-router-dom'
+import { Link, useParams, useNavigate } from 'react-router-dom'
 import Header from '../components/commonUse/Header'
 import Footer from '../components/commonUse/Footer';
 import Api from "../Api/Api";
@@ -10,6 +10,9 @@ import { ResponsiveLine } from '@nivo/line'
 const Growth = () => {
   const data = useParams(); // songId, title, singer
   const [growthGraph, setGrowthGraph] = useState([]);
+  const [songTitle, setSongTitle] = useState();
+  const [singer, setSinger] = useState();
+  const navigate = useNavigate()
 
   const getGrowthGraph = async () => {
     try {
@@ -18,11 +21,23 @@ const Growth = () => {
       console.log(response.data.data.results)
     } catch (error) {
       console.error(error);
+      navigate(-1)
+    }
+    try {
+      const responseSongData = await Api.get('/api/v1/song/info',{params :{songId:data.songId} });
+      setSongTitle(responseSongData.data.data.title)
+      setSinger(responseSongData.data.data.singer)
+      console.log(songTitle,singer)
+    } catch (error){
+      console.error(error);
+
     }
   };
 
+
   useEffect(() => {
     getGrowthGraph();
+
   }, [data]);
 
   const formatDate = (dateString) => { // createdDateTime mm/dd 형식으로 변경
@@ -32,7 +47,7 @@ const Growth = () => {
 
   const test = [
     {
-      "id": data.title,
+      "id": songTitle,
       "data": growthGraph.map(item => ({
         "x": item.createdDateTime,
         "y": item.accuracy,
@@ -106,7 +121,7 @@ const Growth = () => {
     <div className="growthContainer">
       {/* <Header/> */}
       <br/><br/><br/>
-      <p className={styles.recordTitle}>{data.title} - {data.singer}</p>
+      <p className={styles.recordTitle}>{songTitle} - {singer}</p>
       <MyResponsiveLine/>
       <br/><br/>
       <button className={styles.updateBackBtn}><Link to="/mypage" className={styles.updateBackA}>확인</Link></button>
