@@ -49,7 +49,7 @@ public class AiCoverService {
     private final SongRepository songRepository;
     private final ResultRepository resultRepository;
 
-    private static final Long MINIMUM_RECORD_SONGS = 10L;
+    private static final Long MINIMUM_RECORD_SONGS = 5L;
 
     public AiCoversResponseDto getAiCovers(String userId) {
         User user = userRepository.findByUserId(userId);
