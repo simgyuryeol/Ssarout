@@ -98,6 +98,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
             .failureHandler(oAuth2AuthenticationFailureHandler())
             .and()
             .logout()
+                .deleteCookies("JSESSIONID","refresh_token")
                 .logoutUrl("/logout") // 로그아웃 U
                 .logoutSuccessHandler(new LogoutSuccessHandler() {
 
