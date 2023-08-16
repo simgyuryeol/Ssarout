@@ -16,6 +16,7 @@ public class SongInformationResponse {
     private String voiceFile;
     private String mrFile;
     private String lyric;
+    private Long startTiming;
     private String albumCoverImage;
     private Time runningTime;
     private List<SongLineDto> songLineList;
@@ -29,6 +30,7 @@ public class SongInformationResponse {
         this.voiceFile = song.getVoiceFile();
         this.mrFile = song.getMrFile();
         this.lyric = song.getLyric();
+        this.startTiming = song.getStartTiming();
         this.albumCoverImage = song.getAlbumCoverImage();
         this.runningTime = song.getRunningTime();
         this.songLineList = songLines;
