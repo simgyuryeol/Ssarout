@@ -21,7 +21,7 @@ public class SwaggerConfig {
         return new Docket(DocumentationType.OAS_30).securityContexts(
                 Arrays.asList(securityContext()))
             .securitySchemes(Arrays.asList(apiKey())).select().apis(RequestHandlerSelectors.any())
-            .paths(PathSelectors.any()).build();
+            .paths(PathSelectors.any()).build().pathMapping("/");
     }
 
     private SecurityContext securityContext() {
