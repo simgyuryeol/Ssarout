@@ -32,7 +32,7 @@ const MakeAI = () => {
       <p className={styles.AItitle}>AI 커버곡을 위한 데이터 수집중...</p>
       <Progress size={[300, 15]} percent={changePercent(recordCounts)} showInfo={false} status="active" trailColor='white' strokeColor={{ from: '#ffb860', to: '#87d068' }} />
       <div className={styles.mentNquest}>
-        {recordCounts > 5 ? (
+        {recordCounts > 4 ? (
           <p className={styles.recordMent2}>수집 완료!</p>
         ) : (
           <p className={styles.recordMent1}>{recordCounts} / 5</p>
