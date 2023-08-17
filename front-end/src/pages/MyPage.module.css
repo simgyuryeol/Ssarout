@@ -59,4 +59,5 @@
 
 .container {
   min-height:calc(100vh - 38px);
+  max-height: 100vh;
 }

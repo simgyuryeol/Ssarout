@@ -55,3 +55,9 @@
   margin-top: 0;
   margin-bottom: 0;
 }
+
+/* 마이페이지 Progress bar때문에 화면 넘치던거 */
+.AIbar {
+  max-width: 100vw;
+  padding: 0 10px;
+}
