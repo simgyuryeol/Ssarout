@@ -111,7 +111,11 @@ class ToneDetector extends EventEmitter {
               });
             } catch (error) {
               alert.error(error);
+            } finally {
+              window.location.href = "/analysis";
             }
+          } else if (!this.resultline) {
+            window.location.href = "/analysis";
           }
         }
       };

@@ -218,11 +218,6 @@ export class Test {
         // if(this.songEditor.score.length > 0){
         if (this.response.lyric.length > 0) {
           window.localStorage.setItem("data", JSON.stringify(data));
-          if (!this.pageOut) {
-            setTimeout(() => {
-              window.location.href = "/analysis";
-            }, 1000);
-          }
         }
       });
     }

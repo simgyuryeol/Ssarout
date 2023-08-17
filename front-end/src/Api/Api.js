@@ -35,7 +35,7 @@ Api.interceptors.response.use(
       } catch (error) {
         alert("다시 로그인해주세요.");
         localStorage.removeItem("token");
-        window.location.href("/login");
+        window.location.href="/login";
       }
     } else if (error.response.status === 403) {
       alert("권한이 없습니다.");
