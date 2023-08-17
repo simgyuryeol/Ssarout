@@ -221,7 +221,7 @@ export class Test {
           if (!this.pageOut) {
             setTimeout(() => {
               window.location.href = "/analysis";
-            }, 100);
+            }, 1000);
           }
         }
       });
