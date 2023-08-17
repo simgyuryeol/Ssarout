@@ -34,7 +34,9 @@ const AISongs = () =>{
     }
   
     setActiveIndex(index);
+    AIResults[index].audio1.currentTime = 60;
     await AIResults[index].audio1.play();
+
     // await AIResults[index].audio2.play();
   };
 
