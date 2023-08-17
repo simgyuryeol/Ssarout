@@ -75,6 +75,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
             .accessDeniedHandler(tokenAccessDeniedHandler)
             .and()
             .authorizeRequests()
+            .antMatchers("/swagger-resources/**").permitAll()
             .requestMatchers(CorsUtils::isPreFlightRequest).permitAll()
             .antMatchers(HttpMethod.PUT, "/api/v1/ai/covers").permitAll()
             .antMatchers("/api/v1/users/**").hasAnyAuthority(RoleType.USER.getCode())
