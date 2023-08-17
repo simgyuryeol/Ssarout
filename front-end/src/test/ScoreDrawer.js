@@ -107,7 +107,7 @@ export class ScoreDrawer {
       if (element === 'true') {
         beatTrue += 1;
       } else if (element === -1) {
-        btlength = idx;
+        btlength = idx+1;
         break;
       }
     }
