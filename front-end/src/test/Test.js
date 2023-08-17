@@ -204,7 +204,7 @@ export class Test {
       data.songId = this.songId.songId;
       data.mrUrl = this.response.mrFile;
 
-      // this.drawer.start([]);
+      this.drawer.start([]);
       // this.detector.recording();
       this.getBlobUrl(data);
       setTimeout(() => {
@@ -219,7 +219,9 @@ export class Test {
         if (this.response.lyric.length > 0) {
           window.localStorage.setItem("data", JSON.stringify(data));
           if (!this.pageOut) {
-            window.location.href = "/analysis";
+            setTimeout(() => {
+              window.location.href = "/analysis";
+            }, 100);
           }
         }
       });
