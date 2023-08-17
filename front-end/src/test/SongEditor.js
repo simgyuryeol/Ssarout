@@ -60,7 +60,6 @@ class SongEditor extends EventEmitter {
       this.audio = new Audio(this.audioUrl);
       // this.audio = new Audio(mr);
       this.audio.currentTime = this.startTime;
-      this.audio.load();
       this.audio.play();
       this._clickHandler("play");
     });
