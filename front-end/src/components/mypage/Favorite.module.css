@@ -47,7 +47,8 @@
   margin-right: 8vw;
   /* margin-left: 1.8rem;
   margin-right: 1.6rem; */
-  width: 100vw;
+  width: 90vw;
+  max-width: 90vw;
   /* justify-content: flex-start; */
 }
 

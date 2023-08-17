@@ -22,7 +22,7 @@ const AISongs = () =>{
       const response = await Api.get("/api/v1/ai/covers");
       console.log(response.data)
       console.log(response.data.data.results)
-      setAIResults(response.data.data.results.map(item => ({ ...item, audio1: new Audio(item.aiMrFile), audio2: new Audio(item.aiCoverFile) })));
+      setAIResults(response.data.data.results.map(item => ({ ...item, audio1: new Audio(item.aiCoverFile)})));
     } catch (error) {
       console.error(error);
     }
@@ -35,15 +35,15 @@ const AISongs = () =>{
   
     setActiveIndex(index);
     await AIResults[index].audio1.play();
-    await AIResults[index].audio2.play();
+    // await AIResults[index].audio2.play();
   };
 
   const pauseAudio = (index) => {
     setActiveIndex(null);
     AIResults[index].audio1.pause();
     AIResults[index].audio1.currentTime = 0; // 오디오 시간 초기화
-    AIResults[index].audio2.pause();
-    AIResults[index].audio2.currentTime = 0; // 오디오 시간 초기화
+    // AIResults[index].audio2.pause();
+    // AIResults[index].audio2.currentTime = 0; // 오디오 시간 초기화
   };
 
   const reloadPage = () => {
