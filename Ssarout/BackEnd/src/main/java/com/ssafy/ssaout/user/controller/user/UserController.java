@@ -6,6 +6,8 @@ import com.ssafy.ssaout.common.response.ApiResponse;
 import com.ssafy.ssaout.user.domain.entity.User;
 import com.ssafy.ssaout.user.dto.UserInfoDto;
 import com.ssafy.ssaout.user.service.UserService;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -17,6 +19,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+@Api(tags = "회원 APIs")
 @RestController
 @RequestMapping("/api/v1/users")
 @RequiredArgsConstructor
@@ -24,6 +27,7 @@ public class UserController {
 
     private final UserService userService;
 
+    @ApiOperation(value = "회원 정보 조회", notes = "사용자의 정보를 조회합니다.")
     @GetMapping
     public ResponseEntity<ApiResponse> getUser() {
         org.springframework.security.core.userdetails.User principal = (org.springframework.security.core.userdetails.User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
@@ -42,6 +46,7 @@ public class UserController {
     /**
      * 회원 정보(닉네임) 수정
      */
+    @ApiOperation(value = "닉네임 수정", notes = "사용자의 닉네임을 수정합니다.")
     @PutMapping
     public ResponseEntity<ApiResponse> updateUser( @RequestBody UserInfoDto userInfoDto){
         org.springframework.security.core.userdetails.User principal = (org.springframework.security.core.userdetails.User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
@@ -59,6 +64,7 @@ public class UserController {
     /**
      * 회원 탈퇴
      */
+    @ApiOperation(value = "회원 탈퇴")
     @DeleteMapping
     public ResponseEntity<ApiResponse> deleteUser(){
         org.springframework.security.core.userdetails.User principal = (org.springframework.security.core.userdetails.User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
