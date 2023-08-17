@@ -1,19 +1,78 @@
 spring:
+  profiles.active: local
+  # 데이터 소스 설정
   datasource:
     driverClassName: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://localhost/ssaout?characterEncoding=UTF-8&serverTimezone=UTC
+    url: jdbc:mysql://${DB_URL}/ssaout?characterEncoding=UTF-8&serverTimezone=UTC
     username: root
-    password: 1234
-  mvc:
-    pathmatch:
-      matching-strategy: ant_path_matcher
+    password: ${DB_PASSWORD}
+    hikari:
+      pool-name: jpa-hikari-pool
+      maximum-pool-size: 5
+      jdbc-url: ${spring.datasource.url}
+      username: ${spring.datasource.username}
+      password: ${spring.datasource.password}
+      driver-class-name: ${spring.datasource.driver-class-name}
+      data-source-properties:
+        rewriteBatchedStatements: true
+  # JPA 설정
   jpa:
-    hibernate.ddl-auto: update
     generate-ddl: true
+    hibernate:
+      ddl-auto: update
     show-sql: true
-    database: mysql
-    database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
-logging:
-  level:
-    org:
-      hibernate: info
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQL8Dialect
+        hbm2ddl.import_files_sql_extractor: org.hibernate.tool.hbm2ddl.MultipleLinesSqlCommandExtractor
+        current_session_context_class: org.springframework.orm.hibernate5.SpringSessionContext
+        default_batch_fetch_size: ${chunkSize:100}
+        jdbc.batch_size: 20
+        order_inserts: true
+        order_updates: true
+        format_sql: true
+  profiles:
+    include: oauth
+  servlet:
+    multipart:
+      enabled: true
+      max-file-size: 100MB
+      max-request-size: 100MB
+
+# cors 설정
+cors:
+  allowed-origins: 'https://i9e203.p.ssafy.io'
+  allowed-methods: GET,POST,PUT,DELETE,OPTIONS
+  allowed-headers: '*'
+  max-age: 3600
+
+# jwt secret key 설정
+jwt:
+  secret: ${JWT_SECRET_KEY}
+
+# 토큰 관련 secret Key 및 RedirectUri 설정
+app:
+  auth:
+    tokenSecret: ${AUTHENTICATION_TOKEN_SECRET}
+    tokenExpiry: 1800000
+    refreshTokenExpiry: 604800000
+  oauth2:
+    authorizedRedirectUris:
+      - https://i9e203.p.ssafy.io/oauth/redirect
+
+# AWS S3
+cloud:
+  aws:
+    s3:
+      bucket: ssarout
+    credentials:
+      access-key: ${S3_ACCESS_KEY}
+      secret-key: ${S3_SECRET_KEY}
+    region:
+      static: ap-northeast-2
+      auto: false
+    stack:
+      auto: false
+
+kakao:
+  admin: ${KAKAO_API_ADMIN_KEY}
