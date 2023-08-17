@@ -79,7 +79,7 @@ const MakeAI = () => {
       <p className={styles.AItitle}>AI가 불러주는 노래</p>
       {recordCounts < 5 ? (
         <div className={styles.AIbar}>
-          <Progress size={[300, 15]} percent={changePercent(recordCounts)} showInfo={false} status="active" trailColor='white' strokeColor={{ from: '#108ee9', to: '#87d068' }} />
+          <Progress size={[300, 15]} percent={changePercent(recordCounts)} style={{margin: 0, marginBottom: '8px'}} showInfo={false} status="active" trailColor='white' strokeColor={{ from: '#108ee9', to: '#87d068' }} />
           <p className={styles.recordMent1}>{recordCounts} / 5</p>
           <p className={styles.recordMent}>아직 녹음 데이터가 부족해요!</p>
         </div>
