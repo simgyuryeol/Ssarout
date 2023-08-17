@@ -33,10 +33,13 @@ const HistoryDetail = () => {
     if (activeIndex !== null) {
       pauseAudio(activeIndex);
     }
-
     setActiveIndex(index);
     hisDetailResults[index].audio1.play();
     hisDetailResults[index].audio2.play();
+
+    hisDetailResults[index].audio2.onended = () => {
+      pauseAudio(index);
+    };
   };
 
   const pauseAudio = (index) => {

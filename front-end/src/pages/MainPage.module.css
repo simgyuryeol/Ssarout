@@ -170,7 +170,8 @@
 }
 
 .container {
-  min-height:calc(100vh - 24.8vh);
+  /* min-height:calc(100vh - 22.5vh); */
+  min-height:calc(100vh - 38px);
 }
 
 /* .homecontainer {

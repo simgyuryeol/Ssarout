@@ -53,24 +53,24 @@ const AISongs = () =>{
   useEffect(() => {
     getAISongs();
 
-  //   let stopSongInterval;
-  //   stopSongInterval = setInterval(() => {
-  //     // console.log('sdafds');
-  //     console.log('재생중인', activeIndex);
-  //     if (!window.location.pathname.includes('/singingAI/') && activeIndex !== null) {
-  //       clearInterval(stopSongInterval);
-  //       pauseAudio(activeIndex);
-  //       // console.log('이제머뭋ㅁ');
-  //     }
-  //   }, 100);
-  //   return () => {
-  //     clearInterval(stopSongInterval);
-  //     // if (activeIndex !== null) {
-  //     //   pauseAudio(activeIndex);
-  //     // }
-  //   };
-  // // }, [activeIndex]);
-  }, []);
+    let stopSongInterval;
+    stopSongInterval = setInterval(() => {
+      console.log('sdafds');
+      console.log('재생중인', activeIndex);
+      if (!window.location.pathname.includes('/singingAI') && activeIndex !== null) {
+        pauseAudio(activeIndex);
+        clearInterval(stopSongInterval);
+        console.log('이제머뭋ㅁ');
+      }
+    }, 100);
+    return () => {
+      clearInterval(stopSongInterval);
+      if (activeIndex !== null) {
+        pauseAudio(activeIndex);
+      }
+    };
+  }, [activeIndex]);
+  // }, []);
 
   return(
     <>

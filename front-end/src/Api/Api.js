@@ -3,7 +3,7 @@ import axios from "axios";
 axios.defaults.withCredentials = true;
 const Api = axios.create({
   // 이건 머지할때마다 바꿔줘야함
-   baseURL: "https://i9e203.p.ssafy.io/",
+   baseURL: "https?://i9e203.p.ssafy.io/",
   // baseURL: "http://i9e203.p.ssafy.io:9090",
 
   // 싸피에서 테스트할 때
@@ -27,14 +27,19 @@ Api.interceptors.response.use(
         Api.defaults.headers.common.Authorization = `Bearer ${response.data.data}`;
         localStorage.setItem("token", response.data.data);
         error.config.headers.Authorization = `Bearer ${response.data.data}`;
-        return Api(error.config);
+        console.log("error.config : ", error.config);
+        if (error.config.url === "/api/v1/result") {
+          error.config.headers["Content-Type"] = "multipart/form-data";
+        }
+        return Api.request(error.config);
       } catch (error) {
         alert("다시 로그인해주세요.");
-        // localStorage.removeItem("token");
+        localStorage.removeItem("token");
+        window.location.href("/login");
       }
     } else if (error.response.status === 403) {
       alert("권한이 없습니다.");
-      // localStorage.removeItem("token");
+      localStorage.removeItem("token");
     }
     return Promise.reject(error);
   }

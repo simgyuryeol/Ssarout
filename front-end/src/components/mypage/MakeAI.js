@@ -23,7 +23,7 @@ const MakeAI = () => {
   };
 
   const changePercent = (counts) => {
-    return (counts/10)*100
+    return (counts/5)*100
   }
 
   // api 보내서 만들어진 ai곡있는지 쳌하는 함수 있어야 함. 

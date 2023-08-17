@@ -7,7 +7,6 @@ import SearchResult from "./pages/SearchResult"
 import SingingAI from "./pages/SingingAI"
 import Login from './pages/Login';
 import Redirecion from './pages/Redirection';
-import ServiceIntro from './pages/ServiceIntro';
 import NickNamePage from "./pages/NickNamePage";
 import History from "./pages/History";
 import PublicRoute from './lib/PublicRoute';
@@ -73,7 +72,6 @@ function App() {
         />
 
         <Route exact path="/oauth/redirect" element={<Redirecion/>}/>
-        <Route exact path="/intro" element={<ServiceIntro/>}/>
         <Route exact path="/record/:songId" element={<SingTest />} />
 
         <Route 
