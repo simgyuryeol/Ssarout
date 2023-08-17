@@ -12,7 +12,6 @@ public class AiCoverResponseDto {
     private final String singer;
     private final String albumCoverImage;
     private final String aiCoverFile;
-    private final String aiMrFile;
     private final LocalDateTime createdDateTime;
 
     @Builder
@@ -21,7 +20,6 @@ public class AiCoverResponseDto {
         this.singer = aiCover.getSong().getSinger();
         this.albumCoverImage = aiCover.getSong().getAlbumCoverImage();
         this.aiCoverFile = aiCover.getAiCoverFile();
-        this.aiMrFile = aiCover.getSong().getAiMrFile();
         this.createdDateTime = aiCover.getCreatedDateTime();
     }
 }

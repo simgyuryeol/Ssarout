@@ -27,4 +27,4 @@ ENV S3_SECRET_KEY=$S3_SECRET_KEY
 ENV KAKAO_API_ADMIN_KEY=$KAKAO_API_ADMIN_KEY
 
 COPY ${JAR_FILE} ssaout.jar
-ENTRYPOINT ["java","-jar","/ssaout.jar","&"]
+ENTRYPOINT ["java","-Duser.timezone=\"Asia/Seoul\"","-jar","/ssaout.jar","&"]

@@ -84,11 +84,13 @@ public class AiCoverService {
         List<String> singerVoiceFileUrlList = trainableSongs.stream()
             .map((song) -> song.getVoiceFile()).collect(
                 Collectors.toList());
-
+        List<String> aiMrFileUrlList = trainableSongs.stream().map((song) -> song.getAiMrFile())
+            .collect(
+                Collectors.toList());
         // Flask 서버로 요청 보내는 로직 추가 후 호출 (userSeq, aiCoverId, voiceFileUrlList, singerVoiceFileUrl)
         try {
             aiCoverRequestToFlaskServer(userSeq, aiCoverIdList, voiceFileUrlList,
-                singerVoiceFileUrlList);
+                singerVoiceFileUrlList, aiMrFileUrlList);
         } catch (JSONException e) {
             throw new JsonException(FAIL_CONVERT_TO_JSON);
         }
@@ -110,7 +112,8 @@ public class AiCoverService {
     }
 
     private void aiCoverRequestToFlaskServer(Long userSeq, List<Long> aiCoverIdList,
-        List<String> voiceFileUrlList, List<String> singerVoiceFileUrlList)
+        List<String> voiceFileUrlList, List<String> singerVoiceFileUrlList,
+        List<String> aiMrFileUrlList)
         throws JSONException {
 
         ClientHttpRequestFactory httpRequestFactory = new HttpComponentsClientHttpRequestFactory();
@@ -139,6 +142,13 @@ public class AiCoverService {
             singerVoiceFileJsonArray.put(url);
         }
         jsonObject.put("singerVoiceFileUrl", singerVoiceFileJsonArray);
+
+        JSONArray aiMrFileJsonArray = new JSONArray();
+        for (String url : aiMrFileUrlList) {
+            aiMrFileJsonArray.put(url);
+        }
+        jsonObject.put("aiMrFileUrl", aiMrFileJsonArray);
+
         System.out.println("request: " + jsonObject);
         HttpEntity<String> request = new HttpEntity<>(jsonObject.toString(), httpHeaders);
         ResponseEntity<String> response = restTemplate.exchange(

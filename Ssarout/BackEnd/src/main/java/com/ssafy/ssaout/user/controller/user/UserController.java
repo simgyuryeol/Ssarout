@@ -26,10 +26,11 @@ public class UserController {
 
     @GetMapping
     public ResponseEntity<ApiResponse> getUser() {
-        org.springframework.security.core.userdetails.User principal = (org.springframework.security.core.userdetails.User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        org.springframework.security.core.userdetails.User principal = (org.springframework.security.core.userdetails.User) SecurityContextHolder.getContext()
+            .getAuthentication().getPrincipal();
         User user = userService.getUser(principal.getUsername());
 
-        UserInfoDto userInfoDto = new UserInfoDto(user.getNickname(),user.getProfileImageUrl());
+        UserInfoDto userInfoDto = new UserInfoDto(user.getNickname(), user.getProfileImageUrl());
 
         ApiResponse apiResponse = ApiResponse.builder()
             .message("회원정보")
@@ -43,9 +44,10 @@ public class UserController {
      * 회원 정보(닉네임) 수정
      */
     @PutMapping
-    public ResponseEntity<ApiResponse> updateUser( @RequestBody UserInfoDto userInfoDto){
-        org.springframework.security.core.userdetails.User principal = (org.springframework.security.core.userdetails.User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        userService.updateUser(principal.getUsername(),userInfoDto);
+    public ResponseEntity<ApiResponse> updateUser(@RequestBody UserInfoDto userInfoDto) {
+        org.springframework.security.core.userdetails.User principal = (org.springframework.security.core.userdetails.User) SecurityContextHolder.getContext()
+            .getAuthentication().getPrincipal();
+        userService.updateUser(principal.getUsername(), userInfoDto);
 
         ApiResponse apiResponse = ApiResponse.builder()
             .message("회원 정보 수정")
@@ -60,8 +62,9 @@ public class UserController {
      * 회원 탈퇴
      */
     @DeleteMapping
-    public ResponseEntity<ApiResponse> deleteUser(){
-        org.springframework.security.core.userdetails.User principal = (org.springframework.security.core.userdetails.User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+    public ResponseEntity<ApiResponse> deleteUser() {
+        org.springframework.security.core.userdetails.User principal = (org.springframework.security.core.userdetails.User) SecurityContextHolder.getContext()
+            .getAuthentication().getPrincipal();
 
         userService.deleteUser(principal.getUsername());
 
@@ -78,10 +81,11 @@ public class UserController {
      * 닉네임 최초 등록
      */
     @PostMapping("/register")
-    public ResponseEntity<ApiResponse> createNickname(@RequestBody UserInfoDto userInfoDto){
-        org.springframework.security.core.userdetails.User principal = (org.springframework.security.core.userdetails.User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+    public ResponseEntity<ApiResponse> createNickname(@RequestBody UserInfoDto userInfoDto) {
+        org.springframework.security.core.userdetails.User principal = (org.springframework.security.core.userdetails.User) SecurityContextHolder.getContext()
+            .getAuthentication().getPrincipal();
 
-        userService.updateUser(principal.getUsername(),userInfoDto);
+        userService.updateUser(principal.getUsername(), userInfoDto);
 
         ApiResponse apiResponse = ApiResponse.builder()
             .message("닉네임 등록 성공")
