@@ -17,10 +17,8 @@
 
 .logo {
   font-family: 'logo';
-  /* font-size: 20px; */
 }
 
-/* 인풋박스 */
 .changeNickname {
   background-color: rgb(212, 212, 212);
   margin-top: 20px;
@@ -34,7 +32,6 @@
   font-weight: bold;
 }
 
-/* 변경버튼 */
 .changeBtn {
   margin-top: 20px;
   width: 18%;
@@ -58,7 +55,6 @@
 
 .div1 {
   margin-top: 2px;
-  margin-left: 10px;
   font-size: 23px;
   letter-spacing: -0.05em;
   font-family: 'logo';

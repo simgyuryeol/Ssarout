@@ -3,7 +3,6 @@ import styles from './Redirection.module.css'
 import Header from '../components/commonUse/Header'
 import Footer from '../components/commonUse/Footer';
 
-
 const Redirecion = () => {
   const searchParams = new URLSearchParams(window.location.search);
   useEffect(() => {
@@ -14,6 +13,7 @@ const Redirecion = () => {
     localStorage.setItem("token", token);
     window.location.replace("/nickNamePage");
   };
+  
   return (
     <div>
       <div class="container">

@@ -12,6 +12,7 @@ const SideBarWrap = styled.div`
   height: 100%;
   width: 72%;
   right: -72%;
+  margin-right: -2px;
   top: 0;
   position: fixed;
   transition: 0.5s ease;
@@ -40,10 +41,6 @@ const Sidebar = ({ isOpen, setIsOpen }) => {
       await Api.get("/logout").then((response) => {
         localStorage.removeItem("token");
         window.location.reload();
-        // console.log(response);
-        // toggleSide(); 
-        // window.location.replace("/");
-        // navigate("/")
       })
     } catch (error) {
       localStorage.removeItem("token");

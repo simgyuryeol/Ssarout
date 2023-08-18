@@ -9,7 +9,6 @@
   margin-left: 30px;
 }
 
-/* 뒤로가기 링크 */
 .updateBackA {
   text-decoration: none;
   color: white;
@@ -21,5 +20,4 @@
 
 .hisContainer {
   min-height:calc(100vh - 38px);
-  /* 본문 짧은 페이지에 적용 */
 }

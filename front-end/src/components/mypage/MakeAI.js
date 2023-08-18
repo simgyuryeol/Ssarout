@@ -15,7 +15,6 @@ const MakeAI = () => {
   const getRecordCounts = async () => {
     try {
       const response = await Api.get("/api/v1/result/recorded-songs");
-      // console.log(response.data.data.resultCount)
       setrecordCounts(response.data.data.resultCount)
     } catch (error) {
       console.error(error);
@@ -23,35 +22,24 @@ const MakeAI = () => {
   };
 
   const changePercent = (counts) => {
-    return (counts/10)*100
+    return (counts/5)*100
   }
 
-  // api 보내서 만들어진 ai곡있는지 쳌하는 함수 있어야 함. 
-  // 이걸 useEffect 안에 넣어야함.
+  // API 보내서 만들어진 ai곡있는지 체크 
+  // useEffect 안에 넣기
   // 아니면 생성중이어도 새고할때마다 생성해주세요 버튼이 나옴
   const checkAIsongsExist = async () => {
     try {
       const response = await Api.get("/api/v1/ai/covers");
-      console.log(response.data)
-      // console.log(response.data.data.results)
-      // console.log(response.data.data.results[0].aiCoverFile)
-      // console.log(response.data.data.resultCount)
       if (response.data.data.resultCount && response.data.data.results[0].aiCoverFile) {
+        // 1. 요청은 이미 보낸 상태고(resultCount>=1), aiCoverFile url까지 있다면 ai 노래가 완성된거임
+        // 생성중입니다 버튼을 ai 노래 들으러가기 링크로 바꿔주는 함수, 만들어주세요 버튼 숨기기
         setshowAISongPageButton(true)
         setShowGenerateButton(false);
-        // console.log('들으러가는버튼 생겨야함',showAISongPageButton)
-        // console.log('만들어주세요 버튼 false돼야함',showGenerateButton)
-        // 1. 요청은 이미 보낸 상태고(resultCount>=1), aiCoverFile url까지 있다면
-        // ai 노래가 완성된거임
-        // 생성중입니다 버튼을 ai 노래 들으러가기 링크로 바꿔주는 함수
       } if (response.data.data.resultCount && !response.data.data.results[0].aiCoverFile) {
-        setShowGenerateButton(false);
-        // console.log('아직 안만들어졌고 신청만함', showGenerateButton)
         // 2. 요청을 이미 보낸 상탠데 아직 안만들어졌으면 생성중입니다 - setGeneration(false)
-      } 
-      // else {
-      //   setShowGenerateButton(true);
-      // } // 3. 아직 요청도 안보냈으면 만들어주세요! - setGeneration(true)
+        setShowGenerateButton(false);
+      }
     } catch (error) {
       console.error(error);
     }
@@ -61,7 +49,6 @@ const MakeAI = () => {
     try {
       await Api.post("/api/v1/ai/covers"
       ).then((response) => {
-        // console.log(response)
         setShowGenerateButton(false);
       })
     } catch (error) {
@@ -78,11 +65,11 @@ const MakeAI = () => {
     <div>
       <p className={styles.AItitle}>AI가 불러주는 노래</p>
       {recordCounts < 5 ? (
-        <>
-          <Progress size={[300, 15]} percent={changePercent(recordCounts)} showInfo={false} status="active" trailColor='white' strokeColor={{ from: '#108ee9', to: '#87d068' }} />
+        <div className={styles.AIbar}>
+          <Progress size={[300, 15]} percent={changePercent(recordCounts)} style={{margin: 0, marginBottom: '8px'}} showInfo={false} status="active" trailColor='white' strokeColor={{ from: '#108ee9', to: '#87d068' }} />
           <p className={styles.recordMent1}>{recordCounts} / 5</p>
           <p className={styles.recordMent}>아직 녹음 데이터가 부족해요!</p>
-        </>
+        </div>
       ) : (
         <>
           <p className={styles.AIRequestMent}>데이터가 충분히 모였습니다.</p>

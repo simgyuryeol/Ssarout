@@ -22,9 +22,8 @@ const Analysis = () =>{
           <img className={styles.questIcon}alt="quest" src={question}/>
         </Tooltip>
       </div>
-      {/* <br/> */}
       <button className={styles.toMainPageBtn}>
-      <Link className={styles.toMainMent} to="/">메인페이지로 가기</Link>
+      <Link className={styles.toMainMent} to="/">연습끝내기</Link>
       </button>
       <br/>
     </div>

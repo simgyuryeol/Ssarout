@@ -1,5 +1,4 @@
 .header {
-  /* position: fixed; */
   top: 0;
   left: 0;
   right: 0;
@@ -10,11 +9,9 @@
 .headerContainer {
   display: flex;
   justify-content: space-between;
-  /* justify-content: center; */
   align-items: center;
   text-align: center;
   padding: 10px;
-  /* flex-direction: column; */
 }
 
 .logoContainer {
@@ -30,7 +27,6 @@
 }
 
 .logo {
-  /* position: relative; */
   font-size: 23px;
   letter-spacing: -0.05em;
   font-family: 'logo';
@@ -38,5 +34,4 @@
   justify-content: center;
   text-decoration: none;
   color: rgb(255, 255, 255);
-  /* position: fixed; */
 }

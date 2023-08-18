@@ -1,104 +1,45 @@
-import createElem from './DOMUtil';
-import EventEmitter from './EventEmitter';
-import mr from '../mr.mp3'
-import './SongEditor.css'
-
+import createElem from "./DOMUtil";
+import EventEmitter from "./EventEmitter";
+import "./SongEditor.css";
 
 function cBtn(text) {
-  return createElem('button', {}, text);
+  return createElem("button", {}, text);
 }
 
 class SongEditor extends EventEmitter {
   constructor() {
     super();
-    this.btnPlay = cBtn('PLAY');
-    this.btnStop = cBtn('STOP');
+    this.btnPlay = cBtn("PLAY");
+    this.btnStop = cBtn("STOP");
     this.audio = null;
     this.audioUrl = null;
     this.startTime = 0;
-    // this.btnSave = cBtn("Save");
-    // this.btnUpload = cBtn("Upload");
-    // this.btnKeyUp = cBtn("Key Up");
-    // this.btnKeyDown = cBtn("Key Down");
 
-    // this.inKey = createElem("input", { type: "number", value: "0" });
+    this.inScore = createElem("textarea", { class: "inScore" });
 
-    // this.chkMelody = createElem("input", { type: "checkbox", checked: true });
-    // const chkLabel = createElem("label", {}, "play melody");
-    // chkLabel.appendChild(this.chkMelody);
-
-    // this.inVolume = createElem("input", {
-    //   type: "range",
-    //   min: 0,
-    //   max: 100,
-    //   value: 30,
-    //   step: 1,
-    // });
-
-    this.inScore = createElem('textarea', { class: 'inScore' });
-
-    this.element = createElem('div', { class: 'song-editor' }, [
-      // chkLabel,
-      // this.inVolume,
-      // this.btnKeyDown,
-      // this.btnKeyUp,
-      // this.inScore,
+    this.element = createElem("div", { class: "song-editor" }, [
       this.btnPlay,
       this.btnStop,
-      // this.btnSave,
-      // this.btnUpload,
     ]);
 
-    // const musicStop = () => {
-    //   if(this.audio){
-    //     this.audio.pause();
-    //     this.audio = null;
-    //   }
-      
-    // };
-    this.btnPlay.addEventListener('click', (e) => {
+    this.btnPlay.addEventListener("click", (e) => {
       if (this.audio != null) this.audio.pause();
-      // this.audio = new Audio(this.audioUrl);
-      this.audio = new Audio(mr);
+      this.audio = new Audio(this.audioUrl);
       this.audio.currentTime = this.startTime;
-      this.audio.load();
       this.audio.play();
-      this._clickHandler('play');
-    });
-    this.btnStop.addEventListener('click', (e) => {
-      // musicStop();
-      this._clickHandler('stop');
-    });
-    // this.btnKeyDown.addEventListener("click", (e) => {
-    //   this._clickHandler("key-down");
-    // });
-    // this.btnKeyUp.addEventListener("click", (e) => {
-    //   this._clickHandler("key-up");
-    // });
 
-    // this.chkMelody.addEventListener("input", (e) => {
-    //   this.emit("change", "melody", this.chkMelody.checked);
-    // });
-    // this.inVolume.addEventListener("input", (e) => {
-    //   this.emit("change", "volume", parseInt(this.inVolume.value, 10) / 100);
-    // });
+      this._clickHandler("play");
+    });
+    this.btnStop.addEventListener("click", (e) => {
+      this._clickHandler("stop");
+    });
   }
 
-  // get key() {
-  //   return parseInt(this.inKey.value, 10);
-  // }
-
-  // set key(v) {
-  //   this.inKey.value = v.toString();
-  // }
-
-  setStartTime(startTime){
+  setStartTime(startTime) {
     this.startTime = startTime;
-    console.log("스타트타임 : ", startTime);
-
   }
-  mrStop(){
-    if(this.audio){
+  mrStop() {
+    if (this.audio) {
       this.audio.pause();
       this.audio = null;
     }

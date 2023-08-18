@@ -3,7 +3,7 @@ import styles from "./MainPage.module.css";
 import Header from '../components/commonUse/Header';
 import Footer from '../components/commonUse/Footer';
 import SearchBar from '../components/search/SearchBar';
-import Slider from '../components/mainpage/Slider';
+import NewSliderSlider from '../components/mainpage/NewSlider';
 import AIProgress from '../components/mainpage/AIProgress';
 import { NotificationOutlined } from '@ant-design/icons';
 import { Badge, Tooltip } from 'antd';
@@ -19,7 +19,7 @@ const MainPage = () => {
       <div className={styles.container}>
       <Header />
         <div className={styles.homecontainer}>
-        <br/><br/><br/><br/><br/><br/><br/><br/><br/>
+        <br/><br/><br/>
         <div className={styles.notice}>
           <p className={styles.searchMent}>연습하고 싶은 노래를 검색해보세요!</p>
           <div style={{marginTop: 0}}>
@@ -31,12 +31,12 @@ const MainPage = () => {
           </div>
         </div>
         <br/>
-        <SearchBar/></div></div>
-
+        <SearchBar/><br/><br/> 
+        <NewSliderSlider/>
+        </div>
         {isLogin && (
         <AIProgress/>
-        )}<br/>
-
+        )}<br/></div>
       <Footer />
     </div>
   );

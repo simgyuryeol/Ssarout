@@ -10,7 +10,6 @@
   width: 80px;
   height: 80px;
   position: relative;
-  /* margin-bottom: 1rem; */
   z-index: 1;
 }
 
@@ -67,7 +66,6 @@
 .recordAvg {
   color: #ffb860;
   font-size: 1.1rem;
-  /* font-weight: bold; */
 }
 
 .growthBtn {

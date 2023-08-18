@@ -4,9 +4,6 @@ import React, { useEffect, useState } from "react";
 import { Link, json } from "react-router-dom";
 import SingTest from "../../test";
 
-
-
-
 const LyricsBar = ({ val, startTime, endTime, endNode, onClick,activeBar,lyricsTime }) => {
   const timeInterval = endTime - startTime;
   const barStyle = {
@@ -41,7 +38,6 @@ const LyricsBars = () => {
         rerecord = i;
         break;
       }
-      // console.log(activeBar,"여기는 activeBar")
     }
     if (endTime === activeBar) {
       setActiveBar(null);
@@ -81,8 +77,6 @@ const LyricsBars = () => {
     })
   };
 
-
-
   let idx = data.scores.findIndex((score) => score === -1);
   if (idx === -1) {
     idx = data.scores.length - 1;
@@ -108,13 +102,9 @@ const LyricsBars = () => {
     });
   }
   
-  // API 요청이 잘 안되는 이유가 뭔지 모르곘어
   let songData =JSON.parse(localStorage.getItem('data'))
   let songTitle = songData.songTitle
   let singer = songData.singer
-
-
-
 
   const flexContainerStyle = {
     display: "flex",
@@ -130,34 +120,31 @@ const LyricsBars = () => {
     boxShadow: "0 2px 4px rgba(0, 0, 0, 0.1)",
   };
 
-
   return (
     <div>
       <Header />
-          <div className="bar-container">
-              {(Object.keys(rerecordlyrics).length > 0 && activeBar !== null) ? (
-          <SingTest rerecordlyrics={rerecordlyrics} mrFile={0}/>
-        ) : null}
-            <div style={flexContainerStyle}>
-              {resultArray.map((timeInfo, index) => (
-                <LyricsBar
-                  key={index}
-                  startTime={timeInfo.startTime}
-                  endTime={timeInfo.endTime}
-                  endNode={timeInfo.endNode}
-                  val={timeInfo.val}
-                  onClick={onClick}
-                  activeBar={activeBar}
-                  lyricsTime={lyricsTime}
-                />
-              ))}
-            </div>
-            <br/>
-            <h3>{songTitle} -  {singer}</h3>
+        <div className="bar-container">
+            {(Object.keys(rerecordlyrics).length > 0 && activeBar !== null) ? (
+        <SingTest rerecordlyrics={rerecordlyrics} mrFile={0}/>
+      ) : null}
+          <div style={flexContainerStyle}>
+            {resultArray.map((timeInfo, index) => (
+              <LyricsBar
+                key={index}
+                startTime={timeInfo.startTime}
+                endTime={timeInfo.endTime}
+                endNode={timeInfo.endNode}
+                val={timeInfo.val}
+                onClick={onClick}
+                activeBar={activeBar}
+                lyricsTime={lyricsTime}
+              />
+            ))}
           </div>
-
-
+          <br/>
+          <h3>{songTitle} -  {singer}</h3>
         </div>
+    </div>
 
   );
 };

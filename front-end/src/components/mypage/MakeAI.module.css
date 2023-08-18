@@ -16,7 +16,6 @@
   margin-right: auto;
 }
 
-/* ai 노래 만들어주세요! 버튼 */
 .AIRequest { 
   font-family: 'lineRg';
   font-size: 1rem;
@@ -54,4 +53,26 @@
   font-size: 0.8rem;
   margin-top: 0;
   margin-bottom: 0;
+}
+
+.AIbar {
+  max-width: 100vw;
+  padding: 0 10px;
+}
+
+.ant-progress .ant-progress-status-active .ant-progress-line .css-dev-only-do-not-override-fpg3f5 {
+  margin-inline-end: 0;
+  margin-right: 0;
+  margin-left: 0;
+  max-width: 100vw;
+}
+
+:where(.css-dev-only-do-not-override-fpg3f5).ant-progress-line {
+  position: relative;
+  font-size: 14px;
+  margin-inline-end: 0;
+  margin-bottom: 8px;
+  margin-right: 0;
+  margin-left: 0;
+  max-width: 100vw;
 }

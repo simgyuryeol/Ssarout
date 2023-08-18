@@ -12,7 +12,6 @@ const MakeAI = () => {
   const getRecordCounts = async () => {
     try {
       const response = await Api.get("/api/v1/result/recorded-songs");
-      console.log(response.data.data.resultCount)
       setrecordCounts(response.data.data.resultCount)
     } catch (error) {
       console.error(error);
@@ -20,7 +19,7 @@ const MakeAI = () => {
   };
 
   const changePercent = (counts) => {
-    return (counts/10)*100
+    return (counts/5)*100
   }
 
   useEffect(() => {
@@ -32,8 +31,8 @@ const MakeAI = () => {
       <p className={styles.AItitle}>AI 커버곡을 위한 데이터 수집중...</p>
       <Progress size={[300, 15]} percent={changePercent(recordCounts)} showInfo={false} status="active" trailColor='white' strokeColor={{ from: '#ffb860', to: '#87d068' }} />
       <div className={styles.mentNquest}>
-        {recordCounts > 5 ? (
-          <p className={styles.recordMent1}>수집 완료!</p>
+        {recordCounts > 4 ? (
+          <p className={styles.recordMent2}>수집 완료!</p>
         ) : (
           <p className={styles.recordMent1}>{recordCounts} / 5</p>
         )}
