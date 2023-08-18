@@ -87,7 +87,7 @@ public class AiCoverService {
         List<String> aiMrFileUrlList = trainableSongs.stream().map((song) -> song.getAiMrFile())
             .collect(
                 Collectors.toList());
-        // Flask 서버로 요청 보내는 로직 추가 후 호출 (userSeq, aiCoverId, voiceFileUrlList, singerVoiceFileUrl)
+
         try {
             aiCoverRequestToFlaskServer(userSeq, aiCoverIdList, voiceFileUrlList,
                 singerVoiceFileUrlList, aiMrFileUrlList);

@@ -53,7 +53,7 @@ public class FavoriteController {
             .getAuthentication().getPrincipal();
         String UserId = principal.getUsername();
         List<FavSongDto> favSongDtoList = favoriteService.favorite_list(UserId);
-//        return ApiResponse.success("fav", favSongDtoList);
+
         ApiResponse apiResponse = ApiResponse.builder()
             .message("즐겨 찾기 목록")
             .status(OK.value())

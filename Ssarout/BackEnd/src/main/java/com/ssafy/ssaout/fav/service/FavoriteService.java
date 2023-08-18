@@ -36,7 +36,7 @@ public class FavoriteService {
         if(user==null){
             new NotFoundException(ErrorCode.USER_NOT_FOUND);
         }
-//                    .orElseThrow(() -> new NotFoundException(ErrorCode.USER_NOT_FOUND));
+
         Song song = songRepository.findById(contentId).orElseThrow(() -> new NotFoundException(
                 ErrorCode.SONG_NOT_FOUND));
         Optional<Favorite> findfavorite = favoriteRepository.findByUserIdAndContentId(user, song);
