@@ -34,7 +34,6 @@ public class UserRefreshToken {
     private String refreshToken;
 
     @OneToOne()
-    //@JoinColumn(name = "USER_SEQ")
     private User user;
 
     public UserRefreshToken(
