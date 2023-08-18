@@ -63,7 +63,6 @@ class ToneDetector extends EventEmitter {
 
   recording(data) {
     this.data = data;
-    console.log(this.data);
     if (!this.isRecording) {
       this.mediaRecorder = new MediaRecorder(this.stream);
 
@@ -75,7 +74,6 @@ class ToneDetector extends EventEmitter {
       this.mediaRecorder.onstop = async (event) => {
         // 녹음이 종료되면, 배열에 담긴 오디오 데이터(Blob)들을 합친다: 코덱도 설정해준다.
         const audioBuffer = await this.convertWebmToWav(this.audioArray);
-        // const blob = new Blob(this.audioArray, { type: 'audio/wav' });
         const blob = new Blob([audioBuffer], { type: "audio/wav" });
         this.audioArray.splice(0); // 기존 오디오 데이터들은 모두 비워 초기화한다.
 
@@ -92,13 +90,11 @@ class ToneDetector extends EventEmitter {
           let finalScore = Math.ceil(
             (this.data.PitchScore + this.data.beatScore) / 2
           );
-          console.log(this.Url, "여기 동영상 url");
           let songId = this.data.songId;
           if (localStorage.getItem("token") && !this.resultline) {
             try {
               //결과, 녹음파일 서버에 저장
               const formData = new FormData();
-              console.log(finalScore);
               formData.append("songId", songId);
               formData.append("accuracy", finalScore);
               formData.append("recordFile", this.sound);
@@ -106,9 +102,7 @@ class ToneDetector extends EventEmitter {
               //서버에 녹음 파일 전송 할려면 주석 지워주세요
               await Api.post("/api/v1/result", formData, {
                 headers: { "Content-Type": "multipart/form-data" },
-              }).then((response) => {
-                console.log(response, "여기가 Api 녹음 파일전송");
-              });
+              }).then((response) => {});
             } catch (error) {
               alert.error(error);
             } finally {
@@ -180,7 +174,6 @@ class ToneDetector extends EventEmitter {
     if (!this.inited) return;
 
     this.analyser.getFloatTimeDomainData(this.buf);
-    //   console.log(this.buf);
 
     const ac = this.correlate(this.buf, this.ctx.sampleRate);
 
@@ -191,8 +184,6 @@ class ToneDetector extends EventEmitter {
       this.note = noteFromPitch(ac);
       this.octav = Math.floor(this.note / 12) - 1;
     }
-    //   console.log('Microphone Input Data:', this.buf.slice(0, 10));
-    //   console.log(this.note)
     this.emit("note", this.note);
   }
 
