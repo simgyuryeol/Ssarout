@@ -1,4 +1,3 @@
-/* 인풋박스 */
 .changeNickname {
   background-color: rgb(212, 212, 212);
   margin-top: 1px;
@@ -20,7 +19,6 @@
   font-weight: bold;
 }
 
-/* 변경버튼 */
 .changeBtn {
   width: 18%;
   height: 30px;
@@ -34,13 +32,11 @@
   border: none;
 }
 
-/* 회원정보 수정 글자 */
 .updateHeader {
   font-family: 'lineTh';
   margin-bottom: 14px;
 }
 
-/* 뒤로가기 버튼*/
 .updateBackBtn {
   align-items: start;
   text-decoration: none;
@@ -52,7 +48,6 @@
   margin-left: 30px;
 }
 
-/* 뒤로가기 링크 */
 .updateBackA {
   text-decoration: none;
   color: white;
@@ -62,7 +57,6 @@
   padding-top: 3px;
 }
 
-/* 회원탈퇴 */
 .delete {
   font-family: 'lineTh';
   display: flex;
@@ -79,7 +73,6 @@
   height: 9rem;
 }
 
-/* 인풋박스 위 닉네임 수정 멘트 */
 .updateMent {
   margin-bottom: 0;
   display: flex;

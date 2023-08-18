@@ -12,7 +12,6 @@ const MakeAI = () => {
   const getRecordCounts = async () => {
     try {
       const response = await Api.get("/api/v1/result/recorded-songs");
-      console.log(response.data.data.resultCount)
       setrecordCounts(response.data.data.resultCount)
     } catch (error) {
       console.error(error);

@@ -41,10 +41,6 @@ const Sidebar = ({ isOpen, setIsOpen }) => {
       await Api.get("/logout").then((response) => {
         localStorage.removeItem("token");
         window.location.reload();
-        // console.log(response);
-        // toggleSide(); 
-        // window.location.replace("/");
-        // navigate("/")
       })
     } catch (error) {
       localStorage.removeItem("token");

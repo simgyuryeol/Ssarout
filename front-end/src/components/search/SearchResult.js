@@ -18,7 +18,6 @@ const SearchResult = () => {
       const response = await Api.get("/api/v1/song/search", {
         params: { text: keyword },
       });    
-      console.log(response.data.data);
       if (response.data && response.data.data && response.data.data.length > 0) {
         setSearchResults(response.data.data);
       }
@@ -28,13 +27,10 @@ const SearchResult = () => {
   };
 
   const toggleFav = async (songId) => {
-    // console.log(songId)
     try {
       await Api.post("/api/v1/fav", {
         contentId: songId,
       }).then((response) => {
-        // console.log(response)
-        // window.location.replace("/search");
         setSearchResults((prevResults) =>
           prevResults.map((item) =>
             item.songId === songId
@@ -50,12 +46,12 @@ const SearchResult = () => {
 
   const sortByStartTiming = (a, b) => {
     if (a.startTiming && !b.startTiming) {
-      return -1; // a가 startTiming이 있고 b가 없는 경우 a를 앞으로 정렬
+      return -1;
     }
     if (!a.startTiming && b.startTiming) {
-      return 1; // b가 startTiming이 있고 a가 없는 경우 b를 앞으로 정렬
+      return 1;
     }
-    return 0; // 두 경우가 모두 또는 모두 없는 경우 순서 변경 없음
+    return 0; 
   };
 
   useEffect(() => {

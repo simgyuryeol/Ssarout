@@ -34,11 +34,9 @@ const MainPage = () => {
         <SearchBar/><br/><br/> 
         <NewSliderSlider/>
         </div>
-
         {isLogin && (
         <AIProgress/>
         )}<br/></div>
-      
       <Footer />
     </div>
   );

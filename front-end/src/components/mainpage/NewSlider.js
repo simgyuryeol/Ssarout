@@ -20,12 +20,7 @@ const NewSlider = () => (
     <div>
       <img className={styles.NewSlider1} alt="NewSlider2" src={NewSlider2}/>
     </div>
-    {/* <div>
-      <h3 style={contentStyle}>3</h3>
-    </div>
-    <div>
-      <h3 style={contentStyle}>4</h3>
-    </div> */}
   </Carousel>
 );
+
 export default NewSlider;

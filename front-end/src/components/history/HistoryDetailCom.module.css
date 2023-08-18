@@ -8,12 +8,10 @@
 }
 
 .dateTime {
-  /* font-size: 1.1rem; */
   text-align: start;
   margin-top: auto;
   margin-bottom: auto;
   margin-left: 2.8rem;
-  /* margin-bottom: 0.2rem; */
 }
 
 .dataNBtn {
@@ -34,7 +32,6 @@
   font-family: 'lineTh';
   font-size: 1.2rem;
   padding: 0 1rem;
-
 }
 
 .growthMent {

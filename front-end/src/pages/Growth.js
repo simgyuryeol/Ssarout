@@ -1,14 +1,13 @@
+//Growth.js
 import React, { useEffect, useState } from 'react'
 import { Link, useParams, useNavigate } from 'react-router-dom'
 import Header from '../components/commonUse/Header'
-import Footer from '../components/commonUse/Footer';
 import Api from "../Api/Api";
 import styles from "./Growth.module.css";
 import { ResponsiveLine } from '@nivo/line'
 
-
 const Growth = () => {
-  const data = useParams(); // songId, title, singer
+  const data = useParams();
   const [growthGraph, setGrowthGraph] = useState([]);
   const [songTitle, setSongTitle] = useState();
   const [singer, setSinger] = useState();
@@ -18,7 +17,6 @@ const Growth = () => {
     try {
       const response = await Api.get(`/api/v1/result/recorded-songs/${data.songId}`);
       setGrowthGraph(response.data.data.results);
-      console.log(response.data.data.results)
     } catch (error) {
       console.error(error);
       navigate(-1)
@@ -27,20 +25,16 @@ const Growth = () => {
       const responseSongData = await Api.get('/api/v1/song/info',{params :{songId:data.songId} });
       setSongTitle(responseSongData.data.data.title)
       setSinger(responseSongData.data.data.singer)
-      console.log(songTitle,singer)
     } catch (error){
       console.error(error);
-
     }
   };
 
-
   useEffect(() => {
     getGrowthGraph();
-
   }, [data]);
 
-  const formatDate = (dateString) => { // createdDateTime mm/dd 형식으로 변경
+  const formatDate = (dateString) => { // 연도월일시간 합쳐진 데이터 쪼개기
     const formattedDate = dateString.slice(5, 10);
     return formattedDate.replace('-', '/');
   };
@@ -125,7 +119,6 @@ const Growth = () => {
       <MyResponsiveLine/>
       <br/><br/>
       <button className={styles.updateBackBtn}><Link to="/mypage" className={styles.updateBackA}>확인</Link></button>
-      {/* <Footer/> */}
     </div>
   );
 };

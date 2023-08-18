@@ -13,13 +13,12 @@ const MyPage = () => {
   const [profileUrl, setProfileUrl] = useState("");
 
   useEffect(() => {
-    f1();
+    getUserInfo();
   }, []);
 
-  const f1 = async () => {
+  const getUserInfo = async () => {
     try {
       const response = await Api.get("/api/v1/users");
-      // console.log(response.data);
       setNickname(response.data.data.nickname);
       setProfileUrl(response.data.data.profileImageUrl);
     } catch (error) {

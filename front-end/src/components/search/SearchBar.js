@@ -19,10 +19,9 @@ const SearchBar = () => {
 
   const enterPress = (event) => {
     if(event.key === "Enter"){
-      // console.log('눌림')
       event.preventDefault();
       navigate('/search', { state: { data: keyword } });
-      window.location.replace("/search"); // 두번째검색부턴 리렌더링 해줘야
+      window.location.replace("/search");
     }
   };
 

@@ -29,7 +29,6 @@ const UpdatePage = () => {
   const nicknameChange = async () => {
     try {
       const nn = document.querySelector("#nickname").value;
-      // console.log(nn);
       if (!nn) {
         alert("닉네임을 입력해주세요");
         return;
@@ -38,7 +37,6 @@ const UpdatePage = () => {
         nickname: nn,
         profileImg: profileImg,
       }).then((response) => {
-        // console.log(response);
         window.location.replace("/mypage");
       });
     } catch (error) {
@@ -49,7 +47,6 @@ const UpdatePage = () => {
   const f3 = async () => {
     try {
       await Api.delete("/api/v1/users").then((response) => {
-        console.log(response);
         localStorage.removeItem("token");
         window.location.replace("/");
       });

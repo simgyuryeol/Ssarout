@@ -1,7 +1,4 @@
-/* 앨범아트 */
 .favAlbumcover {
-  /* width: 80px;
-  height: 80px; */
   width: 24vw;
   height: 24vw;
   position: relative;
@@ -9,7 +6,6 @@
   z-index: 1;
 }
 
-/* 별 이미지 */
 .favImage {
   width: 20px;
   height: 20px;
@@ -19,37 +15,19 @@
   margin-top: 2px;
 }
 
-/* 앨범커버랑 별 감싼 */
 .favsongData {
   display: inline;
   justify-content: flex-start;
   float: left;
-  /* width: 360px; */
-
-  /* padding-left: 30px; */
-  /* display: flex; */
-  /* flex-direction: row; */
-  /* width: 80px; */
-
-  /* align-items: left; */
-  /* display: flex; */
-  /* align-items: flex-start; */
-  /* margin-left: 5px; */
   margin-right: 6vw;
-  /* margin-bottom: 40px; */
 }
 
 .favTotal {
   float: left;
-  /* width: 360px; */
   display: inline;
   margin-left: 8vw;
-  /* margin-right: 8vw; */
-  /* margin-left: 1.8rem;
-  margin-right: 1.6rem; */
   width: 90vw;
   max-width: 90vw;
-  /* justify-content: flex-start; */
 }
 
 .titleNsinger {
@@ -60,8 +38,6 @@
   white-space: nowrap; 
   overflow: hidden; 
   text-overflow: ellipsis;
-  /* display: flex;
-  flex: 0 0 auto; */
 }
 
 .dataNBtn {
@@ -73,6 +49,5 @@
   font-size: 1rem;
   text-align: start;
   margin-bottom: 0.5rem;
-  /* margin-left: 1.8rem; */
   margin-top: 1.5rem;
 }

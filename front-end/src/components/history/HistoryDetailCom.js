@@ -6,7 +6,7 @@ import play from './play.png'
 import pause from './pause.png'
 
 const HistoryDetail = () => {
-  const { title } = useParams(); // title 값 추출
+  const { title } = useParams();
   const decodedTitle = decodeURIComponent(title);
   const [hisDetailResults, sethisDetailResults] = useState([]);
   const [activeIndex, setActiveIndex] = useState(null);
@@ -15,7 +15,6 @@ const HistoryDetail = () => {
     try {
       const response = await Api.get("/api/v1/result/history");
       const matchingItems = response.data.data.results.filter((item) => item.title === decodedTitle);
-      console.log('이건매칭',matchingItems);
       sethisDetailResults(matchingItems.map(item => ({ ...item, audio1: new Audio(item.mrFile), audio2: new Audio(item.recordFile) })));
     } catch (error) {
       console.error(error);
@@ -36,7 +35,6 @@ const HistoryDetail = () => {
     setActiveIndex(index);
     hisDetailResults[index].audio1.play();
     hisDetailResults[index].audio2.play();
-
     hisDetailResults[index].audio2.onended = () => {
       pauseAudio(index);
     };
@@ -45,24 +43,19 @@ const HistoryDetail = () => {
   const pauseAudio = (index) => {
     setActiveIndex(null);
     hisDetailResults[index].audio1.pause();
-    hisDetailResults[index].audio1.currentTime = 0; // 오디오 시간 초기화
+    hisDetailResults[index].audio1.currentTime = 0;
     hisDetailResults[index].audio2.pause();
-    hisDetailResults[index].audio2.currentTime = 0; // 오디오 시간 초기화
+    hisDetailResults[index].audio2.currentTime = 0;
   };
   
   useEffect(() => {
     console.log(title);
     getHistoryDetail();
-
-    // 창 벗어나면 음악 멈춤
     let stopSongInterval;
     stopSongInterval = setInterval(() => {
-      // console.log('sdafds');
-      // console.log('재생중인', activeIndex);
       if (!window.location.pathname.includes('/history/') && activeIndex !== null) {
         pauseAudio(activeIndex);
         clearInterval(stopSongInterval);
-        // console.log('이제머뭋ㅁ');
       }
     }, 100);
     return () => {
@@ -92,7 +85,6 @@ const HistoryDetail = () => {
         </div>
       ))
       )}
-
     </div>
   );
 };

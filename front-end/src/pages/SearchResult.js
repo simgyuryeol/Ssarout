@@ -7,10 +7,10 @@ import styles from "./SearchResult.module.css"
 const Result = () => {
     return(
       <>
-      <div className={styles.container}>
-        <Header/>
-        <SearchResult/></div>
-        <Footer/>
+        <div className={styles.container}>
+          <Header/>
+          <SearchResult/></div>
+          <Footer/>
       </>
   )
 }

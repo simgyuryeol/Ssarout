@@ -21,11 +21,20 @@
 }
 
 .hisData {
-  display: flex;
-  flex-direction: column;
   margin-left: 5px;
   margin-right: 5px;
   width: 300;
+  display: inline;
+  justify-content: flex-start;
+  float: left;
+}
+
+.favTotal {
+  float: left;
+  display: inline;
+  margin-left: 8vw;
+  width: 90vw;
+  max-width: 90vw;
 }
 
 .titleNsinger {
