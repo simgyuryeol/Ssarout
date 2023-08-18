@@ -59,8 +59,11 @@ class SongEditor extends EventEmitter {
       if (this.audio != null) this.audio.pause();
       this.audio = new Audio(this.audioUrl);
       // this.audio = new Audio(mr);
-      this.audio.currentTime = this.startTime;
-      this.audio.play();
+      this.audio.currentTime = this.startTime + 1;
+      setTimeout(() => {
+        this.audio.play();
+      }, 1000);
+
       this._clickHandler("play");
     });
     this.btnStop.addEventListener("click", (e) => {
