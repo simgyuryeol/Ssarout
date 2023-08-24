@@ -9,6 +9,7 @@ const History = () => {
   const getHistory = async () => {
     try {
       const response = await Api.get("/api/v1/result/history");
+      // console.log(response.data.data.results);
       if (response.data.data && response.data.data.results.length > 0) {
         sethistoryResults(response.data.data.results);
       }
@@ -33,25 +34,23 @@ const History = () => {
       <div className={styles.historyContainer}>
       {historyResults.length > 0 ? (
         <>
-          <p className={styles.historyMent}>앨범아트를 눌러 녹음한 곡들을 다시 들어보세요!</p>
-          <div className={styles.favTotal}>
-          {removeDuplicates(historyResults, 'title').map((item, index) => (
-            <div key={index} className={styles.hisData}>
-              <Link to={{
-                pathname: `/history/${encodeURIComponent(item.title)}`,
-                state: {
-                  title: encodeURIComponent(item.title),
-                },
-              }}><img className={styles.hisAlbumcover} alt="" src={item.albumCoverImage} /></Link>
-              <p className={styles.titleNsinger}>{item.title} - {item.singer}</p>
-            </div>
-          ))}
+        <p className={styles.historyMent}>앨범아트를 눌러 녹음한 곡들을 다시 들어보세요!</p>
+        {removeDuplicates(historyResults, 'title').map((item, index) => (
+          <div key={index} className={styles.hisData}>
+            <Link to={{
+              pathname: `/history/${encodeURIComponent(item.title)}`,
+              state: {
+                title: encodeURIComponent(item.title),
+              },
+            }}><img className={styles.hisAlbumcover} alt="" src={item.albumCoverImage} /></Link>
+            <p className={styles.titleNsinger}>{item.title} - {item.singer}</p>
           </div>
-        </>
+        ))}</>
       ) : (
         <p className={styles.nohisMent}>아직 부른 노래가 없네요!</p>
       )}
       </div>
+
     </div>
   );
 };
