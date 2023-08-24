@@ -17,7 +17,7 @@ const History = () => {
     }
   };
 
-  const removeDuplicates = (arr, prop) => {
+  const removeDuplicates = (arr, prop) => { // 같은 노래 파일 여러 개인 경우 중복 제거
     return arr.filter((obj, index, self) =>
       index === self.findIndex(item => item[prop] === obj[prop])
     );
